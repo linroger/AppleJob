@@ -1,0 +1,976 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>top-level-items</key>
+	<array>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>1</string>
+					<key>EndingLineNumber</key>
+					<string>31</string>
+					<key>StartingColumnNumber</key>
+					<string>2</string>
+					<key>StartingLineNumber</key>
+					<string>15</string>
+					<key>Timestamp</key>
+					<string>759579278.0213211</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>AppleJob/AppleJob/AppleJob.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>*
+ The AppDelegate handles custom URLs:
+ We rely on application(_:open:) to capture applejob:// URLs.
+ */
+class AppDelegate: NSObject, NSApplicationDelegate {
+    func application(_ application: NSApplication, open urls: [URL]) {
+        print("AppDelegate: application(_:open:) called with URL: \(urls)") // ADD THIS PRINT
+        guard let url = urls.first else { return }
+        NotificationCenter.default.post(name: .didOpenCustomURL, object: url)
+    }
+}
+
+
+
+extension Notification.Name {
+    static let didOpenCustomURL = Notification.Name("didOpenCustomURL")
+}</string>
+				<key>leading</key>
+				<string>
+ */
+/*</string>
+				<key>trailing</key>
+				<string>
+
+
+</string>
+			</dict>
+			<key>title</key>
+			<string>AppDelegate</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>1</string>
+					<key>EndingLineNumber</key>
+					<string>843</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>733</string>
+					<key>Timestamp</key>
+					<string>759579250.1676019</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>AppleJob/AppleJob/AppleJob.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>
+/**
+ A view model used for AddJobView and EditJobView. Plain text only.
+ */
+class JobViewModel: ObservableObject {
+    @Published var companyName: String = ""
+    @Published var jobTitle: String = ""
+    @Published var status: JobStatus = .interested
+    @Published var dateOfApplication: Date = Date()
+    @Published var location: String = ""
+    @Published var linkToJob: String = ""
+    @Published var jobDescription: String = ""
+    @Published var coverLetter: String = ""
+    @Published var notes: String = ""
+    @Published var salaryString: String = "" // String for UI input/output
+        @Published var salaryDouble: Double? = nil // Numeric value for calculations
+
+    @Published var isInputValid: Bool = false
+
+    init() {
+        validateInputs()
+    }
+
+    
+    init(job: JobApplication) {
+        companyName = job.companyName
+        jobTitle = job.jobTitle
+        status = job.status
+        dateOfApplication = job.dateOfApplication
+        location = job.location
+        salaryDouble = job.salary
+        salaryString = formatSalaryAsInteger(job.salary)
+        linkToJob = job.linkToJobString ?? ""
+        jobDescription = job.jobDescription
+        coverLetter = job.coverLetter
+        notes = job.notes ?? ""
+        
+        if let salary = job.salary {
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .currency
+            formatter.currencyCode = Locale.current.currency?.identifier ?? "USD" // Use the user's locale or fallback to USD
+            salaryString = formatter.string(from: NSNumber(value: salary)) ?? ""
+        } else {
+            salaryString = ""
+        }
+        
+        validateInputs()
+    }
+
+    func validateInputs() {
+        DispatchQueue.main.async {
+            self.isInputValid = !(self.companyName.isEmpty || self.jobTitle.isEmpty)
+        }
+    }
+    // Format salary as an integer (e.g., $50,000)
+       func formatSalaryAsInteger(_ value: Double?) -&gt; String {
+           guard let value = value else { return "" }
+           let formatter = NumberFormatter()
+           formatter.numberStyle = .currency
+           formatter.currencyCode = Locale.current.currency?.identifier ?? "USD"
+           formatter.maximumFractionDigits = 0 // No decimals for integer formatting
+           return formatter.string(from: NSNumber(value: value)) ?? ""
+       }
+
+       // Parse a formatted string back into a Double
+       func parseSalary(_ value: String) -&gt; Double? {
+           let formatter = NumberFormatter()
+           formatter.numberStyle = .currency
+           formatter.currencyCode = Locale.current.currency?.identifier ?? "USD"
+           return formatter.number(from: value)?.doubleValue
+       }
+
+       // Update salaryString and salaryDouble when the user edits the field
+       func updateSalary(fromString newValue: String) {
+           salaryString = newValue
+           salaryDouble = parseSalary(newValue)
+       }
+    func addJob(to store: JobStore, documents: [JobDocument]) {
+        guard isInputValid else { return }
+        let newJob = JobApplication(
+            companyName: companyName,
+            jobTitle: jobTitle,
+            status: status,
+            dateOfApplication: dateOfApplication,
+            location: location,
+            linkToJobString: linkToJob.isEmpty ? nil : linkToJob,
+            salary: salaryDouble, // Step 2.7: Use salaryDouble
+            jobDescription: jobDescription,
+            coverLetter: coverLetter,
+            notes: notes,
+            documents: documents,
+            isFavorite: false
+        )
+        store.addJob(newJob)
+        reset()
+    }
+
+    func reset() {
+        companyName = ""
+        jobTitle = ""
+        status = .interested
+        dateOfApplication = Date()
+        location = ""
+        linkToJob = ""
+        jobDescription = ""
+        coverLetter = ""
+        notes = ""
+        salaryString = "" // Step 2.9: Reset salaryString
+        validateInputs()
+    }
+}</string>
+				<key>leading</key>
+				<string>    }
+}
+</string>
+				<key>trailing</key>
+				<string>
+
+@main
+</string>
+			</dict>
+			<key>title</key>
+			<string>JobViewModel</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>4</string>
+					<key>EndingLineNumber</key>
+					<string>1034</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>855</string>
+					<key>Timestamp</key>
+					<string>759579229.081798</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>AppleJob/AppleJob/AppleJob.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>struct AppleJobApp: App {
+    @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @StateObject private var jobStore = JobStore()
+    @StateObject private var docStore = DocumentStore()
+    @StateObject private var importExportHelper = ImportExportHelper()
+
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+                .environmentObject(jobStore)
+                .environmentObject(docStore)
+                .environmentObject(importExportHelper)
+                .onReceive(NotificationCenter.default.publisher(for: .didOpenCustomURL)) { notification in
+                    print("AppleJobApp: Notification received: \(notification)") // ADD THIS PRINT
+                    if let url = notification.object as? URL {
+                        handleIncomingURL(url)
+                    }
+                }
+        }
+        .commands {
+            fileMenuCommands
+            editMenuCommands
+        }
+    }
+
+
+    private var fileMenuCommands: some Commands {
+        CommandMenu("File") {
+            Button("Import Backup...") {
+                importExportHelper.importBackup { url in
+                    jobStore.importBackup(url: url)
+                }
+            }
+            .keyboardShortcut("I", modifiers: [.command, .shift])
+
+            Button("Export Backup...") {
+                importExportHelper.exportBackup { url in
+                    jobStore.exportBackup(url: url)
+                }
+            }
+            .keyboardShortcut("E", modifiers: [.command, .shift])
+
+            Divider()
+
+            Button("Import Documents...") {
+                importExportHelper.importDocuments { urls in
+                    docStore.uploadDocuments(from: urls)
+                }
+            }
+            Button("Export Documents...") {
+                importExportHelper.exportDocuments { url in
+                    exportAllDocumentsToZip(url: url)
+                }
+            }
+        }
+    }
+
+    private var editMenuCommands: some Commands {
+        CommandMenu("Edit") {
+            Button("Add New Application") {
+                jobStore.isAddingNewJob = true
+            }
+            .keyboardShortcut("N", modifiers: .command)
+
+            Button("Edit Application") {
+                jobStore.isEditingJob = true
+            }
+            .keyboardShortcut("E", modifiers: .command)
+            .disabled(jobStore.selectedJob == nil)
+
+            Divider()
+
+            Button("Favorite Application") {
+                if let selectedJob = jobStore.selectedJob {
+                    jobStore.toggleFavorite(for: selectedJob.id)
+                }
+            }
+            .keyboardShortcut("F", modifiers: .command)
+            .disabled(jobStore.selectedJob == nil)
+
+            Divider()
+
+            Menu("Update Status") {
+                ForEach(JobStatus.allCases, id: \.self) { status in
+                    Button(status.rawValue) {
+                        if let selectedJob = jobStore.selectedJob {
+                            jobStore.updateJobStatus(selectedJob.id, to: status)
+                        }
+                    }
+                }
+            }
+            .disabled(jobStore.selectedJob == nil)
+
+            Divider()
+
+            Button("Duplicate Application") {
+                if let selectedJob = jobStore.selectedJob {
+                    jobStore.duplicateJob(selectedJob)
+                }
+            }
+            .keyboardShortcut("D", modifiers: .command)
+            .disabled(jobStore.selectedJob == nil)
+
+            Divider()
+
+            Button("Delete Application") {
+                if let selectedJob = jobStore.selectedJob {
+                    jobStore.deleteJob(for: selectedJob.id)
+                }
+            }
+            .keyboardShortcut(.delete, modifiers: .command)
+            .disabled(jobStore.selectedJob == nil)
+
+            Divider()
+
+            Button("Create New Category") {
+                docStore.newCategoryName = "Category Name"
+                docStore.isCreatingNewCategory = true
+            }
+
+            Divider()
+            Menu("Document") {
+                Button("Edit Document Info") {
+                    if let doc = docStore.selectedDocument {
+                        docStore.beginEditMetadata(for: doc)
+                    }
+                }
+                .disabled(docStore.selectedDocument == nil)
+
+                Menu("Move to Category") {
+                    ForEach(docStore.categories, id: \.id) { cat in
+                        Button(cat.name) {
+                            if let doc = docStore.selectedDocument {
+                                docStore.assignDocument(doc, to: cat)
+                            }
+                        }
+                    }
+                    Button("Unassign (All Documents)") {
+                        if let doc = docStore.selectedDocument {
+                            docStore.unassignDocument(doc)
+                        }
+                    }
+                }
+                .disabled(docStore.selectedDocument == nil)
+            }
+        }
+    }
+
+    private func exportAllDocumentsToZip(url: URL) {
+        let fileManager = FileManager.default
+        let tempDir = fileManager.temporaryDirectory.appendingPathComponent("temp_documents_\(UUID())")
+        do {
+            try fileManager.createDirectory(at: tempDir, withIntermediateDirectories: true)
+            for doc in docStore.documents {
+                let fileURL = tempDir.appendingPathComponent(doc.fileName)
+                try doc.fileData.write(to: fileURL)
+            }
+            let zipURL = url
+            try createZipArchive(at: tempDir, destination: zipURL)
+            try fileManager.removeItem(at: tempDir)
+            print("Successfully exported documents.")
+        } catch {
+            print("Failed to export documents: \(error)")
+        }
+    }
+
+    private func createZipArchive(at sourceURL: URL, destination: URL) throws {
+        let process = Process()
+        process.executableURL = URL(fileURLWithPath: "/usr/bin/zip")
+        process.arguments = ["-r", destination.path, "."]
+        process.currentDirectoryURL = sourceURL
+        try process.run()
+        process.waitUntilExit()
+        if process.terminationStatus != 0 {
+            throw NSError(domain: "ZipError",
+                          code: Int(process.terminationStatus),
+                          userInfo: [NSLocalizedDescriptionKey: "Zip process failed."])
+        }
+    }
+    </string>
+				<key>leading</key>
+				<string>// MARK: - The Main App + handleIncomingURL Modification
+// --------------------------------------------------
+</string>
+				<key>trailing</key>
+				<string>
+    
+    
+</string>
+			</dict>
+			<key>title</key>
+			<string>AppleJobApp</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>17</string>
+					<key>EndingLineNumber</key>
+					<string>1140</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>1038</string>
+					<key>Timestamp</key>
+					<string>759579198.76344</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>AppleJob/AppleJob/AppleJob.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>    // -------------- handleIncomingURL --------------
+    /**
+     Now we decode the Base64 JSON on the main thread, parse it, and
+     set jobStore.incomingJobData + jobStore.isAddingNewJob = true
+     so AddJobView will appear with fields auto-filled.
+     */
+    private func handleIncomingURL(_ url: URL) {
+        print("handleIncomingURL: URL received: \(url)")
+        guard url.scheme == "applejob" else {
+            print("handleIncomingURL: Scheme is not applejob, returning")
+            return
+        }
+        guard let components = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
+            print("handleIncomingURL: URLComponents failed, returning")
+            return
+        }
+
+        guard let host = components.host else {
+            print("handleIncomingURL: Host is missing, returning")
+            return
+        }
+
+        if host == "x-callback-url" { // Check for x-callback-url base path
+            let path = components.path // Directly access the path
+            if path.isEmpty {
+                print("handleIncomingURL: x-callback-url path missing, returning")
+                return
+            }
+
+            let action = path.dropFirst() // Remove leading "/"
+            print("handleIncomingURL: x-callback-url action: \(action)")
+
+            switch action {
+            case "add-job": // Handle the "add-job" action
+                handleAddJobAction(queryItems: components.queryItems)
+            case "open-stats": // Example for another potential action
+                handleOpenStatsAction(queryItems: components.queryItems)
+            default:
+                print("handleIncomingURL: Unknown x-callback-url action: \(action)")
+            }
+        } else if host == "addjob" { // Keep handling the old "addjob" host for backward compatibility (optional)
+            handleLegacyAddJob(components: components) // Separate legacy handling into a function
+        } else {
+            print("handleIncomingURL: Unknown host: \(host)")
+        }
+    }
+
+    private func handleOpenStatsAction(queryItems: [URLQueryItem]?) {
+        print("handleOpenStatsAction: Action not implemented yet.")
+        // Add logic here if needed in the future
+    }
+
+    private func handleLegacyAddJob(components: URLComponents) {
+        print("handleLegacyAddJob: Handling legacy add-job URL.")
+        // Add logic here if needed in the future
+    }
+
+        // --- New Functions to Handle Actions ---
+
+        /**
+         Handles the "add-job" x-callback-url action.
+         Expects parameters to be passed as query items, including jsonBase64.
+         */
+        private func handleAddJobAction(queryItems: [URLQueryItem]?) {
+            print("handleAddJobAction: Handling add-job action")
+            guard let rawBase64 = queryItems?.first(where: { $0.name == "jsonBase64" })?.value else {
+                print("handleAddJobAction: jsonBase64 parameter missing")
+                return
+            }
+            print("handleAddJobAction: Found jsonBase64 parameter: \(rawBase64)")
+            DispatchQueue.main.async {
+                guard let decodedData = Data(base64Encoded: rawBase64) else {
+                    print("handleAddJobAction: Base64 decoding failed")
+                    print("Base64 String was: \(rawBase64)")
+                    return
+                }
+                do {
+                    let jobData = try JSONDecoder().decode([String: String].self, from: decodedData)
+                    print("handleAddJobAction: JSON decoding successful: \(jobData)")
+
+                    // Extract fields:
+                    let title   = jobData["jobTitle"] ?? ""
+                    let urlString = jobData["URL"] ?? ""
+                    let desc    = jobData["jobDescription"] ?? ""
+
+                    // Store them in the jobStore:
+                    jobStore.incomingJobData = [
+                        "jobTitle": title,
+                        "url": urlString,
+                        "jobDescription": desc
+                    ]
+                    // Trigger AddJobView:
+                    jobStore.isAddingNewJob = true
+                    print("handleAddJobAction: Set jobStore.isAddingNewJob = true")
+
+                } catch {
+                    print("handleAddJobAction: JSON decoding error: \(error)")
+                    if let jsonString = String(data: decodedData, encoding: .utf8) {
+                        print("Data that failed to decode: \(jsonString)")
+                    } else {
+                        print("Data that failed to decode could not be converted to string")
+                    }
+                }</string>
+				<key>leading</key>
+				<string>    
+    
+</string>
+				<key>trailing</key>
+				<string>
+            }
+        }
+</string>
+			</dict>
+			<key>title</key>
+			<string>Handle Incoming URL</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>1270</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>1269</string>
+					<key>Timestamp</key>
+					<string>759579341.843858</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>AppleJob/AppleJob/AppleJob.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>
+</string>
+				<key>leading</key>
+				<string>}
+
+</string>
+				<key>trailing</key>
+				<string>struct JobSidebarView: View {
+    @EnvironmentObject var jobStore: JobStore
+    @EnvironmentObject var docStore: DocumentStore
+</string>
+			</dict>
+			<key>title</key>
+			<string>JobSidebarView</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>1344</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>1343</string>
+					<key>Timestamp</key>
+					<string>759579167.70583</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>AppleJob/AppleJob/AppleJob.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>
+</string>
+				<key>leading</key>
+				<string>    }
+}
+</string>
+				<key>trailing</key>
+				<string>struct SidebarItemView: View {
+    @EnvironmentObject var jobStore: JobStore
+    let job: JobApplication
+</string>
+			</dict>
+			<key>title</key>
+			<string>SidebarItemView</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>1412</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>1411</string>
+					<key>Timestamp</key>
+					<string>759579167.705848</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>AppleJob/AppleJob/AppleJob.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>
+</string>
+				<key>leading</key>
+				<string>
+
+</string>
+				<key>trailing</key>
+				<string>struct JobDetailView: View {
+    @EnvironmentObject var jobStore: JobStore
+    @EnvironmentObject var docStore: DocumentStore
+</string>
+			</dict>
+			<key>title</key>
+			<string>JobDetailView</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>1608</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>1607</string>
+					<key>Timestamp</key>
+					<string>759579167.70581</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>AppleJob/AppleJob/AppleJob.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>struct AddJobView: View {
+</string>
+				<key>leading</key>
+				<string> we can pre-populate the fields from `jobStore.incomingJobData`.
+ */
+</string>
+				<key>trailing</key>
+				<string>    @EnvironmentObject var jobStore: JobStore
+    @EnvironmentObject var docStore: DocumentStore
+    @Binding var isPresented: Bool
+</string>
+			</dict>
+			<key>title</key>
+			<string>AddJobView</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>1917</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>1916</string>
+					<key>Timestamp</key>
+					<string>759579167.705853</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>AppleJob/AppleJob/AppleJob.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>
+</string>
+				<key>leading</key>
+				<string>    }
+}
+</string>
+				<key>trailing</key>
+				<string>// MARK: - NewLocationView
+// -----------------------------------------------------
+/**
+</string>
+			</dict>
+			<key>title</key>
+			<string>NewLocationView</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>1975</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>1974</string>
+					<key>Timestamp</key>
+					<string>759579167.705824</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>AppleJob/AppleJob/AppleJob.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>
+</string>
+				<key>leading</key>
+				<string>}
+
+</string>
+				<key>trailing</key>
+				<string>// MARK: - EditJobView
+// MARK: - EditJobView
+struct EditJobView: View {
+</string>
+			</dict>
+			<key>title</key>
+			<string>EditJobView</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>2210</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>2209</string>
+					<key>Timestamp</key>
+					<string>759579167.705842</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>AppleJob/AppleJob/AppleJob.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>
+</string>
+				<key>leading</key>
+				<string>    }
+}
+</string>
+				<key>trailing</key>
+				<string>//
+//  EnhancedStatsView.swift
+//  AppleJob
+</string>
+			</dict>
+			<key>title</key>
+			<string>EnhancedStatsView</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>3449</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>3448</string>
+					<key>Timestamp</key>
+					<string>759579167.7058589</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>AppleJob/AppleJob/AppleJob.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>
+</string>
+				<key>leading</key>
+				<string>
+
+</string>
+				<key>trailing</key>
+				<string>
+struct DocumentInfoPopover: View {
+    let document: JobDocument?
+</string>
+			</dict>
+			<key>title</key>
+			<string>DocumentsView</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+	</array>
+</dict>
+</plist>
