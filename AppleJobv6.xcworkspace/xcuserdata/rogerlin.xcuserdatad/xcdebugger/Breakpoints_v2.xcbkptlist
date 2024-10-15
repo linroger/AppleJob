@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "3C6E6CA3-282C-4FCD-8A03-20E4071B4B1A"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "00241394-7A1B-4DD3-9FB5-82F8745A338B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AppleJob/AppleJob.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "3086"
+            endingLineNumber = "3086"
+            landmarkName = "EnhancedStatsView"
+            landmarkType = "14">
+            <Locations>
+               <Location
+                  uuid = "00241394-7A1B-4DD3-9FB5-82F8745A338B - 5802065e97499999"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of AppleJob.EnhancedStatsView.mapSection : some&gt;&gt;.0, &lt;&lt;opaque return type of AppleJob.EnhancedStatsView.appliedCompaniesAndRolesView : some&gt;&gt;.0, &lt;&lt;opaque return type of AppleJob.EnhancedStatsView.statsRowSection : some&gt;&gt;.0, &lt;&lt;opaque return type of AppleJob.EnhancedStatsView.dynamicYearPickerSection : some&gt;&gt;.0, &lt;&lt;opaque return type of AppleJob.EnhancedStatsView.githubChartsSection : some&gt;&gt;.0, &lt;&lt;opaque return type of AppleJob.EnhancedStatsView.timeRangePickerSection : some&gt;&gt;.0, &lt;&lt;opaque return type of AppleJob.EnhancedStatsView.barLineChartsSection : some&gt;&gt;.0, SwiftUI._ConditionalContent&lt;SwiftUI.AnyView, SwiftUI.Text&gt;, &lt;&lt;opaque return type of AppleJob.EnhancedStatsView.singleColumnVerticallyStackedBarChartSection : some&gt;&gt;.0, &lt;&lt;opaque return type of AppleJob.EnhancedStatsView.top20CompaniesBarSection : some&gt;&gt;.0, &lt;&lt;opaque return type of AppleJob.EnhancedStatsView.citiesByFrequencySection : some&gt;&gt;.0, &lt;&lt;opaque return type of AppleJob.EnhancedStatsView.companiesByFrequencySection : some&gt;&gt;.0, &lt;&lt;opaque return type of AppleJob.EnhancedStatsView.pieChartsSection : some&gt;&gt;.0)&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0 in AppleJob.EnhancedStatsView.body.getter : some"
+                  moduleName = "AppleJob.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rogerlin/Documents/AppleJob/AppleJob/AppleJob.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "3010"
+                  endingLineNumber = "3010">
+               </Location>
+               <Location
+                  uuid = "00241394-7A1B-4DD3-9FB5-82F8745A338B - d0cc47ae752eb371"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AppleJob.EnhancedStatsView.mapSection.getter : some"
+                  moduleName = "AppleJob.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rogerlin/Documents/AppleJob/AppleJob/AppleJob.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "3086"
+                  endingLineNumber = "3086">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
