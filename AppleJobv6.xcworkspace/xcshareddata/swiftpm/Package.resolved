@@ -1,0 +1,69 @@
+{
+  "originHash" : "e78fffb5f9f1215639f525d77819c6f4c5fa97e3cfe4cbfc9e451a21740a6515",
+  "pins" : [
+    {
+      "identity" : "richtextkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/danielsaidi/RichTextKit.git",
+      "state" : {
+        "revision" : "d390d66740161554095e3acbd27f84dc3dcc5b03",
+        "version" : "1.1.2"
+      }
+    },
+    {
+      "identity" : "swift-argument-parser",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-argument-parser.git",
+      "state" : {
+        "revision" : "41982a3656a71c768319979febd796c6fd111d5c",
+        "version" : "1.5.0"
+      }
+    },
+    {
+      "identity" : "swift-collections",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-collections",
+      "state" : {
+        "revision" : "d029d9d39c87bed85b1c50adee7c41795261a192",
+        "version" : "1.0.6"
+      }
+    },
+    {
+      "identity" : "swift-numerics",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-numerics.git",
+      "state" : {
+        "revision" : "0a5bc04095a675662cf24757cc0640aa2204253b",
+        "version" : "1.0.2"
+      }
+    },
+    {
+      "identity" : "swiftsoup",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/scinfu/SwiftSoup.git",
+      "state" : {
+        "revision" : "0837db354faf9c9deb710dc597046edaadf5360f",
+        "version" : "2.7.6"
+      }
+    },
+    {
+      "identity" : "swiftui-contributionchart",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/VIkill33/SwiftUI-ContributionChart.git",
+      "state" : {
+        "revision" : "1a5456abe2118f8605bed703bc387fc00eed65e9",
+        "version" : "1.0.3"
+      }
+    },
+    {
+      "identity" : "tree",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mattcox/Tree.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "ccf2ba7da617ec2b08a6594325fca413c0190344"
+      }
+    }
+  ],
+  "version" : 3
+}
