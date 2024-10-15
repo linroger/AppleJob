@@ -1,0 +1,573 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>top-level-items</key>
+	<array>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>3052</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>3051</string>
+					<key>Timestamp</key>
+					<string>759612505.101053</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>AppleJob/AppleJob/AppleJob.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>}
+</string>
+				<key>leading</key>
+				<string>        }
+    }
+</string>
+				<key>trailing</key>
+				<string>//
+//  EnhancedStatsView.swift
+//  AppleJob
+</string>
+			</dict>
+			<key>title</key>
+			<string>AppDelegate</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>3052</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>3051</string>
+					<key>Timestamp</key>
+					<string>759612505.101025</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>AppleJob/AppleJob/AppleJob.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>}
+</string>
+				<key>leading</key>
+				<string>        }
+    }
+</string>
+				<key>trailing</key>
+				<string>//
+//  EnhancedStatsView.swift
+//  AppleJob
+</string>
+			</dict>
+			<key>title</key>
+			<string>JobViewModel</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>3052</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>3051</string>
+					<key>Timestamp</key>
+					<string>759612505.101046</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>AppleJob/AppleJob/AppleJob.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>}
+</string>
+				<key>leading</key>
+				<string>        }
+    }
+</string>
+				<key>trailing</key>
+				<string>//
+//  EnhancedStatsView.swift
+//  AppleJob
+</string>
+			</dict>
+			<key>title</key>
+			<string>AppleJobApp</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>3052</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>3051</string>
+					<key>Timestamp</key>
+					<string>759612505.1010391</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>AppleJob/AppleJob/AppleJob.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>}
+</string>
+				<key>leading</key>
+				<string>        }
+    }
+</string>
+				<key>trailing</key>
+				<string>//
+//  EnhancedStatsView.swift
+//  AppleJob
+</string>
+			</dict>
+			<key>title</key>
+			<string>Handle Incoming URL</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>3052</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>3051</string>
+					<key>Timestamp</key>
+					<string>759612505.101018</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>AppleJob/AppleJob/AppleJob.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>}
+</string>
+				<key>leading</key>
+				<string>        }
+    }
+</string>
+				<key>trailing</key>
+				<string>//
+//  EnhancedStatsView.swift
+//  AppleJob
+</string>
+			</dict>
+			<key>title</key>
+			<string>JobSidebarView</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>3052</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>3051</string>
+					<key>Timestamp</key>
+					<string>759612505.100979</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>AppleJob/AppleJob/AppleJob.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>}
+</string>
+				<key>leading</key>
+				<string>        }
+    }
+</string>
+				<key>trailing</key>
+				<string>//
+//  EnhancedStatsView.swift
+//  AppleJob
+</string>
+			</dict>
+			<key>title</key>
+			<string>SidebarItemView</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>3052</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>3051</string>
+					<key>Timestamp</key>
+					<string>759612505.101011</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>AppleJob/AppleJob/AppleJob.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>}
+</string>
+				<key>leading</key>
+				<string>        }
+    }
+</string>
+				<key>trailing</key>
+				<string>//
+//  EnhancedStatsView.swift
+//  AppleJob
+</string>
+			</dict>
+			<key>title</key>
+			<string>JobDetailView</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>3052</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>3051</string>
+					<key>Timestamp</key>
+					<string>759612505.101032</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>AppleJob/AppleJob/AppleJob.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>}
+</string>
+				<key>leading</key>
+				<string>        }
+    }
+</string>
+				<key>trailing</key>
+				<string>//
+//  EnhancedStatsView.swift
+//  AppleJob
+</string>
+			</dict>
+			<key>title</key>
+			<string>AddJobView</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>3052</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>3051</string>
+					<key>Timestamp</key>
+					<string>759612505.100996</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>AppleJob/AppleJob/AppleJob.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>}
+</string>
+				<key>leading</key>
+				<string>        }
+    }
+</string>
+				<key>trailing</key>
+				<string>//
+//  EnhancedStatsView.swift
+//  AppleJob
+</string>
+			</dict>
+			<key>title</key>
+			<string>NewLocationView</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>3052</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>3051</string>
+					<key>Timestamp</key>
+					<string>759612505.100988</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>AppleJob/AppleJob/AppleJob.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>}
+</string>
+				<key>leading</key>
+				<string>        }
+    }
+</string>
+				<key>trailing</key>
+				<string>//
+//  EnhancedStatsView.swift
+//  AppleJob
+</string>
+			</dict>
+			<key>title</key>
+			<string>EditJobView</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>3052</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>3051</string>
+					<key>Timestamp</key>
+					<string>759612505.1010031</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>AppleJob/AppleJob/AppleJob.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>}
+</string>
+				<key>leading</key>
+				<string>        }
+    }
+</string>
+				<key>trailing</key>
+				<string>//
+//  EnhancedStatsView.swift
+//  AppleJob
+</string>
+			</dict>
+			<key>title</key>
+			<string>EnhancedStatsView</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>4291</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>4290</string>
+					<key>Timestamp</key>
+					<string>759612505.10106</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>AppleJob/AppleJob/AppleJob.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>
+</string>
+				<key>leading</key>
+				<string>
+
+</string>
+				<key>trailing</key>
+				<string>
+struct DocumentInfoPopover: View {
+    let document: JobDocument?
+</string>
+			</dict>
+			<key>title</key>
+			<string>DocumentsView</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+	</array>
+</dict>
+</plist>
