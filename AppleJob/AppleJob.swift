@@ -297,8 +297,525 @@ struct Constants {
     static let documentsKey = "documents"
     static let documentCategoriesKey = "documentCategories"
     static let resumeKey = "userResume"
-    static let aiApiKey = "sk-e5528df49b794732bb7817ce06786f72" // Replace with your actual API key
-    static let aiApiEndpoint = "https://api.deepseek.com/v1/chat/completions" // DeepSeek OpenAI-compatible endpoint
+    static let aiApiKeysKey = "aiApiKeys" // UserDefaults key for storing API keys
+    
+    // Default values for DeepSeek API
+    static let defaultAiApiKey = "sk-e5528df49b794732bb7817ce06786f72"
+    
+    // API endpoints for different providers
+    static let deepseekApiEndpoint = "https://api.deepseek.com/v1/chat/completions"
+    static let openaiApiEndpoint = "https://api.openai.com/v1/chat/completions"
+    static let anthropicApiEndpoint = "https://api.anthropic.com/v1/messages"
+    static let geminiApiEndpoint = "https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent"
+}
+
+// MARK: - AI Provider Enums
+enum AIProvider: String, CaseIterable, Identifiable, Codable {
+    case openai = "OpenAI"
+    case anthropic = "Anthropic"
+    case gemini = "Google Gemini"
+    case deepseek = "DeepSeek"
+    
+    var id: String { self.rawValue }
+    
+    var endpoint: String {
+        switch self {
+        case .openai:
+            return Constants.openaiApiEndpoint
+        case .anthropic:
+            return Constants.anthropicApiEndpoint
+        case .gemini:
+            return Constants.geminiApiEndpoint
+        case .deepseek:
+            return Constants.deepseekApiEndpoint
+        }
+    }
+    
+    var availableModels: [AIModel] {
+        switch self {
+        case .openai:
+            return [.gpt4o, .gpt4Turbo, .gpt35Turbo]
+        case .anthropic:
+            return [.claude3Opus, .claude3Sonnet, .claude3Haiku]
+        case .gemini:
+            return [.geminiPro]
+        case .deepseek:
+            return [.deepseekReasoner, .deepseekCoder]
+        }
+    }
+    
+    var defaultModel: AIModel {
+        availableModels.first ?? .gpt35Turbo
+    }
+}
+
+enum AIModel: String, CaseIterable, Identifiable, Codable {
+    // OpenAI models
+    case gpt4o = "gpt-4o"
+    case gpt4Turbo = "gpt-4-turbo"
+    case gpt35Turbo = "gpt-3.5-turbo"
+    
+    // Anthropic models
+    case claude3Opus = "claude-3-opus-20240229"
+    case claude3Sonnet = "claude-3-sonnet-20240229"
+    case claude3Haiku = "claude-3-haiku-20240307"
+    
+    // Google Gemini models
+    case geminiPro = "gemini-pro"
+    
+    // DeepSeek models
+    case deepseekReasoner = "deepseek-reasoner"
+    case deepseekCoder = "deepseek-coder"
+    
+    var id: String { self.rawValue }
+    
+    var displayName: String {
+        switch self {
+        case .gpt4o: return "GPT-4o"
+        case .gpt4Turbo: return "GPT-4 Turbo"
+        case .gpt35Turbo: return "GPT-3.5 Turbo"
+        case .claude3Opus: return "Claude 3 Opus"
+        case .claude3Sonnet: return "Claude 3 Sonnet"
+        case .claude3Haiku: return "Claude 3 Haiku"
+        case .geminiPro: return "Gemini Pro"
+        case .deepseekReasoner: return "DeepSeek Reasoner"
+        case .deepseekCoder: return "DeepSeek Coder"
+        }
+    }
+    
+    var provider: AIProvider {
+        switch self {
+        case .gpt4o, .gpt4Turbo, .gpt35Turbo:
+            return .openai
+        case .claude3Opus, .claude3Sonnet, .claude3Haiku:
+            return .anthropic
+        case .geminiPro:
+            return .gemini
+        case .deepseekReasoner, .deepseekCoder:
+            return .deepseek
+        }
+    }
+}
+
+// MARK: - AI Settings Storage
+class AISettings: ObservableObject {
+    @Published var selectedProvider: AIProvider = .deepseek
+    @Published var selectedModel: AIModel = .deepseekReasoner
+    @Published var apiKey: String = ""
+    
+    private let userDefaults = UserDefaults.standard
+    
+    init() {
+        loadSettings()
+    }
+    
+    func loadSettings() {
+        if let providerString = userDefaults.string(forKey: "selectedAIProvider"),
+           let provider = AIProvider(rawValue: providerString) {
+            selectedProvider = provider
+        }
+        
+        if let modelString = userDefaults.string(forKey: "selectedAIModel"),
+           let model = AIModel(rawValue: modelString) {
+            selectedModel = model
+        }
+        
+        // Load API key for the selected provider
+        let apiKeysDict = userDefaults.dictionary(forKey: Constants.aiApiKeysKey) as? [String: String] ?? [:]
+        apiKey = apiKeysDict[selectedProvider.rawValue] ?? Constants.defaultAiApiKey
+    }
+    
+    func saveSettings() {
+        userDefaults.set(selectedProvider.rawValue, forKey: "selectedAIProvider")
+        userDefaults.set(selectedModel.rawValue, forKey: "selectedAIModel")
+        
+        // Save API key for the selected provider
+        var apiKeysDict = userDefaults.dictionary(forKey: Constants.aiApiKeysKey) as? [String: String] ?? [:]
+        apiKeysDict[selectedProvider.rawValue] = apiKey
+        userDefaults.set(apiKeysDict, forKey: Constants.aiApiKeysKey)
+    }
+    
+    func updateProvider(_ provider: AIProvider) {
+        selectedProvider = provider
+        
+        // If current model isn't compatible with new provider, update to default
+        if !provider.availableModels.contains(where: { $0.rawValue == selectedModel.rawValue }) {
+            selectedModel = provider.defaultModel
+        }
+        
+        // Load saved API key for this provider
+        let apiKeysDict = userDefaults.dictionary(forKey: Constants.aiApiKeysKey) as? [String: String] ?? [:]
+        apiKey = apiKeysDict[provider.rawValue] ?? ""
+        
+        saveSettings()
+    }
+    
+    func updateModel(_ model: AIModel) {
+        selectedModel = model
+        saveSettings()
+    }
+    
+    func updateApiKey(_ key: String) {
+        apiKey = key
+        saveSettings()
+    }
+}
+
+// MARK: - AI Service
+class AIService: ObservableObject {
+    static let shared = AIService()
+    
+    @Published var isProcessing = false
+    @Published var elapsedTime: TimeInterval = 0
+    @Published var error: Error?
+    
+    private var settings = AISettings()
+    private var timer: Timer?
+    private var startTime: Date?
+    
+    struct AIError: Error, LocalizedError {
+        let message: String
+        
+        var errorDescription: String? {
+            return message
+        }
+    }
+    
+    enum AIRequestType {
+        case resume
+        case coverLetter
+        
+        var systemPrompt: String {
+            switch self {
+            case .resume:
+                return "You are an expert resume writer. Given a job description and optionally a current resume, tailor the resume to highlight relevant skills and experience for the specific job."
+            case .coverLetter:
+                return "You are an expert cover letter writer. Given a job description and optionally a current cover letter, craft a compelling cover letter that matches the job requirements and highlights relevant qualifications."
+            }
+        }
+    }
+    
+    // Process job application with AI to generate resume or cover letter
+    func processJobApplicationWithAI(job: JobApplication, userInput: String, type: AIRequestType) async throws -> String {
+        // Start timing and processing indicators
+        DispatchQueue.main.async {
+            self.startTime = Date()
+            self.isProcessing = true
+            self.error = nil
+            self.startTimer()
+        }
+        
+        do {
+            let result = try await generateAIContent(job: job, userInput: userInput, type: type)
+            
+            DispatchQueue.main.async {
+                self.stopTimer()
+                self.isProcessing = false
+            }
+            
+            return result
+        } catch {
+            DispatchQueue.main.async {
+                self.stopTimer()
+                self.isProcessing = false
+                self.error = error
+            }
+            throw error
+        }
+    }
+    
+    private func generateAIContent(job: JobApplication, userInput: String, type: AIRequestType) async throws -> String {
+        let provider = settings.selectedProvider
+        let model = settings.selectedModel
+        let apiKey = settings.apiKey.isEmpty ? Constants.defaultAiApiKey : settings.apiKey
+        
+        switch provider {
+        case .openai, .deepseek:
+            return try await callOpenAICompatibleAPI(
+                job: job,
+                userInput: userInput, 
+                type: type,
+                endpoint: provider.endpoint,
+                model: model.rawValue,
+                apiKey: apiKey
+            )
+        case .anthropic:
+            return try await callAnthropicAPI(
+                job: job,
+                userInput: userInput,
+                type: type,
+                model: model.rawValue,
+                apiKey: apiKey
+            )
+        case .gemini:
+            return try await callGeminiAPI(
+                job: job,
+                userInput: userInput,
+                type: type,
+                apiKey: apiKey
+            )
+        }
+    }
+    
+    // For OpenAI and DeepSeek APIs (which share the same format)
+    private func callOpenAICompatibleAPI(job: JobApplication, userInput: String, type: AIRequestType, endpoint: String, model: String, apiKey: String) async throws -> String {
+        // Prepare messages array
+        var messages: [[String: Any]] = [
+            ["role": "system", "content": type.systemPrompt]
+        ]
+        
+        // Add job description
+        messages.append([
+            "role": "user",
+            "content": "Here's the job description:\n\n\(job.jobDescription)"
+        ])
+        
+        // Add current content if available
+        if type == .resume && !job.tailoredResumes.isEmpty {
+            messages.append([
+                "role": "user", 
+                "content": "Here's my current resume (for reference only):\n\n\(job.tailoredResumes.last ?? "")"
+            ])
+        } else if type == .coverLetter && !job.tailoredCoverLetters.isEmpty {
+            messages.append([
+                "role": "user", 
+                "content": "Here's my current cover letter (for reference only):\n\n\(job.tailoredCoverLetters.last ?? "")"
+            ])
+        }
+        
+        // Add user input as the final message
+        messages.append([
+            "role": "user",
+            "content": userInput
+        ])
+        
+        // Prepare request body
+        let requestBody: [String: Any] = [
+            "model": model,
+            "messages": messages,
+            "temperature": 0.7
+        ]
+        
+        // Serialize to JSON
+        guard let jsonData = try? JSONSerialization.data(withJSONObject: requestBody) else {
+            throw AIError(message: "Failed to serialize request data")
+        }
+        
+        // Create URL request
+        var request = URLRequest(url: URL(string: endpoint)!)
+        request.httpMethod = "POST"
+        request.httpBody = jsonData
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
+        
+        // Make the request
+        let (data, response) = try await URLSession.shared.data(for: request)
+        
+        // Handle HTTP errors
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw AIError(message: "Invalid response")
+        }
+        
+        if httpResponse.statusCode != 200 {
+            // Try to get error message from response
+            if let errorData = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+               let errorInfo = errorData["error"] as? [String: Any],
+               let message = errorInfo["message"] as? String {
+                throw AIError(message: "API Error (\(httpResponse.statusCode)): \(message)")
+            } else {
+                throw AIError(message: "API Error: HTTP \(httpResponse.statusCode)")
+            }
+        }
+        
+        // Parse the successful response
+        guard let responseDict = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+              let choices = responseDict["choices"] as? [[String: Any]],
+              let firstChoice = choices.first,
+              let message = firstChoice["message"] as? [String: Any],
+              let content = message["content"] as? String else {
+            throw AIError(message: "Failed to parse API response")
+        }
+        
+        return content
+    }
+    
+    // For Anthropic Claude API
+    private func callAnthropicAPI(job: JobApplication, userInput: String, type: AIRequestType, model: String, apiKey: String) async throws -> String {
+        // Prepare system prompt
+        let systemPrompt = type.systemPrompt
+        
+        // Prepare content for messages
+        var messages: [[String: Any]] = []
+        
+        // Add job description
+        messages.append([
+            "role": "user",
+            "content": "Here's the job description:\n\n\(job.jobDescription)"
+        ])
+        
+        // Add current content if available
+        if type == .resume && !job.tailoredResumes.isEmpty {
+            messages.append([
+                "role": "user", 
+                "content": "Here's my current resume (for reference only):\n\n\(job.tailoredResumes.last ?? "")"
+            ])
+        } else if type == .coverLetter && !job.tailoredCoverLetters.isEmpty {
+            messages.append([
+                "role": "user", 
+                "content": "Here's my current cover letter (for reference only):\n\n\(job.tailoredCoverLetters.last ?? "")"
+            ])
+        }
+        
+        // Add user input as the final message
+        messages.append([
+            "role": "user",
+            "content": userInput
+        ])
+        
+        // Prepare request body
+        let requestBody: [String: Any] = [
+            "model": model,
+            "messages": messages,
+            "system": systemPrompt,
+            "max_tokens": 4000
+        ]
+        
+        // Serialize to JSON
+        guard let jsonData = try? JSONSerialization.data(withJSONObject: requestBody) else {
+            throw AIError(message: "Failed to serialize request data")
+        }
+        
+        // Create URL request
+        var request = URLRequest(url: URL(string: Constants.anthropicApiEndpoint)!)
+        request.httpMethod = "POST"
+        request.httpBody = jsonData
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("Bearer \(apiKey)", forHTTPHeaderField: "x-api-key")
+        request.addValue("anthropic-swift/1.0", forHTTPHeaderField: "anthropic-version")
+        
+        // Make the request
+        let (data, response) = try await URLSession.shared.data(for: request)
+        
+        // Handle HTTP errors
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw AIError(message: "Invalid response")
+        }
+        
+        if httpResponse.statusCode != 200 {
+            if let errorData = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+               let message = errorData["error"] as? [String: Any],
+               let errorMsg = message["message"] as? String {
+                throw AIError(message: "API Error (\(httpResponse.statusCode)): \(errorMsg)")
+            } else {
+                throw AIError(message: "API Error: HTTP \(httpResponse.statusCode)")
+            }
+        }
+        
+        // Parse the successful response
+        guard let responseDict = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+              let content = responseDict["content"] as? [[String: Any]],
+              let firstContent = content.first,
+              let text = firstContent["text"] as? String else {
+            throw AIError(message: "Failed to parse API response")
+        }
+        
+        return text
+    }
+    
+    // For Google Gemini API
+    private func callGeminiAPI(job: JobApplication, userInput: String, type: AIRequestType, apiKey: String) async throws -> String {
+        // Prepare content string
+        var contentText = "System: \(type.systemPrompt)\n\n"
+        contentText += "Job Description:\n\(job.jobDescription)\n\n"
+        
+        // Add current content if available
+        if type == .resume && !job.tailoredResumes.isEmpty {
+            contentText += "Current Resume (for reference only):\n\(job.tailoredResumes.last ?? "")\n\n"
+        } else if type == .coverLetter && !job.tailoredCoverLetters.isEmpty {
+            contentText += "Current Cover Letter (for reference only):\n\(job.tailoredCoverLetters.last ?? "")\n\n"
+        }
+        
+        // Add user input
+        contentText += "User Request: \(userInput)"
+        
+        // Prepare request body
+        let requestBody: [String: Any] = [
+            "contents": [
+                [
+                    "parts": [
+                        ["text": contentText]
+                    ]
+                ]
+            ],
+            "generationConfig": [
+                "temperature": 0.7,
+                "topP": 0.95,
+                "topK": 40
+            ]
+        ]
+        
+        // Serialize to JSON
+        guard let jsonData = try? JSONSerialization.data(withJSONObject: requestBody) else {
+            throw AIError(message: "Failed to serialize request data")
+        }
+        
+        // Create URL with API key
+        let urlString = "\(Constants.geminiApiEndpoint)?key=\(apiKey)"
+        guard let url = URL(string: urlString) else {
+            throw AIError(message: "Invalid URL")
+        }
+        
+        // Create URL request
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = jsonData
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        // Make the request
+        let (data, response) = try await URLSession.shared.data(for: request)
+        
+        // Handle HTTP errors
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw AIError(message: "Invalid response")
+        }
+        
+        if httpResponse.statusCode != 200 {
+            if let errorData = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+               let error = errorData["error"] as? [String: Any],
+               let message = error["message"] as? String {
+                throw AIError(message: "API Error (\(httpResponse.statusCode)): \(message)")
+            } else {
+                throw AIError(message: "API Error: HTTP \(httpResponse.statusCode)")
+            }
+        }
+        
+        // Parse the successful response
+        guard let responseDict = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+              let candidates = responseDict["candidates"] as? [[String: Any]],
+              let firstCandidate = candidates.first,
+              let content = firstCandidate["content"] as? [String: Any],
+              let parts = content["parts"] as? [[String: Any]],
+              let firstPart = parts.first,
+              let text = firstPart["text"] as? String else {
+            throw AIError(message: "Failed to parse API response")
+        }
+        
+        return text
+    }
+    
+    // Timer methods
+    private func startTimer() {
+        timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] _ in
+            guard let self = self, let startTime = self.startTime else { return }
+            self.elapsedTime = Date().timeIntervalSince(startTime)
+        }
+    }
+    
+    private func stopTimer() {
+        timer?.invalidate()
+        timer = nil
+        startTime = nil
+    }
 }
 
 // MARK: - Protocol: CaseNameDisplayable
@@ -2429,11 +2946,47 @@ class AICoverLetterViewModel: ObservableObject {
     @Published var selectedSkills: [String] = []
     @Published var isLoading = false
     @Published var errorMessage: String? = nil
+    
+    // AI provider settings
+    @Published var selectedProvider: AIProvider = .deepseek
+    @Published var selectedModel: AIModel = .deepseekReasoner
+    @Published var apiKey: String = ""
+    
+    private let settings = AISettings()
+    
+    init() {
+        selectedProvider = settings.selectedProvider
+        selectedModel = settings.selectedModel
+        apiKey = settings.apiKey
+    }
 
     func reset(job: JobApplication) {
         jobDescription = job.jobDescription
         coverLetter = job.coverLetter
         selectedSkills = job.desiredSkillNames
+        
+        // Load saved settings
+        selectedProvider = settings.selectedProvider
+        selectedModel = settings.selectedModel
+        apiKey = settings.apiKey
+    }
+    
+    func saveSettings() {
+        settings.selectedProvider = selectedProvider
+        settings.selectedModel = selectedModel
+        settings.apiKey = apiKey
+        settings.saveSettings()
+    }
+    
+    func updateProvider(_ provider: AIProvider) {
+        selectedProvider = provider
+        
+        // If current model isn't compatible with new provider, update to default
+        if !provider.availableModels.contains(where: { $0.rawValue == selectedModel.rawValue }) {
+            selectedModel = provider.defaultModel
+        }
+        
+        saveSettings()
     }
 }
 
@@ -2444,11 +2997,47 @@ class AIResumeViewModel: ObservableObject {
     @Published var selectedSkills: [String] = []
     @Published var isLoading = false
     @Published var errorMessage: String? = nil
+    
+    // AI provider settings
+    @Published var selectedProvider: AIProvider = .deepseek
+    @Published var selectedModel: AIModel = .deepseekReasoner
+    @Published var apiKey: String = ""
+    
+    private let settings = AISettings()
+    
+    init() {
+        selectedProvider = settings.selectedProvider
+        selectedModel = settings.selectedModel
+        apiKey = settings.apiKey
+    }
 
     func reset(job: JobApplication, resumeContent: String) {
         jobDescription = job.jobDescription
         resume = resumeContent
         selectedSkills = job.desiredSkillNames
+        
+        // Load saved settings
+        selectedProvider = settings.selectedProvider
+        selectedModel = settings.selectedModel
+        apiKey = settings.apiKey
+    }
+    
+    func saveSettings() {
+        settings.selectedProvider = selectedProvider
+        settings.selectedModel = selectedModel
+        settings.apiKey = apiKey
+        settings.saveSettings()
+    }
+    
+    func updateProvider(_ provider: AIProvider) {
+        selectedProvider = provider
+        
+        // If current model isn't compatible with new provider, update to default
+        if !provider.availableModels.contains(where: { $0.rawValue == selectedModel.rawValue }) {
+            selectedModel = provider.defaultModel
+        }
+        
+        saveSettings()
     }
 }
 
@@ -2983,6 +3572,7 @@ struct EditJobWindowView: View {
 struct AICoverLetterView: View {
     @EnvironmentObject var jobStore: JobStore
     @StateObject private var viewModel = AICoverLetterViewModel()
+    @StateObject private var aiService = AIService.shared
     @State private var windowRef: NSWindow?
     @State private var stopwatchManager = StopwatchManager()
     let job: JobApplication
@@ -2992,6 +3582,45 @@ struct AICoverLetterView: View {
             Text("AI Cover Letter Generator")
                 .font(.headline)
                 .padding(.bottom, 10)
+                
+            // AI Provider selection dropdown
+            VStack(alignment: .leading, spacing: 4) {
+                Text("AI Provider").font(.headline)
+                Picker("AI Provider", selection: $viewModel.selectedProvider) {
+                    ForEach(AIProvider.allCases) { provider in
+                        Text(provider.rawValue).tag(provider)
+                    }
+                }
+                .pickerStyle(.menu)
+                .onChange(of: viewModel.selectedProvider) { _, newValue in
+                    viewModel.updateProvider(newValue)
+                }
+            }
+            
+            // AI Model selection dropdown
+            VStack(alignment: .leading, spacing: 4) {
+                Text("AI Model").font(.headline)
+                Picker("AI Model", selection: $viewModel.selectedModel) {
+                    ForEach(viewModel.selectedProvider.availableModels, id: \.self) { model in
+                        Text(model.displayName).tag(model)
+                    }
+                }
+                .pickerStyle(.menu)
+                .onChange(of: viewModel.selectedModel) { _, _ in
+                    viewModel.saveSettings()
+                }
+            }
+            
+            // API Key input
+            VStack(alignment: .leading, spacing: 4) {
+                Text("API Key").font(.headline)
+                SecureField("Enter API key", text: $viewModel.apiKey)
+                    .textFieldStyle(.roundedBorder)
+                    .onChange(of: viewModel.apiKey) { _, _ in
+                        viewModel.saveSettings()
+                    }
+            }
+            .padding(.bottom, 8)
 
             Group {
                 Text("Prompt").font(.headline)
@@ -3004,14 +3633,14 @@ struct AICoverLetterView: View {
                 Text("Job Description").font(.headline)
                 TextEditor(text: $viewModel.jobDescription)
                     .modifier(UltraThinMaterialTextEditorStyle())
-                    .frame(height: 150)
+                    .frame(height: 120)
             }
 
             Group {
                 Text("Cover Letter").font(.headline)
                 TextEditor(text: $viewModel.coverLetter)
                     .modifier(UltraThinMaterialTextEditorStyle())
-                    .frame(height: 150)
+                    .frame(height: 120)
             }
 
             Group {
@@ -3047,7 +3676,7 @@ struct AICoverLetterView: View {
 
                 Spacer()
 
-                if jobStore.isProcessingAI {
+                if aiService.isProcessing {
                     HStack {
                         ProgressView()
                             .scaleEffect(0.7)
@@ -3059,7 +3688,7 @@ struct AICoverLetterView: View {
                     .padding(.horizontal)
 
                     Button("Cancel") {
-                        jobStore.isProcessingAI = false
+                        // Handle cancellation
                         stopwatchManager.stop()
                         closeWindow()
                     }
@@ -3071,21 +3700,33 @@ struct AICoverLetterView: View {
                             stopwatchManager.reset()
                             stopwatchManager.start()
 
-                            // Send the AI request
-                            await jobStore.processAIContent(
-                                prompt: viewModel.prompt,
-                                jobDescription: viewModel.jobDescription,
-                                contentToTailor: viewModel.coverLetter,
-                                skills: viewModel.selectedSkills,
-                                isForResume: false,
-                                jobId: job.id
-                            )
+                            do {
+                                // Use the new AIService for processing
+                                let result = try await aiService.processJobApplicationWithAI(
+                                    job: job,
+                                    userInput: viewModel.prompt,
+                                    type: .coverLetter
+                                )
+                                
+                                // Save the result to the job application
+                                if let index = jobStore.jobApplications.firstIndex(where: { $0.id == job.id }) {
+                                    var updatedJob = jobStore.jobApplications[index]
+                                    var coverLetters = updatedJob.tailoredCoverLetters
+                                    coverLetters.append(result)
+                                    updatedJob.tailoredCoverLetters = coverLetters
+                                    jobStore.editJob(with: updatedJob)
+                                }
+                                
+                                // Stop the stopwatch when finished
+                                stopwatchManager.stop()
 
-                            // Stop the stopwatch when finished
-                            stopwatchManager.stop()
-
-                            // Close the window on completion
-                            closeWindow()
+                                // Close the window on completion
+                                closeWindow()
+                            } catch {
+                                // Handle error
+                                viewModel.errorMessage = error.localizedDescription
+                                stopwatchManager.stop()
+                            }
                         }
                     }
                     .buttonStyle(.borderedProminent)
@@ -3093,9 +3734,16 @@ struct AICoverLetterView: View {
                 }
             }
             .padding(.top, 10)
+            
+            if let errorMessage = viewModel.errorMessage {
+                Text(errorMessage)
+                    .foregroundColor(.red)
+                    .font(.caption)
+                    .padding(.top, 8)
+            }
         }
         .padding()
-        .frame(width: 600, height: 700)
+        .frame(width: 600, height: 800)
         .onAppear {
             viewModel.reset(job: job)
 
@@ -3124,6 +3772,7 @@ struct AICoverLetterView: View {
 struct AIResumeView: View {
     @EnvironmentObject var jobStore: JobStore
     @StateObject private var viewModel = AIResumeViewModel()
+    @StateObject private var aiService = AIService.shared
     @State private var windowRef: NSWindow?
     @State private var stopwatchManager = StopwatchManager()
     let job: JobApplication
@@ -3133,6 +3782,45 @@ struct AIResumeView: View {
             Text("AI Resume Generator")
                 .font(.headline)
                 .padding(.bottom, 10)
+                
+            // AI Provider selection dropdown
+            VStack(alignment: .leading, spacing: 4) {
+                Text("AI Provider").font(.headline)
+                Picker("AI Provider", selection: $viewModel.selectedProvider) {
+                    ForEach(AIProvider.allCases) { provider in
+                        Text(provider.rawValue).tag(provider)
+                    }
+                }
+                .pickerStyle(.menu)
+                .onChange(of: viewModel.selectedProvider) { _, newValue in
+                    viewModel.updateProvider(newValue)
+                }
+            }
+            
+            // AI Model selection dropdown
+            VStack(alignment: .leading, spacing: 4) {
+                Text("AI Model").font(.headline)
+                Picker("AI Model", selection: $viewModel.selectedModel) {
+                    ForEach(viewModel.selectedProvider.availableModels, id: \.self) { model in
+                        Text(model.displayName).tag(model)
+                    }
+                }
+                .pickerStyle(.menu)
+                .onChange(of: viewModel.selectedModel) { _, _ in
+                    viewModel.saveSettings()
+                }
+            }
+            
+            // API Key input
+            VStack(alignment: .leading, spacing: 4) {
+                Text("API Key").font(.headline)
+                SecureField("Enter API key", text: $viewModel.apiKey)
+                    .textFieldStyle(.roundedBorder)
+                    .onChange(of: viewModel.apiKey) { _, _ in
+                        viewModel.saveSettings()
+                    }
+            }
+            .padding(.bottom, 8)
 
             Group {
                 Text("Prompt").font(.headline)
@@ -3145,14 +3833,14 @@ struct AIResumeView: View {
                 Text("Job Description").font(.headline)
                 TextEditor(text: $viewModel.jobDescription)
                     .modifier(UltraThinMaterialTextEditorStyle())
-                    .frame(height: 150)
+                    .frame(height: 120)
             }
 
             Group {
                 Text("Resume").font(.headline)
                 TextEditor(text: $viewModel.resume)
                     .modifier(UltraThinMaterialTextEditorStyle())
-                    .frame(height: 150)
+                    .frame(height: 120)
             }
 
             Group {
@@ -3188,7 +3876,7 @@ struct AIResumeView: View {
 
                 Spacer()
 
-                if jobStore.isProcessingAI {
+                if aiService.isProcessing {
                     HStack {
                         ProgressView()
                             .scaleEffect(0.7)
@@ -3200,7 +3888,7 @@ struct AIResumeView: View {
                     .padding(.horizontal)
 
                     Button("Cancel") {
-                        jobStore.isProcessingAI = false
+                        // Handle cancellation
                         stopwatchManager.stop()
                         closeWindow()
                     }
@@ -3212,21 +3900,33 @@ struct AIResumeView: View {
                             stopwatchManager.reset()
                             stopwatchManager.start()
 
-                            // Send the AI request
-                            await jobStore.processAIContent(
-                                prompt: viewModel.prompt,
-                                jobDescription: viewModel.jobDescription,
-                                contentToTailor: viewModel.resume,
-                                skills: viewModel.selectedSkills,
-                                isForResume: true,
-                                jobId: job.id
-                            )
+                            do {
+                                // Use the new AIService for processing
+                                let result = try await aiService.processJobApplicationWithAI(
+                                    job: job,
+                                    userInput: viewModel.prompt,
+                                    type: .resume
+                                )
+                                
+                                // Save the result to the job application
+                                if let index = jobStore.jobApplications.firstIndex(where: { $0.id == job.id }) {
+                                    var updatedJob = jobStore.jobApplications[index]
+                                    var resumes = updatedJob.tailoredResumes
+                                    resumes.append(result)
+                                    updatedJob.tailoredResumes = resumes
+                                    jobStore.editJob(with: updatedJob)
+                                }
+                                
+                                // Stop the stopwatch when finished
+                                stopwatchManager.stop()
 
-                            // Stop the stopwatch when finished
-                            stopwatchManager.stop()
-
-                            // Close the window on completion
-                            closeWindow()
+                                // Close the window on completion
+                                closeWindow()
+                            } catch {
+                                // Handle error
+                                viewModel.errorMessage = error.localizedDescription
+                                stopwatchManager.stop()
+                            }
                         }
                     }
                     .buttonStyle(.borderedProminent)
@@ -3234,9 +3934,16 @@ struct AIResumeView: View {
                 }
             }
             .padding(.top, 10)
+            
+            if let errorMessage = viewModel.errorMessage {
+                Text(errorMessage)
+                    .foregroundColor(.red)
+                    .font(.caption)
+                    .padding(.top, 8)
+            }
         }
         .padding()
-        .frame(width: 600, height: 700)
+        .frame(width: 600, height: 800)
         .onAppear {
             viewModel.reset(job: job, resumeContent: jobStore.userResume.content)
 
@@ -4575,29 +5282,63 @@ struct EnhancedStatsView: View {
                    .font(.headline)
                    .padding(.bottom, 5)
 
-               Map(coordinateRegion: $region, annotationItems: cityPins) { pin in
-                   MapAnnotation(coordinate: pin.coordinate) {
-                       ZStack {
-                           Circle().fill(.red).opacity(0.3)
-                               .frame(
-                                   width: circleSize(for: pin.count),
-                                   height: circleSize(for: pin.count)
-                               )
-                           Circle().stroke(.red, lineWidth: 2)
-                               .frame(
-                                   width: circleSize(for: pin.count),
-                                   height: circleSize(for: pin.count)
-                               )
-                           Text("\(pin.count)")
-                               .font(.caption)
-                               .foregroundColor(.black)
+               if #available(macOS 14.0, *) {
+                   // Use the new Map initializer with MapContentBuilder for macOS 14+
+                   Map(initialPosition: MapCameraPosition.region(region)) {
+                       ForEach(cityPins) { pin in
+                           Annotation(
+                               pin.city,
+                               coordinate: pin.coordinate,
+                               anchor: .center
+                           ) {
+                               ZStack {
+                                   Circle().fill(.red).opacity(0.3)
+                                       .frame(
+                                           width: circleSize(for: pin.count),
+                                           height: circleSize(for: pin.count)
+                                       )
+                                   Circle().stroke(.red, lineWidth: 2)
+                                       .frame(
+                                           width: circleSize(for: pin.count),
+                                           height: circleSize(for: pin.count)
+                                       )
+                                   Text("\(pin.count)")
+                                       .font(.caption)
+                                       .foregroundColor(.black)
+                               }
+                           }
                        }
                    }
+                   .mapStyle(.standard)
+                   .frame(height: 300)
+                   .cornerRadius(20)
+                   .animation(.easeInOut(duration: 0.3), value: cityPins)
+               } else {
+                   // Fallback for older macOS versions
+                   Map(coordinateRegion: $region, annotationItems: cityPins) { pin in
+                       MapAnnotation(coordinate: pin.coordinate) {
+                           ZStack {
+                               Circle().fill(.red).opacity(0.3)
+                                   .frame(
+                                       width: circleSize(for: pin.count),
+                                       height: circleSize(for: pin.count)
+                                   )
+                               Circle().stroke(.red, lineWidth: 2)
+                                   .frame(
+                                       width: circleSize(for: pin.count),
+                                       height: circleSize(for: pin.count)
+                                   )
+                               Text("\(pin.count)")
+                                   .font(.caption)
+                                   .foregroundColor(.black)
+                           }
+                       }
+                   }
+                   .mapStyle(.standard)
+                   .frame(height: 300)
+                   .cornerRadius(20)
+                   .animation(.easeInOut(duration: 0.3), value: cityPins)
                }
-               .mapStyle(.standard)
-               .frame(height: 300)
-               .cornerRadius(20)
-               .animation(.easeInOut(duration: 0.3), value: cityPins)
            }
            .padding()
        }
@@ -5307,25 +6048,16 @@ struct SalaryRangeChartView: View {
         }
 
         DispatchQueue.global(qos: .userInitiated).async {
-            // Protect against crashes by catching any exceptions
-            do {
-                let newData = self.buildSalaryRangeData()
-                let avgSalary = self.calculateAverageSalary(from: newData)
+            // Process data
+            let newData = self.buildSalaryRangeData()
+            let avgSalary = self.calculateAverageSalary(from: newData)
 
-                // Always update UI state on the main thread
-                DispatchQueue.main.async {
-                    self.salaryRangeData = newData
-                    self.averageSalary = avgSalary
-                    self.updateColorMapping()
-                    self.isLoading = false
-                }
-            } catch {
-                // Handle any errors and update UI on the main thread
-                DispatchQueue.main.async {
-                    self.salaryRangeData = []
-                    self.averageSalary = nil
-                    self.isLoading = false
-                }
+            // Always update UI state on the main thread
+            DispatchQueue.main.async {
+                self.salaryRangeData = newData
+                self.averageSalary = avgSalary
+                self.updateColorMapping()
+                self.isLoading = false
             }
         }
     }
