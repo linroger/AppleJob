@@ -571,15 +571,15 @@ class AIService: ObservableObject {
         ])
         
         // Add current content if available
-        if type == .resume && !job.tailoredResumes.isEmpty {
+        if type == .resume, let resumes = job.tailoredResumes, !resumes.isEmpty {
             messages.append([
                 "role": "user", 
-                "content": "Here's my current resume (for reference only):\n\n\(job.tailoredResumes.last ?? "")"
+                "content": "Here's my current resume (for reference only):\n\n\(resumes.last ?? "")"
             ])
-        } else if type == .coverLetter && !job.tailoredCoverLetters.isEmpty {
+        } else if type == .coverLetter, let coverLetters = job.tailoredCoverLetters, !coverLetters.isEmpty {
             messages.append([
                 "role": "user", 
-                "content": "Here's my current cover letter (for reference only):\n\n\(job.tailoredCoverLetters.last ?? "")"
+                "content": "Here's my current cover letter (for reference only):\n\n\(coverLetters.last ?? "")"
             ])
         }
         
@@ -654,15 +654,15 @@ class AIService: ObservableObject {
         ])
         
         // Add current content if available
-        if type == .resume && !job.tailoredResumes.isEmpty {
+        if type == .resume, let resumes = job.tailoredResumes, !resumes.isEmpty {
             messages.append([
                 "role": "user", 
-                "content": "Here's my current resume (for reference only):\n\n\(job.tailoredResumes.last ?? "")"
+                "content": "Here's my current resume (for reference only):\n\n\(resumes.last ?? "")"
             ])
-        } else if type == .coverLetter && !job.tailoredCoverLetters.isEmpty {
+        } else if type == .coverLetter, let coverLetters = job.tailoredCoverLetters, !coverLetters.isEmpty {
             messages.append([
                 "role": "user", 
-                "content": "Here's my current cover letter (for reference only):\n\n\(job.tailoredCoverLetters.last ?? "")"
+                "content": "Here's my current cover letter (for reference only):\n\n\(coverLetters.last ?? "")"
             ])
         }
         
@@ -729,10 +729,10 @@ class AIService: ObservableObject {
         contentText += "Job Description:\n\(job.jobDescription)\n\n"
         
         // Add current content if available
-        if type == .resume && !job.tailoredResumes.isEmpty {
-            contentText += "Current Resume (for reference only):\n\(job.tailoredResumes.last ?? "")\n\n"
-        } else if type == .coverLetter && !job.tailoredCoverLetters.isEmpty {
-            contentText += "Current Cover Letter (for reference only):\n\(job.tailoredCoverLetters.last ?? "")\n\n"
+        if type == .resume, let resumes = job.tailoredResumes, !resumes.isEmpty {
+            contentText += "Current Resume (for reference only):\n\(resumes.last ?? "")\n\n"
+        } else if type == .coverLetter, let coverLetters = job.tailoredCoverLetters, !coverLetters.isEmpty {
+            contentText += "Current Cover Letter (for reference only):\n\(coverLetters.last ?? "")\n\n"
         }
         
         // Add user input
@@ -1416,13 +1416,14 @@ struct Resume: Codable {
     }
 }
 
-// MARK: - AI API Service
-class AIService {
+// MARK: - Legacy AI API Service
+// This was the original AIService before the enhanced version
+class LegacyAIService {
     private let apiKey: String
     private let apiEndpoint: String
     private var cancellables: Set<AnyCancellable> = []
 
-    init(apiKey: String = Constants.aiApiKey, apiEndpoint: String = Constants.aiApiEndpoint) {
+    init(apiKey: String = Constants.defaultAiApiKey, apiEndpoint: String = Constants.deepseekApiEndpoint) {
         self.apiKey = apiKey
         self.apiEndpoint = apiEndpoint
     }
@@ -1969,27 +1970,38 @@ class JobStore: ObservableObject {
         }
 
         do {
-            let result = try await aiService.generateAIContent(
-                prompt: prompt,
-                jobDescription: jobDescription,
-                contentToTailor: contentToTailor,
-                skills: skills
+            // Use the shared AIService instance
+            let aiService = AIService.shared
+            let type: AIService.AIRequestType = isForResume ? .resume : .coverLetter
+            
+            let result = try await aiService.processJobApplicationWithAI(
+                job: jobApplications[index],
+                userInput: prompt,
+                type: type
             )
 
             await MainActor.run {
                 // Update job with the new content
                 if isForResume {
                     // Create tailoredResumes array if it doesn't exist
-                    if jobApplications[index].tailoredResumes == nil {
-                        jobApplications[index].tailoredResumes = []
+                    var updatedJob = jobApplications[index]
+                    if updatedJob.tailoredResumes == nil {
+                        updatedJob.tailoredResumes = []
                     }
-                    jobApplications[index].tailoredResumes?.append(result)
+                    var resumes = updatedJob.tailoredResumes ?? []
+                    resumes.append(result)
+                    updatedJob.tailoredResumes = resumes
+                    jobApplications[index] = updatedJob
                 } else {
                     // Create tailoredCoverLetters array if it doesn't exist
-                    if jobApplications[index].tailoredCoverLetters == nil {
-                        jobApplications[index].tailoredCoverLetters = []
+                    var updatedJob = jobApplications[index]
+                    if updatedJob.tailoredCoverLetters == nil {
+                        updatedJob.tailoredCoverLetters = []
                     }
-                    jobApplications[index].tailoredCoverLetters?.append(result)
+                    var coverLetters = updatedJob.tailoredCoverLetters ?? []
+                    coverLetters.append(result)
+                    updatedJob.tailoredCoverLetters = coverLetters
+                    jobApplications[index] = updatedJob
                 }
 
                 saveJobs()
@@ -3041,6 +3053,305 @@ class AIResumeViewModel: ObservableObject {
     }
 }
 
+// MARK: - SettingsView
+struct SettingsView: View {
+    @EnvironmentObject var jobStore: JobStore
+    @EnvironmentObject var docStore: DocumentStore
+    @ObservedObject var importExportHelper: ImportExportHelper
+    @StateObject private var aiSettings = AISettings()
+    @AppStorage("usesDarkMode") private var usesDarkMode = false
+    @Environment(\.dismiss) private var dismiss
+    @State private var selectedTab = 0
+    
+    var body: some View {
+        VStack {
+            TabView(selection: $selectedTab) {
+                // General Tab
+                generalSettings
+                    .tabItem {
+                        Label("General", systemImage: "gear")
+                    }
+                    .tag(0)
+                
+                // Backup & Import Tab
+                backupSettings
+                    .tabItem {
+                        Label("Backup & Import", systemImage: "arrow.triangle.2.circlepath")
+                    }
+                    .tag(1)
+                
+                // AI Tab
+                aiProviderSettings
+                    .tabItem {
+                        Label("AI Providers", systemImage: "brain")
+                    }
+                    .tag(2)
+                
+                // About Tab
+                aboutSettings
+                    .tabItem {
+                        Label("About", systemImage: "info.circle")
+                    }
+                    .tag(3)
+            }
+            .padding()
+            
+            Divider()
+            
+            HStack {
+                Spacer()
+                Button("Close") {
+                    dismiss()
+                }
+                .keyboardShortcut(.escape, modifiers: [])
+                .buttonStyle(.borderedProminent)
+            }
+            .padding()
+        }
+        .frame(width: 600, height: 500)
+        .onAppear {
+            // Observe system appearance changes
+            NSApp.appearance = usesDarkMode ? NSAppearance(named: .darkAqua) : NSAppearance(named: .aqua)
+        }
+    }
+    
+    // General Settings tab content
+    private var generalSettings: some View {
+        Form {
+            Section("Appearance") {
+                Toggle("Dark Mode", isOn: $usesDarkMode)
+                    .onChange(of: usesDarkMode) { _, newValue in
+                        NSApp.appearance = newValue ? NSAppearance(named: .darkAqua) : NSAppearance(named: .aqua)
+                    }
+            }
+            
+            Section("Job Application Settings") {
+                // Add any job application related settings here
+                Toggle("Autofill Job Details from URL", isOn: .constant(true))
+                    .disabled(true) // Placeholder for future functionality
+                
+                Toggle("Save Documents to Global Store", isOn: .constant(true))
+                    .disabled(true) // Placeholder for future functionality
+            }
+        }
+    }
+    
+    // Backup & Import tab content
+    private var backupSettings: some View {
+        Form {
+            Section("Backup") {
+                VStack(alignment: .leading) {
+                    Text("Export your job applications and documents as a backup file")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                    
+                    Button("Export Job Applications") {
+                        importExportHelper.isExporting = true
+                        importExportHelper.exportBackup { url in
+                            jobStore.exportJobs(to: url)
+                        }
+                    }
+                    .buttonStyle(.borderedProminent)
+                    
+                    Button("Export Documents") {
+                        importExportHelper.exportDocuments { url in
+                            // Call document export function
+                            docStore.exportDocuments(to: url)
+                        }
+                    }
+                    .buttonStyle(.bordered)
+                }
+                .padding(.vertical, 5)
+            }
+            
+            Section("Import") {
+                VStack(alignment: .leading) {
+                    Text("Import a backup file to restore your job applications")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                    
+                    Button("Import Job Applications") {
+                        importExportHelper.isImporting = true
+                        importExportHelper.importBackup { url in
+                            jobStore.importJobs(from: url)
+                        }
+                    }
+                    .buttonStyle(.borderedProminent)
+                    
+                    Button("Import Documents") {
+                        importExportHelper.importDocuments { urls in
+                            // Call document import function
+                            for url in urls {
+                                docStore.importDocument(from: url)
+                            }
+                        }
+                    }
+                    .buttonStyle(.bordered)
+                }
+                .padding(.vertical, 5)
+            }
+            
+            Section("Data Management") {
+                Button("Clear Unused Document Cache") {
+                    docStore.clearCaches()
+                }
+                .buttonStyle(.bordered)
+            }
+        }
+    }
+    
+    // AI Providers tab content
+    private var aiProviderSettings: some View {
+        Form {
+            Section("AI Provider") {
+                Picker("Default AI Provider", selection: $aiSettings.selectedProvider) {
+                    ForEach(AIProvider.allCases) { provider in
+                        Text(provider.rawValue).tag(provider)
+                    }
+                }
+                .onChange(of: aiSettings.selectedProvider) { _, newValue in
+                    aiSettings.updateProvider(newValue)
+                }
+                
+                Picker("Default AI Model", selection: $aiSettings.selectedModel) {
+                    ForEach(aiSettings.selectedProvider.availableModels, id: \.self) { model in
+                        Text(model.displayName).tag(model)
+                    }
+                }
+                .onChange(of: aiSettings.selectedModel) { _, _ in
+                    aiSettings.saveSettings()
+                }
+            }
+            
+            Section("API Keys") {
+                VStack(alignment: .leading) {
+                    HStack {
+                        Text(aiSettings.selectedProvider.rawValue)
+                        Spacer()
+                        SecureField("API Key", text: $aiSettings.apiKey)
+                            .frame(maxWidth: 300)
+                            .textFieldStyle(.roundedBorder)
+                    }
+                    
+                    Text("Your API key is stored securely in UserDefaults")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                        .padding(.top, 2)
+                }
+                .padding(.vertical, 5)
+                
+                Button("Save API Key") {
+                    aiSettings.saveSettings()
+                }
+                .buttonStyle(.borderedProminent)
+            }
+            
+            Section("AI Content Settings") {
+                // Add options for controlling AI behavior
+                VStack(alignment: .leading) {
+                    Text("Tailor the behavior of AI-generated content")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                    
+                    Slider(value: .constant(0.7), in: 0.0...1.0, step: 0.1) {
+                        Text("Temperature")
+                    } minimumValueLabel: {
+                        Text("Precise")
+                    } maximumValueLabel: {
+                        Text("Creative")
+                    }
+                    .disabled(true) // Placeholder for future functionality
+                }
+                .padding(.vertical, 5)
+            }
+        }
+    }
+    
+    // About tab content
+    private var aboutSettings: some View {
+        VStack(spacing: 20) {
+            Image(systemName: "briefcase.fill")
+                .font(.system(size: 60))
+                .foregroundColor(.blue)
+            
+            Text("AppleJob")
+                .font(.largeTitle)
+                .bold()
+            
+            Text("Version 1.0")
+                .font(.headline)
+            
+            Text("A job application tracking app for macOS")
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+            
+            Divider()
+            
+            Text("© 2025 Roger Lin. All rights reserved.")
+                .font(.caption)
+                .foregroundColor(.secondary)
+            
+            Spacer()
+        }
+        .padding()
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+}
+
+// MARK: - ContentView
+struct ContentView: View {
+    @EnvironmentObject var jobStore: JobStore
+    @EnvironmentObject var docStore: DocumentStore
+    @Binding var showSettings: Bool
+    @State private var selectedTab = 0
+    
+    var body: some View {
+        NavigationSplitView {
+            JobSidebarView(searchText: .constant(""))
+                .toolbar {
+                    ToolbarItem(placement: .automatic) {
+                        Button(action: {
+                            jobStore.isAddingNewJob = true
+                        }) {
+                            Label("Add", systemImage: "plus")
+                        }
+                    }
+                }
+        } detail: {
+            TabView(selection: $selectedTab) {
+                if let job = jobStore.selectedJob {
+                    JobDetailView(job: job)
+                        .tag(0)
+                        .tabItem {
+                            Label("Details", systemImage: "doc.text")
+                        }
+                }
+                
+                EnhancedStatsView()
+                    .tag(1)
+                    .tabItem {
+                        Label("Stats", systemImage: "chart.bar")
+                    }
+                
+                DocumentsView()
+                    .tag(2)
+                    .tabItem {
+                        Label("Documents", systemImage: "folder")
+                    }
+            }
+            .toolbar {
+                ToolbarItem(placement: .automatic) {
+                    Button(action: {
+                        showSettings = true
+                    }) {
+                        Label("Settings", systemImage: "gear")
+                    }
+                }
+            }
+        }
+    }
+}
+
 // MARK: - Main App
 @main
 struct AppleJobApp: App {
@@ -3071,17 +3382,26 @@ struct AppleJobApp: App {
         return (documentStore, jobStore)
     }
 
+    // Settings sheet state
+    @State private var showSettings = false
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(showSettings: $showSettings)
                 .environmentObject(jobStore)
                 .environmentObject(docStore)
                 .environmentObject(importExportHelper)
+                .sheet(isPresented: $showSettings) {
+                    SettingsView(importExportHelper: importExportHelper)
+                        .environmentObject(jobStore)
+                        .environmentObject(docStore)
+                }
         }
         .modelContainer(container) // Attach ModelContainer to WindowGroup
         .commands {
             fileMenuCommands
             editMenuCommands
+            settingsCommands
         }
     }
 
@@ -3187,6 +3507,13 @@ struct AppleJobApp: App {
             .keyboardShortcut(.delete, modifiers: .command)
             .disabled(jobStore.selectedJob == nil)
 
+            Divider()
+            
+            Button("Settings...") {
+                showSettings = true
+            }
+            .keyboardShortcut(",", modifiers: .command)
+            
             Divider()
 
             Button("Create New Category") {
@@ -3711,7 +4038,7 @@ struct AICoverLetterView: View {
                                 // Save the result to the job application
                                 if let index = jobStore.jobApplications.firstIndex(where: { $0.id == job.id }) {
                                     var updatedJob = jobStore.jobApplications[index]
-                                    var coverLetters = updatedJob.tailoredCoverLetters
+                                    var coverLetters = updatedJob.tailoredCoverLetters ?? []
                                     coverLetters.append(result)
                                     updatedJob.tailoredCoverLetters = coverLetters
                                     jobStore.editJob(with: updatedJob)
@@ -3911,7 +4238,7 @@ struct AIResumeView: View {
                                 // Save the result to the job application
                                 if let index = jobStore.jobApplications.firstIndex(where: { $0.id == job.id }) {
                                     var updatedJob = jobStore.jobApplications[index]
-                                    var resumes = updatedJob.tailoredResumes
+                                    var resumes = updatedJob.tailoredResumes ?? []
                                     resumes.append(result)
                                     updatedJob.tailoredResumes = resumes
                                     jobStore.editJob(with: updatedJob)
