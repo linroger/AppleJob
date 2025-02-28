@@ -1,0 +1,5382 @@
+Processing file: /Users/rogerlin/Downloads/LinkedinPremium_InsightsScraper-master/wellington.html
+
+Extracted Data from /Users/rogerlin/Downloads/LinkedinPremium_InsightsScraper-master/wellington.html:
+{
+    "employee_growth": [
+        {
+            "day_of_week": "Tuesday",
+            "month": "Feb",
+            "day": "28",
+            "time": "16:00",
+            "employee_count": 3851,
+            "growth": "",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Friday",
+            "month": "Mar",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 3852,
+            "growth": "zero percent change from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Sunday",
+            "month": "Apr",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 3834,
+            "growth": "zero percent change from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Wednesday",
+            "month": "May",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 3763,
+            "growth": "decrease 2% from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Friday",
+            "month": "Jun",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 3743,
+            "growth": "decrease 1% from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Monday",
+            "month": "Jul",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 3665,
+            "growth": "decrease 2% from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Thursday",
+            "month": "Aug",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 3651,
+            "growth": "zero percent change from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Saturday",
+            "month": "Sep",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 3645,
+            "growth": "zero percent change from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Tuesday",
+            "month": "Oct",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 3645,
+            "growth": "zero percent change from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Thursday",
+            "month": "Nov",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 3605,
+            "growth": "decrease 1% from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Sunday",
+            "month": "Dec",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 3634,
+            "growth": "increase 1% from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Wednesday",
+            "month": "Jan",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 3644,
+            "growth": "zero percent change from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Thursday",
+            "month": "Feb",
+            "day": "29",
+            "time": "16:00",
+            "employee_count": 3642,
+            "growth": "zero percent change from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Sunday",
+            "month": "Mar",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 3635,
+            "growth": "zero percent change from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Tuesday",
+            "month": "Apr",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 3626,
+            "growth": "zero percent change from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Friday",
+            "month": "May",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 3645,
+            "growth": "increase 1% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Sunday",
+            "month": "Jun",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 3656,
+            "growth": "zero percent change from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Wednesday",
+            "month": "Jul",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 3610,
+            "growth": "decrease 1% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Saturday",
+            "month": "Aug",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 3619,
+            "growth": "zero percent change from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Monday",
+            "month": "Sep",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 3620,
+            "growth": "zero percent change from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Thursday",
+            "month": "Oct",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 3621,
+            "growth": "zero percent change from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Saturday",
+            "month": "Nov",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 3578,
+            "growth": "decrease 1% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Tuesday",
+            "month": "Dec",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 3592,
+            "growth": "zero percent change from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Friday",
+            "month": "Jan",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 3603,
+            "growth": "zero percent change from last month",
+            "year": 2025
+        },
+        {
+            "day_of_week": "Friday",
+            "month": "Feb",
+            "day": "28",
+            "time": "16:00",
+            "employee_count": 3603,
+            "growth": "zero percent change from last month",
+            "year": 2025
+        }
+    ],
+    "function_distribution": {
+        "Finance": "22%",
+        "Business Development": "15%",
+        "Information Technology": "10%",
+        "Engineering": "7%"
+    },
+    "headcount_growth": [
+        {
+            "function": "Finance",
+            "num_employees": "784",
+            "percentage": "22",
+            "growth_6m": "1% increase",
+            "growth_1y": "1% decrease",
+            "added_6m": 8,
+            "added_1y": 8
+        },
+        {
+            "function": "Business Development",
+            "num_employees": "545",
+            "percentage": "15",
+            "growth_6m": "2% decrease",
+            "growth_1y": "6% decrease",
+            "added_6m": 11,
+            "added_1y": 31
+        },
+        {
+            "function": "Information Technology",
+            "num_employees": "376",
+            "percentage": "10",
+            "growth_6m": "0%No change",
+            "growth_1y": "1% decrease",
+            "added_6m": 0,
+            "added_1y": 4
+        },
+        {
+            "function": "Engineering",
+            "num_employees": "239",
+            "percentage": "7",
+            "growth_6m": "0%No change",
+            "growth_1y": "1% decrease",
+            "added_6m": 0,
+            "added_1y": 2
+        },
+        {
+            "function": "Administrative",
+            "num_employees": "269",
+            "percentage": "7",
+            "growth_6m": "4% increase",
+            "growth_1y": "5% increase",
+            "added_6m": 10,
+            "added_1y": 13
+        },
+        {
+            "function": "Research",
+            "num_employees": "158",
+            "percentage": "4",
+            "growth_6m": "5% decrease",
+            "growth_1y": "4% decrease",
+            "added_6m": 8,
+            "added_1y": 6
+        },
+        {
+            "function": "Operations",
+            "num_employees": "152",
+            "percentage": "4",
+            "growth_6m": "3% increase",
+            "growth_1y": "2% increase",
+            "added_6m": 4,
+            "added_1y": 3
+        },
+        {
+            "function": "Legal",
+            "num_employees": "103",
+            "percentage": "3",
+            "growth_6m": "0%No change",
+            "growth_1y": "2% increase",
+            "added_6m": 0,
+            "added_1y": 2
+        },
+        {
+            "function": "Sales",
+            "num_employees": "87",
+            "percentage": "2",
+            "growth_6m": "4% decrease",
+            "growth_1y": "4% decrease",
+            "added_6m": 3,
+            "added_1y": 3
+        },
+        {
+            "function": "Accounting",
+            "num_employees": "78",
+            "percentage": "2",
+            "growth_6m": "2% decrease",
+            "growth_1y": "2% decrease",
+            "added_6m": 2,
+            "added_1y": 2
+        },
+        {
+            "function": "Marketing",
+            "num_employees": "55",
+            "percentage": "2",
+            "growth_6m": "7% decrease",
+            "growth_1y": "7% decrease",
+            "added_6m": 4,
+            "added_1y": 4
+        },
+        {
+            "function": "Human Resources",
+            "num_employees": "89",
+            "percentage": "2",
+            "growth_6m": "0%No change",
+            "growth_1y": "0%No change",
+            "added_6m": 0,
+            "added_1y": 0
+        }
+    ],
+    "new_hires": [
+        {
+            "date": "March 2023",
+            "senior_hires": "0",
+            "other_hires": "16"
+        },
+        {
+            "date": "April 2023",
+            "senior_hires": "1",
+            "other_hires": "22"
+        },
+        {
+            "date": "May 2023",
+            "senior_hires": "0",
+            "other_hires": "21"
+        },
+        {
+            "date": "June 2023",
+            "senior_hires": "0",
+            "other_hires": "115"
+        },
+        {
+            "date": "July 2023",
+            "senior_hires": "0",
+            "other_hires": "49"
+        },
+        {
+            "date": "August 2023",
+            "senior_hires": "0",
+            "other_hires": "18"
+        },
+        {
+            "date": "September 2023",
+            "senior_hires": "0",
+            "other_hires": "21"
+        },
+        {
+            "date": "October 2023",
+            "senior_hires": "0",
+            "other_hires": "15"
+        },
+        {
+            "date": "November 2023",
+            "senior_hires": "0",
+            "other_hires": "16"
+        },
+        {
+            "date": "December 2023",
+            "senior_hires": "0",
+            "other_hires": "20"
+        },
+        {
+            "date": "January 2024",
+            "senior_hires": "0",
+            "other_hires": "57"
+        },
+        {
+            "date": "February 2024",
+            "senior_hires": "0",
+            "other_hires": "24"
+        },
+        {
+            "date": "March 2024",
+            "senior_hires": "0",
+            "other_hires": "23"
+        },
+        {
+            "date": "April 2024",
+            "senior_hires": "0",
+            "other_hires": "19"
+        },
+        {
+            "date": "May 2024",
+            "senior_hires": "0",
+            "other_hires": "26"
+        },
+        {
+            "date": "June 2024",
+            "senior_hires": "1",
+            "other_hires": "92"
+        },
+        {
+            "date": "July 2024",
+            "senior_hires": "0",
+            "other_hires": "55"
+        },
+        {
+            "date": "August 2024",
+            "senior_hires": "0",
+            "other_hires": "23"
+        },
+        {
+            "date": "September 2024",
+            "senior_hires": "0",
+            "other_hires": "40"
+        },
+        {
+            "date": "October 2024",
+            "senior_hires": "0",
+            "other_hires": "23"
+        },
+        {
+            "date": "November 2024",
+            "senior_hires": "0",
+            "other_hires": "20"
+        },
+        {
+            "date": "December 2024",
+            "senior_hires": "0",
+            "other_hires": "31"
+        },
+        {
+            "date": "January 2025",
+            "senior_hires": "0",
+            "other_hires": "44"
+        },
+        {
+            "date": "February 2025",
+            "senior_hires": "0",
+            "other_hires": "17"
+        }
+    ],
+    "job_openings": {},
+    "job_openings_plain_text": [
+        {
+            "function": "Finance",
+            "num_employees": "784",
+            "growth_3m": "1% increase",
+            "growth_6m": "1% decrease"
+        },
+        {
+            "function": "Business Development",
+            "num_employees": "545",
+            "growth_3m": "2% decrease",
+            "growth_6m": "6% decrease"
+        },
+        {
+            "function": "Information Technology",
+            "num_employees": "376",
+            "growth_3m": "0%No change",
+            "growth_6m": "1% decrease"
+        },
+        {
+            "function": "Engineering",
+            "num_employees": "239",
+            "growth_3m": "0%No change",
+            "growth_6m": "1% decrease"
+        },
+        {
+            "function": "Administrative",
+            "num_employees": "269",
+            "growth_3m": "4% increase",
+            "growth_6m": "5% increase"
+        },
+        {
+            "function": "Research",
+            "num_employees": "158",
+            "growth_3m": "5% decrease",
+            "growth_6m": "4% decrease"
+        },
+        {
+            "function": "Operations",
+            "num_employees": "152",
+            "growth_3m": "3% increase",
+            "growth_6m": "2% increase"
+        },
+        {
+            "function": "Legal",
+            "num_employees": "103",
+            "growth_3m": "0%No change",
+            "growth_6m": "2% increase"
+        },
+        {
+            "function": "Sales",
+            "num_employees": "87",
+            "growth_3m": "4% decrease",
+            "growth_6m": "4% decrease"
+        },
+        {
+            "function": "Accounting",
+            "num_employees": "78",
+            "growth_3m": "2% decrease",
+            "growth_6m": "2% decrease"
+        },
+        {
+            "function": "Marketing",
+            "num_employees": "55",
+            "growth_3m": "7% decrease",
+            "growth_6m": "7% decrease"
+        },
+        {
+            "function": "Human Resources",
+            "num_employees": "89",
+            "growth_3m": "0%No change",
+            "growth_6m": "0%No change"
+        }
+    ]
+}
+
+Employee Growth Data:
+   day_of_week month day   time  employee_count  \
+0      Tuesday   Feb  28  16:00            3851
+1       Friday   Mar  31  16:00            3852
+2       Sunday   Apr  30  16:00            3834
+3    Wednesday   May  31  16:00            3763
+4       Friday   Jun  30  16:00            3743
+5       Monday   Jul  31  16:00            3665
+6     Thursday   Aug  31  16:00            3651
+7     Saturday   Sep  30  16:00            3645
+8      Tuesday   Oct  31  16:00            3645
+9     Thursday   Nov  30  16:00            3605
+10      Sunday   Dec  31  16:00            3634
+11   Wednesday   Jan  31  16:00            3644
+12    Thursday   Feb  29  16:00            3642
+13      Sunday   Mar  31  16:00            3635
+14     Tuesday   Apr  30  16:00            3626
+15      Friday   May  31  16:00            3645
+16      Sunday   Jun  30  16:00            3656
+17   Wednesday   Jul  31  16:00            3610
+18    Saturday   Aug  31  16:00            3619
+19      Monday   Sep  30  16:00            3620
+20    Thursday   Oct  31  16:00            3621
+21    Saturday   Nov  30  16:00            3578
+22     Tuesday   Dec  31  16:00            3592
+23      Friday   Jan  31  16:00            3603
+24      Friday   Feb  28  16:00            3603
+
+                                 growth  year
+0                                        2023
+1   zero percent change from last month  2023
+2   zero percent change from last month  2023
+3           decrease 2% from last month  2023
+4           decrease 1% from last month  2023
+5           decrease 2% from last month  2023
+6   zero percent change from last month  2023
+7   zero percent change from last month  2023
+8   zero percent change from last month  2023
+9           decrease 1% from last month  2023
+10          increase 1% from last month  2023
+11  zero percent change from last month  2024
+12  zero percent change from last month  2024
+13  zero percent change from last month  2024
+14  zero percent change from last month  2024
+15          increase 1% from last month  2024
+16  zero percent change from last month  2024
+17          decrease 1% from last month  2024
+18  zero percent change from last month  2024
+19  zero percent change from last month  2024
+20  zero percent change from last month  2024
+21          decrease 1% from last month  2024
+22  zero percent change from last month  2024
+23  zero percent change from last month  2025
+24  zero percent change from last month  2025
+
+Function Distribution:
+                 Function Percentage
+0                 Finance        22%
+1    Business Development        15%
+2  Information Technology        10%
+3             Engineering         7%
+
+Headcount Growth with Added Employees:
+                  function num_employees percentage    growth_6m    growth_1y  \
+0                  Finance           784         22  1% increase  1% decrease
+1     Business Development           545         15  2% decrease  6% decrease
+2   Information Technology           376         10  0%No change  1% decrease
+3              Engineering           239          7  0%No change  1% decrease
+4           Administrative           269          7  4% increase  5% increase
+5                 Research           158          4  5% decrease  4% decrease
+6               Operations           152          4  3% increase  2% increase
+7                    Legal           103          3  0%No change  2% increase
+8                    Sales            87          2  4% decrease  4% decrease
+9               Accounting            78          2  2% decrease  2% decrease
+10               Marketing            55          2  7% decrease  7% decrease
+11         Human Resources            89          2  0%No change  0%No change
+
+    added_6m  added_1y
+0          8         8
+1         11        31
+2          0         4
+3          0         2
+4         10        13
+5          8         6
+6          4         3
+7          0         2
+8          3         3
+9          2         2
+10         4         4
+11         0         0
+
+New Hires:
+              date senior_hires other_hires
+0       March 2023            0          16
+1       April 2023            1          22
+2         May 2023            0          21
+3        June 2023            0         115
+4        July 2023            0          49
+5      August 2023            0          18
+6   September 2023            0          21
+7     October 2023            0          15
+8    November 2023            0          16
+9    December 2023            0          20
+10    January 2024            0          57
+11   February 2024            0          24
+12      March 2024            0          23
+13      April 2024            0          19
+14        May 2024            0          26
+15       June 2024            1          92
+16       July 2024            0          55
+17     August 2024            0          23
+18  September 2024            0          40
+19    October 2024            0          23
+20   November 2024            0          20
+21   December 2024            0          31
+22    January 2025            0          44
+23   February 2025            0          17
+
+Job Openings Distribution:
+Empty DataFrame
+Columns: [Function, Percentage]
+Index: []
+
+Job Openings Details:
+Empty DataFrame
+Columns: []
+Index: []
+
+Job Openings Growth:
+Empty DataFrame
+Columns: []
+Index: []
+
+Job Openings Plain Text:
+                  function num_employees    growth_3m    growth_6m
+0                  Finance           784  1% increase  1% decrease
+1     Business Development           545  2% decrease  6% decrease
+2   Information Technology           376  0%No change  1% decrease
+3              Engineering           239  0%No change  1% decrease
+4           Administrative           269  4% increase  5% increase
+5                 Research           158  5% decrease  4% decrease
+6               Operations           152  3% increase  2% increase
+7                    Legal           103  0%No change  2% increase
+8                    Sales            87  4% decrease  4% decrease
+9               Accounting            78  2% decrease  2% decrease
+10               Marketing            55  7% decrease  7% decrease
+11         Human Resources            89  0%No change  0%No change
+
+Processing file: /Users/rogerlin/Downloads/LinkedinPremium_InsightsScraper-master/capital_group.html
+
+Extracted Data from /Users/rogerlin/Downloads/LinkedinPremium_InsightsScraper-master/capital_group.html:
+{
+    "employee_growth": [
+        {
+            "day_of_week": "Tuesday",
+            "month": "Feb",
+            "day": "28",
+            "time": "16:00",
+            "employee_count": 9234,
+            "growth": "",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Friday",
+            "month": "Mar",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 9100,
+            "growth": "decrease 1% from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Sunday",
+            "month": "Apr",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 9097,
+            "growth": "zero percent change from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Wednesday",
+            "month": "May",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 9113,
+            "growth": "zero percent change from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Friday",
+            "month": "Jun",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 9105,
+            "growth": "zero percent change from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Monday",
+            "month": "Jul",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 9149,
+            "growth": "zero percent change from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Thursday",
+            "month": "Aug",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 9182,
+            "growth": "zero percent change from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Saturday",
+            "month": "Sep",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 9206,
+            "growth": "zero percent change from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Tuesday",
+            "month": "Oct",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 9214,
+            "growth": "zero percent change from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Thursday",
+            "month": "Nov",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 9205,
+            "growth": "zero percent change from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Sunday",
+            "month": "Dec",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 9240,
+            "growth": "zero percent change from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Wednesday",
+            "month": "Jan",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 9270,
+            "growth": "zero percent change from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Thursday",
+            "month": "Feb",
+            "day": "29",
+            "time": "16:00",
+            "employee_count": 9330,
+            "growth": "increase 1% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Sunday",
+            "month": "Mar",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 9411,
+            "growth": "increase 1% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Tuesday",
+            "month": "Apr",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 9486,
+            "growth": "increase 1% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Friday",
+            "month": "May",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 9631,
+            "growth": "increase 2% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Sunday",
+            "month": "Jun",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 9689,
+            "growth": "increase 1% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Wednesday",
+            "month": "Jul",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 9670,
+            "growth": "zero percent change from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Saturday",
+            "month": "Aug",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 9792,
+            "growth": "increase 1% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Monday",
+            "month": "Sep",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 9861,
+            "growth": "increase 1% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Thursday",
+            "month": "Oct",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 9909,
+            "growth": "zero percent change from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Saturday",
+            "month": "Nov",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 9937,
+            "growth": "zero percent change from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Tuesday",
+            "month": "Dec",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 9997,
+            "growth": "increase 1% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Friday",
+            "month": "Jan",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 10021,
+            "growth": "zero percent change from last month",
+            "year": 2025
+        },
+        {
+            "day_of_week": "Friday",
+            "month": "Feb",
+            "day": "28",
+            "time": "16:00",
+            "employee_count": 10021,
+            "growth": "zero percent change from last month",
+            "year": 2025
+        }
+    ],
+    "function_distribution": {
+        "Finance": "17%",
+        "Engineering": "10%",
+        "Information Technology": "9%",
+        "Support": "8%"
+    },
+    "headcount_growth": [
+        {
+            "function": "Finance",
+            "num_employees": "1708",
+            "percentage": "17",
+            "growth_6m": "2% increase",
+            "growth_1y": "6% increase",
+            "added_6m": 33,
+            "added_1y": 97
+        },
+        {
+            "function": "Engineering",
+            "num_employees": "1026",
+            "percentage": "10",
+            "growth_6m": "3% increase",
+            "growth_1y": "7% increase",
+            "added_6m": 30,
+            "added_1y": 67
+        },
+        {
+            "function": "Information Technology",
+            "num_employees": "949",
+            "percentage": "9",
+            "growth_6m": "3% increase",
+            "growth_1y": "5% increase",
+            "added_6m": 28,
+            "added_1y": 45
+        },
+        {
+            "function": "Support",
+            "num_employees": "779",
+            "percentage": "8",
+            "growth_6m": "3% increase",
+            "growth_1y": "8% increase",
+            "added_6m": 23,
+            "added_1y": 58
+        },
+        {
+            "function": "Business Development",
+            "num_employees": "668",
+            "percentage": "7",
+            "growth_6m": "2% increase",
+            "growth_1y": "5% increase",
+            "added_6m": 13,
+            "added_1y": 32
+        },
+        {
+            "function": "Operations",
+            "num_employees": "641",
+            "percentage": "6",
+            "growth_6m": "8% increase",
+            "growth_1y": "16% increase",
+            "added_6m": 47,
+            "added_1y": 88
+        },
+        {
+            "function": "Sales",
+            "num_employees": "515",
+            "percentage": "5",
+            "growth_6m": "6% increase",
+            "growth_1y": "12% increase",
+            "added_6m": 29,
+            "added_1y": 55
+        },
+        {
+            "function": "Administrative",
+            "num_employees": "465",
+            "percentage": "5",
+            "growth_6m": "5% increase",
+            "growth_1y": "5% increase",
+            "added_6m": 22,
+            "added_1y": 22
+        },
+        {
+            "function": "Research",
+            "num_employees": "320",
+            "percentage": "3",
+            "growth_6m": "3% increase",
+            "growth_1y": "10% increase",
+            "added_6m": 9,
+            "added_1y": 29
+        },
+        {
+            "function": "Human Resources",
+            "num_employees": "348",
+            "percentage": "3",
+            "growth_6m": "5% increase",
+            "growth_1y": "11% increase",
+            "added_6m": 17,
+            "added_1y": 34
+        },
+        {
+            "function": "Program and Project Management",
+            "num_employees": "233",
+            "percentage": "2",
+            "growth_6m": "3% increase",
+            "growth_1y": "8% increase",
+            "added_6m": 7,
+            "added_1y": 17
+        },
+        {
+            "function": "Entrepreneurship",
+            "num_employees": "230",
+            "percentage": "2",
+            "growth_6m": "0%No change",
+            "growth_1y": "0%No change",
+            "added_6m": 0,
+            "added_1y": 0
+        },
+        {
+            "function": "Accounting",
+            "num_employees": "217",
+            "percentage": "2",
+            "growth_6m": "3% increase",
+            "growth_1y": "10% increase",
+            "added_6m": 6,
+            "added_1y": 20
+        },
+        {
+            "function": "Product Management",
+            "num_employees": "214",
+            "percentage": "2",
+            "growth_6m": "4% increase",
+            "growth_1y": "13% increase",
+            "added_6m": 8,
+            "added_1y": 25
+        },
+        {
+            "function": "Media and Communication",
+            "num_employees": "215",
+            "percentage": "2",
+            "growth_6m": "6% increase",
+            "growth_1y": "10% increase",
+            "added_6m": 12,
+            "added_1y": 20
+        },
+        {
+            "function": "Marketing",
+            "num_employees": "229",
+            "percentage": "2",
+            "growth_6m": "2% increase",
+            "growth_1y": "8% increase",
+            "added_6m": 4,
+            "added_1y": 17
+        }
+    ],
+    "new_hires": [
+        {
+            "date": "March 2023",
+            "senior_hires": "0",
+            "other_hires": "55"
+        },
+        {
+            "date": "April 2023",
+            "senior_hires": "0",
+            "other_hires": "51"
+        },
+        {
+            "date": "May 2023",
+            "senior_hires": "0",
+            "other_hires": "72"
+        },
+        {
+            "date": "June 2023",
+            "senior_hires": "0",
+            "other_hires": "120"
+        },
+        {
+            "date": "July 2023",
+            "senior_hires": "0",
+            "other_hires": "68"
+        },
+        {
+            "date": "August 2023",
+            "senior_hires": "0",
+            "other_hires": "138"
+        },
+        {
+            "date": "September 2023",
+            "senior_hires": "0",
+            "other_hires": "85"
+        },
+        {
+            "date": "October 2023",
+            "senior_hires": "0",
+            "other_hires": "68"
+        },
+        {
+            "date": "November 2023",
+            "senior_hires": "0",
+            "other_hires": "43"
+        },
+        {
+            "date": "December 2023",
+            "senior_hires": "0",
+            "other_hires": "42"
+        },
+        {
+            "date": "January 2024",
+            "senior_hires": "0",
+            "other_hires": "91"
+        },
+        {
+            "date": "February 2024",
+            "senior_hires": "0",
+            "other_hires": "65"
+        },
+        {
+            "date": "March 2024",
+            "senior_hires": "0",
+            "other_hires": "92"
+        },
+        {
+            "date": "April 2024",
+            "senior_hires": "0",
+            "other_hires": "115"
+        },
+        {
+            "date": "May 2024",
+            "senior_hires": "0",
+            "other_hires": "113"
+        },
+        {
+            "date": "June 2024",
+            "senior_hires": "0",
+            "other_hires": "178"
+        },
+        {
+            "date": "July 2024",
+            "senior_hires": "0",
+            "other_hires": "113"
+        },
+        {
+            "date": "August 2024",
+            "senior_hires": "0",
+            "other_hires": "86"
+        },
+        {
+            "date": "September 2024",
+            "senior_hires": "0",
+            "other_hires": "161"
+        },
+        {
+            "date": "October 2024",
+            "senior_hires": "0",
+            "other_hires": "100"
+        },
+        {
+            "date": "November 2024",
+            "senior_hires": "0",
+            "other_hires": "73"
+        },
+        {
+            "date": "December 2024",
+            "senior_hires": "0",
+            "other_hires": "67"
+        },
+        {
+            "date": "January 2025",
+            "senior_hires": "0",
+            "other_hires": "86"
+        },
+        {
+            "date": "February 2025",
+            "senior_hires": "0",
+            "other_hires": "43"
+        }
+    ],
+    "job_openings": {
+        "distribution": {
+            "Finance": "20%",
+            "Engineering": "15%",
+            "Information Technology": "12%",
+            "Sales": "9%"
+        },
+        "openings_details": [
+            {
+                "function": "Finance",
+                "num_employees": "35",
+                "percentage": "20",
+                "growth_3m": "10% decrease",
+                "growth_6m": "24% decrease"
+            },
+            {
+                "function": "Engineering",
+                "num_employees": "27",
+                "percentage": "15",
+                "growth_3m": "17% increase",
+                "growth_6m": "69% increase"
+            },
+            {
+                "function": "Information Technology",
+                "num_employees": "21",
+                "percentage": "12",
+                "growth_3m": "91% increase",
+                "growth_6m": "62% increase"
+            },
+            {
+                "function": "Sales",
+                "num_employees": "16",
+                "percentage": "9",
+                "growth_3m": "60% increase",
+                "growth_6m": "100% increase"
+            },
+            {
+                "function": "Human Resources",
+                "num_employees": "10",
+                "percentage": "6",
+                "growth_3m": "11% increase",
+                "growth_6m": "23% decrease"
+            },
+            {
+                "function": "Business Development",
+                "num_employees": "8",
+                "percentage": "5",
+                "growth_3m": "0%No change",
+                "growth_6m": "0%No change"
+            },
+            {
+                "function": "Marketing",
+                "num_employees": "8",
+                "percentage": "5",
+                "growth_3m": "60% increase",
+                "growth_6m": "167% increase"
+            },
+            {
+                "function": "Accounting",
+                "num_employees": "6",
+                "percentage": "3",
+                "growth_3m": "50% increase",
+                "growth_6m": "100% increase"
+            },
+            {
+                "function": "Operations",
+                "num_employees": "6",
+                "percentage": "3",
+                "growth_3m": "60% decrease",
+                "growth_6m": "0%No change"
+            },
+            {
+                "function": "Support",
+                "num_employees": "6",
+                "percentage": "3",
+                "growth_3m": "45% decrease",
+                "growth_6m": "33% decrease"
+            },
+            {
+                "function": "Administrative",
+                "num_employees": "5",
+                "percentage": "3",
+                "growth_3m": "67% increase",
+                "growth_6m": "150% increase"
+            },
+            {
+                "function": "Media and Communication",
+                "num_employees": "4",
+                "percentage": "2",
+                "growth_3m": "67% decrease",
+                "growth_6m": "43% decrease"
+            },
+            {
+                "function": "Arts and Design",
+                "num_employees": "3",
+                "percentage": "2",
+                "growth_3m": "57% decrease",
+                "growth_6m": "0%No change"
+            },
+            {
+                "function": "Legal",
+                "num_employees": "3",
+                "percentage": "2",
+                "growth_3m": "40% decrease",
+                "growth_6m": "0%No change"
+            },
+            {
+                "function": "Research",
+                "num_employees": "3",
+                "percentage": "2",
+                "growth_3m": "50% increase",
+                "growth_6m": "25% decrease"
+            }
+        ],
+        "job_openings_growth": [
+            {
+                "function": "Finance",
+                "growth_3m": "10% decrease",
+                "growth_6m": "24% decrease"
+            },
+            {
+                "function": "Engineering",
+                "growth_3m": "17% increase",
+                "growth_6m": "69% increase"
+            },
+            {
+                "function": "Information Technology",
+                "growth_3m": "91% increase",
+                "growth_6m": "62% increase"
+            },
+            {
+                "function": "Sales",
+                "growth_3m": "60% increase",
+                "growth_6m": "100% increase"
+            },
+            {
+                "function": "Total",
+                "growth_3m": "6% decrease",
+                "growth_6m": "7% increase"
+            }
+        ]
+    },
+    "job_openings_plain_text": [
+        {
+            "function": "Finance",
+            "num_employees": "1708",
+            "growth_3m": "2% increase",
+            "growth_6m": "6% increase"
+        },
+        {
+            "function": "Engineering",
+            "num_employees": "1026",
+            "growth_3m": "3% increase",
+            "growth_6m": "7% increase"
+        },
+        {
+            "function": "Information Technology",
+            "num_employees": "949",
+            "growth_3m": "3% increase",
+            "growth_6m": "5% increase"
+        },
+        {
+            "function": "Support",
+            "num_employees": "779",
+            "growth_3m": "3% increase",
+            "growth_6m": "8% increase"
+        },
+        {
+            "function": "Business Development",
+            "num_employees": "668",
+            "growth_3m": "2% increase",
+            "growth_6m": "5% increase"
+        },
+        {
+            "function": "Operations",
+            "num_employees": "641",
+            "growth_3m": "8% increase",
+            "growth_6m": "16% increase"
+        },
+        {
+            "function": "Sales",
+            "num_employees": "515",
+            "growth_3m": "6% increase",
+            "growth_6m": "12% increase"
+        },
+        {
+            "function": "Administrative",
+            "num_employees": "465",
+            "growth_3m": "5% increase",
+            "growth_6m": "5% increase"
+        },
+        {
+            "function": "Research",
+            "num_employees": "320",
+            "growth_3m": "3% increase",
+            "growth_6m": "10% increase"
+        },
+        {
+            "function": "Human Resources",
+            "num_employees": "348",
+            "growth_3m": "5% increase",
+            "growth_6m": "11% increase"
+        },
+        {
+            "function": "Program and Project Management",
+            "num_employees": "233",
+            "growth_3m": "3% increase",
+            "growth_6m": "8% increase"
+        },
+        {
+            "function": "Entrepreneurship",
+            "num_employees": "230",
+            "growth_3m": "0%No change",
+            "growth_6m": "0%No change"
+        },
+        {
+            "function": "Accounting",
+            "num_employees": "217",
+            "growth_3m": "3% increase",
+            "growth_6m": "10% increase"
+        },
+        {
+            "function": "Product Management",
+            "num_employees": "214",
+            "growth_3m": "4% increase",
+            "growth_6m": "13% increase"
+        },
+        {
+            "function": "Media and Communication",
+            "num_employees": "215",
+            "growth_3m": "6% increase",
+            "growth_6m": "10% increase"
+        },
+        {
+            "function": "Marketing",
+            "num_employees": "229",
+            "growth_3m": "2% increase",
+            "growth_6m": "8% increase"
+        }
+    ]
+}
+
+Employee Growth Data:
+   day_of_week month day   time  employee_count  \
+0      Tuesday   Feb  28  16:00            9234
+1       Friday   Mar  31  16:00            9100
+2       Sunday   Apr  30  16:00            9097
+3    Wednesday   May  31  16:00            9113
+4       Friday   Jun  30  16:00            9105
+5       Monday   Jul  31  16:00            9149
+6     Thursday   Aug  31  16:00            9182
+7     Saturday   Sep  30  16:00            9206
+8      Tuesday   Oct  31  16:00            9214
+9     Thursday   Nov  30  16:00            9205
+10      Sunday   Dec  31  16:00            9240
+11   Wednesday   Jan  31  16:00            9270
+12    Thursday   Feb  29  16:00            9330
+13      Sunday   Mar  31  16:00            9411
+14     Tuesday   Apr  30  16:00            9486
+15      Friday   May  31  16:00            9631
+16      Sunday   Jun  30  16:00            9689
+17   Wednesday   Jul  31  16:00            9670
+18    Saturday   Aug  31  16:00            9792
+19      Monday   Sep  30  16:00            9861
+20    Thursday   Oct  31  16:00            9909
+21    Saturday   Nov  30  16:00            9937
+22     Tuesday   Dec  31  16:00            9997
+23      Friday   Jan  31  16:00           10021
+24      Friday   Feb  28  16:00           10021
+
+                                 growth  year
+0                                        2023
+1           decrease 1% from last month  2023
+2   zero percent change from last month  2023
+3   zero percent change from last month  2023
+4   zero percent change from last month  2023
+5   zero percent change from last month  2023
+6   zero percent change from last month  2023
+7   zero percent change from last month  2023
+8   zero percent change from last month  2023
+9   zero percent change from last month  2023
+10  zero percent change from last month  2023
+11  zero percent change from last month  2024
+12          increase 1% from last month  2024
+13          increase 1% from last month  2024
+14          increase 1% from last month  2024
+15          increase 2% from last month  2024
+16          increase 1% from last month  2024
+17  zero percent change from last month  2024
+18          increase 1% from last month  2024
+19          increase 1% from last month  2024
+20  zero percent change from last month  2024
+21  zero percent change from last month  2024
+22          increase 1% from last month  2024
+23  zero percent change from last month  2025
+24  zero percent change from last month  2025
+
+Function Distribution:
+                 Function Percentage
+0                 Finance        17%
+1             Engineering        10%
+2  Information Technology         9%
+3                 Support         8%
+
+Headcount Growth with Added Employees:
+                          function num_employees percentage    growth_6m  \
+0                          Finance          1708         17  2% increase
+1                      Engineering          1026         10  3% increase
+2           Information Technology           949          9  3% increase
+3                          Support           779          8  3% increase
+4             Business Development           668          7  2% increase
+5                       Operations           641          6  8% increase
+6                            Sales           515          5  6% increase
+7                   Administrative           465          5  5% increase
+8                         Research           320          3  3% increase
+9                  Human Resources           348          3  5% increase
+10  Program and Project Management           233          2  3% increase
+11                Entrepreneurship           230          2  0%No change
+12                      Accounting           217          2  3% increase
+13              Product Management           214          2  4% increase
+14         Media and Communication           215          2  6% increase
+15                       Marketing           229          2  2% increase
+
+       growth_1y  added_6m  added_1y
+0    6% increase        33        97
+1    7% increase        30        67
+2    5% increase        28        45
+3    8% increase        23        58
+4    5% increase        13        32
+5   16% increase        47        88
+6   12% increase        29        55
+7    5% increase        22        22
+8   10% increase         9        29
+9   11% increase        17        34
+10   8% increase         7        17
+11   0%No change         0         0
+12  10% increase         6        20
+13  13% increase         8        25
+14  10% increase        12        20
+15   8% increase         4        17
+
+New Hires:
+              date senior_hires other_hires
+0       March 2023            0          55
+1       April 2023            0          51
+2         May 2023            0          72
+3        June 2023            0         120
+4        July 2023            0          68
+5      August 2023            0         138
+6   September 2023            0          85
+7     October 2023            0          68
+8    November 2023            0          43
+9    December 2023            0          42
+10    January 2024            0          91
+11   February 2024            0          65
+12      March 2024            0          92
+13      April 2024            0         115
+14        May 2024            0         113
+15       June 2024            0         178
+16       July 2024            0         113
+17     August 2024            0          86
+18  September 2024            0         161
+19    October 2024            0         100
+20   November 2024            0          73
+21   December 2024            0          67
+22    January 2025            0          86
+23   February 2025            0          43
+
+Job Openings Distribution:
+                 Function Percentage
+0                 Finance        20%
+1             Engineering        15%
+2  Information Technology        12%
+3                   Sales         9%
+
+Job Openings Details:
+                   function num_employees percentage     growth_3m  \
+0                   Finance            35         20  10% decrease
+1               Engineering            27         15  17% increase
+2    Information Technology            21         12  91% increase
+3                     Sales            16          9  60% increase
+4           Human Resources            10          6  11% increase
+5      Business Development             8          5   0%No change
+6                 Marketing             8          5  60% increase
+7                Accounting             6          3  50% increase
+8                Operations             6          3  60% decrease
+9                   Support             6          3  45% decrease
+10           Administrative             5          3  67% increase
+11  Media and Communication             4          2  67% decrease
+12          Arts and Design             3          2  57% decrease
+13                    Legal             3          2  40% decrease
+14                 Research             3          2  50% increase
+
+        growth_6m
+0    24% decrease
+1    69% increase
+2    62% increase
+3   100% increase
+4    23% decrease
+5     0%No change
+6   167% increase
+7   100% increase
+8     0%No change
+9    33% decrease
+10  150% increase
+11   43% decrease
+12    0%No change
+13    0%No change
+14   25% decrease
+
+Job Openings Growth:
+                 function     growth_3m      growth_6m
+0                 Finance  10% decrease   24% decrease
+1             Engineering  17% increase   69% increase
+2  Information Technology  91% increase   62% increase
+3                   Sales  60% increase  100% increase
+4                   Total   6% decrease    7% increase
+
+Job Openings Plain Text:
+                          function num_employees    growth_3m     growth_6m
+0                          Finance          1708  2% increase   6% increase
+1                      Engineering          1026  3% increase   7% increase
+2           Information Technology           949  3% increase   5% increase
+3                          Support           779  3% increase   8% increase
+4             Business Development           668  2% increase   5% increase
+5                       Operations           641  8% increase  16% increase
+6                            Sales           515  6% increase  12% increase
+7                   Administrative           465  5% increase   5% increase
+8                         Research           320  3% increase  10% increase
+9                  Human Resources           348  5% increase  11% increase
+10  Program and Project Management           233  3% increase   8% increase
+11                Entrepreneurship           230  0%No change   0%No change
+12                      Accounting           217  3% increase  10% increase
+13              Product Management           214  4% increase  13% increase
+14         Media and Communication           215  6% increase  10% increase
+15                       Marketing           229  2% increase   8% increase
+
+Processing file: /Users/rogerlin/Downloads/LinkedinPremium_InsightsScraper-master/jpmorgan.html
+
+Extracted Data from /Users/rogerlin/Downloads/LinkedinPremium_InsightsScraper-master/jpmorgan.html:
+{
+    "employee_growth": [
+        {
+            "day_of_week": "Tuesday",
+            "month": "Feb",
+            "day": "28",
+            "time": "16:00",
+            "employee_count": 266192,
+            "growth": "",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Friday",
+            "month": "Mar",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 267566,
+            "growth": "increase 1% from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Sunday",
+            "month": "Apr",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 268993,
+            "growth": "increase 1% from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Wednesday",
+            "month": "May",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 274130,
+            "growth": "increase 2% from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Friday",
+            "month": "Jun",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 277847,
+            "growth": "increase 1% from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Monday",
+            "month": "Jul",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 276349,
+            "growth": "decrease 1% from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Thursday",
+            "month": "Aug",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 277686,
+            "growth": "zero percent change from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Saturday",
+            "month": "Sep",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 279124,
+            "growth": "increase 1% from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Tuesday",
+            "month": "Oct",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 280104,
+            "growth": "zero percent change from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Thursday",
+            "month": "Nov",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 280398,
+            "growth": "zero percent change from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Sunday",
+            "month": "Dec",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 282676,
+            "growth": "increase 1% from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Wednesday",
+            "month": "Jan",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 284187,
+            "growth": "increase 1% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Thursday",
+            "month": "Feb",
+            "day": "29",
+            "time": "16:00",
+            "employee_count": 285145,
+            "growth": "zero percent change from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Sunday",
+            "month": "Mar",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 287038,
+            "growth": "increase 1% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Tuesday",
+            "month": "Apr",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 288505,
+            "growth": "increase 1% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Friday",
+            "month": "May",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 293311,
+            "growth": "increase 2% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Sunday",
+            "month": "Jun",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 295014,
+            "growth": "increase 1% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Wednesday",
+            "month": "Jul",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 294378,
+            "growth": "zero percent change from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Saturday",
+            "month": "Aug",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 296625,
+            "growth": "increase 1% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Monday",
+            "month": "Sep",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 298315,
+            "growth": "increase 1% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Thursday",
+            "month": "Oct",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 299811,
+            "growth": "increase 1% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Saturday",
+            "month": "Nov",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 301121,
+            "growth": "zero percent change from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Tuesday",
+            "month": "Dec",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 304043,
+            "growth": "increase 1% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Friday",
+            "month": "Jan",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 306648,
+            "growth": "increase 1% from last month",
+            "year": 2025
+        },
+        {
+            "day_of_week": "Friday",
+            "month": "Feb",
+            "day": "28",
+            "time": "16:00",
+            "employee_count": 306692,
+            "growth": "zero percent change from last month",
+            "year": 2025
+        }
+    ],
+    "function_distribution": {
+        "Finance": "24%",
+        "Engineering": "11%",
+        "Business Development": "9%",
+        "Information Technology": "6%"
+    },
+    "headcount_growth": [
+        {
+            "function": "Finance",
+            "num_employees": "72717",
+            "percentage": "24",
+            "growth_6m": "3% increase",
+            "growth_1y": "6% increase",
+            "added_6m": 2118,
+            "added_1y": 4116
+        },
+        {
+            "function": "Engineering",
+            "num_employees": "34512",
+            "percentage": "11",
+            "growth_6m": "4% increase",
+            "growth_1y": "9% increase",
+            "added_6m": 1327,
+            "added_1y": 2850
+        },
+        {
+            "function": "Business Development",
+            "num_employees": "28425",
+            "percentage": "9",
+            "growth_6m": "4% increase",
+            "growth_1y": "7% increase",
+            "added_6m": 1093,
+            "added_1y": 1860
+        },
+        {
+            "function": "Information Technology",
+            "num_employees": "19894",
+            "percentage": "6",
+            "growth_6m": "2% increase",
+            "growth_1y": "5% increase",
+            "added_6m": 390,
+            "added_1y": 947
+        },
+        {
+            "function": "Operations",
+            "num_employees": "16669",
+            "percentage": "5",
+            "growth_6m": "5% increase",
+            "growth_1y": "8% increase",
+            "added_6m": 794,
+            "added_1y": 1235
+        },
+        {
+            "function": "Support",
+            "num_employees": "11600",
+            "percentage": "4",
+            "growth_6m": "4% increase",
+            "growth_1y": "9% increase",
+            "added_6m": 446,
+            "added_1y": 958
+        },
+        {
+            "function": "Sales",
+            "num_employees": "13243",
+            "percentage": "4",
+            "growth_6m": "7% increase",
+            "growth_1y": "13% increase",
+            "added_6m": 866,
+            "added_1y": 1524
+        },
+        {
+            "function": "Accounting",
+            "num_employees": "7869",
+            "percentage": "3",
+            "growth_6m": "4% increase",
+            "growth_1y": "8% increase",
+            "added_6m": 303,
+            "added_1y": 583
+        },
+        {
+            "function": "Research",
+            "num_employees": "7361",
+            "percentage": "2",
+            "growth_6m": "2% increase",
+            "growth_1y": "5% increase",
+            "added_6m": 144,
+            "added_1y": 351
+        },
+        {
+            "function": "Program and Project Management",
+            "num_employees": "6286",
+            "percentage": "2",
+            "growth_6m": "3% increase",
+            "growth_1y": "5% increase",
+            "added_6m": 183,
+            "added_1y": 299
+        },
+        {
+            "function": "Administrative",
+            "num_employees": "7381",
+            "percentage": "2",
+            "growth_6m": "7% increase",
+            "growth_1y": "11% increase",
+            "added_6m": 483,
+            "added_1y": 731
+        },
+        {
+            "function": "Product Management",
+            "num_employees": "5764",
+            "percentage": "2",
+            "growth_6m": "4% increase",
+            "growth_1y": "7% increase",
+            "added_6m": 222,
+            "added_1y": 377
+        },
+        {
+            "function": "Human Resources",
+            "num_employees": "5162",
+            "percentage": "2",
+            "growth_6m": "4% increase",
+            "growth_1y": "6% increase",
+            "added_6m": 199,
+            "added_1y": 292
+        }
+    ],
+    "new_hires": [
+        {
+            "date": "March 2023",
+            "senior_hires": "0",
+            "other_hires": "2490"
+        },
+        {
+            "date": "April 2023",
+            "senior_hires": "0",
+            "other_hires": "2780"
+        },
+        {
+            "date": "May 2023",
+            "senior_hires": "0",
+            "other_hires": "2956"
+        },
+        {
+            "date": "June 2023",
+            "senior_hires": "0",
+            "other_hires": "5490"
+        },
+        {
+            "date": "July 2023",
+            "senior_hires": "0",
+            "other_hires": "4816"
+        },
+        {
+            "date": "August 2023",
+            "senior_hires": "0",
+            "other_hires": "3342"
+        },
+        {
+            "date": "September 2023",
+            "senior_hires": "0",
+            "other_hires": "2748"
+        },
+        {
+            "date": "October 2023",
+            "senior_hires": "0",
+            "other_hires": "2441"
+        },
+        {
+            "date": "November 2023",
+            "senior_hires": "0",
+            "other_hires": "1931"
+        },
+        {
+            "date": "December 2023",
+            "senior_hires": "0",
+            "other_hires": "1493"
+        },
+        {
+            "date": "January 2024",
+            "senior_hires": "0",
+            "other_hires": "2874"
+        },
+        {
+            "date": "February 2024",
+            "senior_hires": "0",
+            "other_hires": "2118"
+        },
+        {
+            "date": "March 2024",
+            "senior_hires": "0",
+            "other_hires": "2123"
+        },
+        {
+            "date": "April 2024",
+            "senior_hires": "0",
+            "other_hires": "3035"
+        },
+        {
+            "date": "May 2024",
+            "senior_hires": "0",
+            "other_hires": "2697"
+        },
+        {
+            "date": "June 2024",
+            "senior_hires": "33",
+            "other_hires": "4555"
+        },
+        {
+            "date": "July 2024",
+            "senior_hires": "28",
+            "other_hires": "2958"
+        },
+        {
+            "date": "August 2024",
+            "senior_hires": "22",
+            "other_hires": "2603"
+        },
+        {
+            "date": "September 2024",
+            "senior_hires": "22",
+            "other_hires": "2686"
+        },
+        {
+            "date": "October 2024",
+            "senior_hires": "12",
+            "other_hires": "2225"
+        },
+        {
+            "date": "November 2024",
+            "senior_hires": "26",
+            "other_hires": "1839"
+        },
+        {
+            "date": "December 2024",
+            "senior_hires": "12",
+            "other_hires": "1741"
+        },
+        {
+            "date": "January 2025",
+            "senior_hires": "35",
+            "other_hires": "2587"
+        },
+        {
+            "date": "February 2025",
+            "senior_hires": "12",
+            "other_hires": "1926"
+        },
+        {
+            "date": "March 2025",
+            "senior_hires": "0",
+            "other_hires": "27"
+        }
+    ],
+    "job_openings": {
+        "distribution": {
+            "Finance": "45%",
+            "Engineering": "14%",
+            "Information Technology": "5%",
+            "Sales": "5%"
+        },
+        "openings_details": [
+            {
+                "function": "Finance",
+                "num_employees": "3119",
+                "percentage": "45",
+                "growth_3m": "6% decrease",
+                "growth_6m": "14% increase"
+            },
+            {
+                "function": "Engineering",
+                "num_employees": "950",
+                "percentage": "14",
+                "growth_3m": "42% decrease",
+                "growth_6m": "32% decrease"
+            },
+            {
+                "function": "Information Technology",
+                "num_employees": "350",
+                "percentage": "5",
+                "growth_3m": "31% decrease",
+                "growth_6m": "4% decrease"
+            },
+            {
+                "function": "Sales",
+                "num_employees": "345",
+                "percentage": "5",
+                "growth_3m": "0%No change",
+                "growth_6m": "33% increase"
+            },
+            {
+                "function": "Operations",
+                "num_employees": "310",
+                "percentage": "4",
+                "growth_3m": "17% decrease",
+                "growth_6m": "9% decrease"
+            },
+            {
+                "function": "Business Development",
+                "num_employees": "286",
+                "percentage": "4",
+                "growth_3m": "5% increase",
+                "growth_6m": "4% increase"
+            },
+            {
+                "function": "Product Management",
+                "num_employees": "188",
+                "percentage": "3",
+                "growth_3m": "34% decrease",
+                "growth_6m": "19% decrease"
+            },
+            {
+                "function": "Support",
+                "num_employees": "171",
+                "percentage": "2",
+                "growth_3m": "11% decrease",
+                "growth_6m": "7% decrease"
+            },
+            {
+                "function": "Accounting",
+                "num_employees": "160",
+                "percentage": "2",
+                "growth_3m": "40% decrease",
+                "growth_6m": "26% decrease"
+            },
+            {
+                "function": "Program and Project Management",
+                "num_employees": "143",
+                "percentage": "2",
+                "growth_3m": "34% decrease",
+                "growth_6m": "8% decrease"
+            }
+        ],
+        "job_openings_growth": [
+            {
+                "function": "Finance",
+                "growth_3m": "6% decrease",
+                "growth_6m": "14% increase"
+            },
+            {
+                "function": "Engineering",
+                "growth_3m": "42% decrease",
+                "growth_6m": "32% decrease"
+            },
+            {
+                "function": "Information Technology",
+                "growth_3m": "31% decrease",
+                "growth_6m": "4% decrease"
+            },
+            {
+                "function": "Sales",
+                "growth_3m": "0%No change",
+                "growth_6m": "33% increase"
+            },
+            {
+                "function": "Total",
+                "growth_3m": "20% decrease",
+                "growth_6m": "2% decrease"
+            }
+        ]
+    },
+    "job_openings_plain_text": [
+        {
+            "function": "Finance",
+            "num_employees": "72717",
+            "growth_3m": "3% increase",
+            "growth_6m": "6% increase"
+        },
+        {
+            "function": "Engineering",
+            "num_employees": "34512",
+            "growth_3m": "4% increase",
+            "growth_6m": "9% increase"
+        },
+        {
+            "function": "Business Development",
+            "num_employees": "28425",
+            "growth_3m": "4% increase",
+            "growth_6m": "7% increase"
+        },
+        {
+            "function": "Information Technology",
+            "num_employees": "19894",
+            "growth_3m": "2% increase",
+            "growth_6m": "5% increase"
+        },
+        {
+            "function": "Operations",
+            "num_employees": "16669",
+            "growth_3m": "5% increase",
+            "growth_6m": "8% increase"
+        },
+        {
+            "function": "Support",
+            "num_employees": "11600",
+            "growth_3m": "4% increase",
+            "growth_6m": "9% increase"
+        },
+        {
+            "function": "Sales",
+            "num_employees": "13243",
+            "growth_3m": "7% increase",
+            "growth_6m": "13% increase"
+        },
+        {
+            "function": "Accounting",
+            "num_employees": "7869",
+            "growth_3m": "4% increase",
+            "growth_6m": "8% increase"
+        },
+        {
+            "function": "Research",
+            "num_employees": "7361",
+            "growth_3m": "2% increase",
+            "growth_6m": "5% increase"
+        },
+        {
+            "function": "Program and Project Management",
+            "num_employees": "6286",
+            "growth_3m": "3% increase",
+            "growth_6m": "5% increase"
+        },
+        {
+            "function": "Administrative",
+            "num_employees": "7381",
+            "growth_3m": "7% increase",
+            "growth_6m": "11% increase"
+        },
+        {
+            "function": "Product Management",
+            "num_employees": "5764",
+            "growth_3m": "4% increase",
+            "growth_6m": "7% increase"
+        },
+        {
+            "function": "Human Resources",
+            "num_employees": "5162",
+            "growth_3m": "4% increase",
+            "growth_6m": "6% increase"
+        }
+    ]
+}
+
+Employee Growth Data:
+   day_of_week month day   time  employee_count  \
+0      Tuesday   Feb  28  16:00          266192
+1       Friday   Mar  31  16:00          267566
+2       Sunday   Apr  30  16:00          268993
+3    Wednesday   May  31  16:00          274130
+4       Friday   Jun  30  16:00          277847
+5       Monday   Jul  31  16:00          276349
+6     Thursday   Aug  31  16:00          277686
+7     Saturday   Sep  30  16:00          279124
+8      Tuesday   Oct  31  16:00          280104
+9     Thursday   Nov  30  16:00          280398
+10      Sunday   Dec  31  16:00          282676
+11   Wednesday   Jan  31  16:00          284187
+12    Thursday   Feb  29  16:00          285145
+13      Sunday   Mar  31  16:00          287038
+14     Tuesday   Apr  30  16:00          288505
+15      Friday   May  31  16:00          293311
+16      Sunday   Jun  30  16:00          295014
+17   Wednesday   Jul  31  16:00          294378
+18    Saturday   Aug  31  16:00          296625
+19      Monday   Sep  30  16:00          298315
+20    Thursday   Oct  31  16:00          299811
+21    Saturday   Nov  30  16:00          301121
+22     Tuesday   Dec  31  16:00          304043
+23      Friday   Jan  31  16:00          306648
+24      Friday   Feb  28  16:00          306692
+
+                                 growth  year
+0                                        2023
+1           increase 1% from last month  2023
+2           increase 1% from last month  2023
+3           increase 2% from last month  2023
+4           increase 1% from last month  2023
+5           decrease 1% from last month  2023
+6   zero percent change from last month  2023
+7           increase 1% from last month  2023
+8   zero percent change from last month  2023
+9   zero percent change from last month  2023
+10          increase 1% from last month  2023
+11          increase 1% from last month  2024
+12  zero percent change from last month  2024
+13          increase 1% from last month  2024
+14          increase 1% from last month  2024
+15          increase 2% from last month  2024
+16          increase 1% from last month  2024
+17  zero percent change from last month  2024
+18          increase 1% from last month  2024
+19          increase 1% from last month  2024
+20          increase 1% from last month  2024
+21  zero percent change from last month  2024
+22          increase 1% from last month  2024
+23          increase 1% from last month  2025
+24  zero percent change from last month  2025
+
+Function Distribution:
+                 Function Percentage
+0                 Finance        24%
+1             Engineering        11%
+2    Business Development         9%
+3  Information Technology         6%
+
+Headcount Growth with Added Employees:
+                          function num_employees percentage    growth_6m  \
+0                          Finance         72717         24  3% increase
+1                      Engineering         34512         11  4% increase
+2             Business Development         28425          9  4% increase
+3           Information Technology         19894          6  2% increase
+4                       Operations         16669          5  5% increase
+5                          Support         11600          4  4% increase
+6                            Sales         13243          4  7% increase
+7                       Accounting          7869          3  4% increase
+8                         Research          7361          2  2% increase
+9   Program and Project Management          6286          2  3% increase
+10                  Administrative          7381          2  7% increase
+11              Product Management          5764          2  4% increase
+12                 Human Resources          5162          2  4% increase
+
+       growth_1y  added_6m  added_1y
+0    6% increase      2118      4116
+1    9% increase      1327      2850
+2    7% increase      1093      1860
+3    5% increase       390       947
+4    8% increase       794      1235
+5    9% increase       446       958
+6   13% increase       866      1524
+7    8% increase       303       583
+8    5% increase       144       351
+9    5% increase       183       299
+10  11% increase       483       731
+11   7% increase       222       377
+12   6% increase       199       292
+
+New Hires:
+              date senior_hires other_hires
+0       March 2023            0        2490
+1       April 2023            0        2780
+2         May 2023            0        2956
+3        June 2023            0        5490
+4        July 2023            0        4816
+5      August 2023            0        3342
+6   September 2023            0        2748
+7     October 2023            0        2441
+8    November 2023            0        1931
+9    December 2023            0        1493
+10    January 2024            0        2874
+11   February 2024            0        2118
+12      March 2024            0        2123
+13      April 2024            0        3035
+14        May 2024            0        2697
+15       June 2024           33        4555
+16       July 2024           28        2958
+17     August 2024           22        2603
+18  September 2024           22        2686
+19    October 2024           12        2225
+20   November 2024           26        1839
+21   December 2024           12        1741
+22    January 2025           35        2587
+23   February 2025           12        1926
+24      March 2025            0          27
+
+Job Openings Distribution:
+                 Function Percentage
+0                 Finance        45%
+1             Engineering        14%
+2  Information Technology         5%
+3                   Sales         5%
+
+Job Openings Details:
+                         function num_employees percentage     growth_3m  \
+0                         Finance          3119         45   6% decrease
+1                     Engineering           950         14  42% decrease
+2          Information Technology           350          5  31% decrease
+3                           Sales           345          5   0%No change
+4                      Operations           310          4  17% decrease
+5            Business Development           286          4   5% increase
+6              Product Management           188          3  34% decrease
+7                         Support           171          2  11% decrease
+8                      Accounting           160          2  40% decrease
+9  Program and Project Management           143          2  34% decrease
+
+      growth_6m
+0  14% increase
+1  32% decrease
+2   4% decrease
+3  33% increase
+4   9% decrease
+5   4% increase
+6  19% decrease
+7   7% decrease
+8  26% decrease
+9   8% decrease
+
+Job Openings Growth:
+                 function     growth_3m     growth_6m
+0                 Finance   6% decrease  14% increase
+1             Engineering  42% decrease  32% decrease
+2  Information Technology  31% decrease   4% decrease
+3                   Sales   0%No change  33% increase
+4                   Total  20% decrease   2% decrease
+
+Job Openings Plain Text:
+                          function num_employees    growth_3m     growth_6m
+0                          Finance         72717  3% increase   6% increase
+1                      Engineering         34512  4% increase   9% increase
+2             Business Development         28425  4% increase   7% increase
+3           Information Technology         19894  2% increase   5% increase
+4                       Operations         16669  5% increase   8% increase
+5                          Support         11600  4% increase   9% increase
+6                            Sales         13243  7% increase  13% increase
+7                       Accounting          7869  4% increase   8% increase
+8                         Research          7361  2% increase   5% increase
+9   Program and Project Management          6286  3% increase   5% increase
+10                  Administrative          7381  7% increase  11% increase
+11              Product Management          5764  4% increase   7% increase
+12                 Human Resources          5162  4% increase   6% increase
+
+Processing file: /Users/rogerlin/Downloads/LinkedinPremium_InsightsScraper-master/two-sigma.html
+
+Extracted Data from /Users/rogerlin/Downloads/LinkedinPremium_InsightsScraper-master/two-sigma.html:
+{
+    "employee_growth": [
+        {
+            "day_of_week": "Tuesday",
+            "month": "Feb",
+            "day": "28",
+            "time": "16:00",
+            "employee_count": 2159,
+            "growth": "",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Friday",
+            "month": "Mar",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 2160,
+            "growth": "zero percent change from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Sunday",
+            "month": "Apr",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 2209,
+            "growth": "increase 2% from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Wednesday",
+            "month": "May",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 2262,
+            "growth": "increase 2% from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Friday",
+            "month": "Jun",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 2292,
+            "growth": "increase 1% from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Monday",
+            "month": "Jul",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 2237,
+            "growth": "decrease 2% from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Thursday",
+            "month": "Aug",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 2246,
+            "growth": "zero percent change from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Saturday",
+            "month": "Sep",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 2252,
+            "growth": "zero percent change from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Tuesday",
+            "month": "Oct",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 2247,
+            "growth": "zero percent change from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Thursday",
+            "month": "Nov",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 2230,
+            "growth": "decrease 1% from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Sunday",
+            "month": "Dec",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 2224,
+            "growth": "zero percent change from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Wednesday",
+            "month": "Jan",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 2218,
+            "growth": "zero percent change from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Thursday",
+            "month": "Feb",
+            "day": "29",
+            "time": "16:00",
+            "employee_count": 2202,
+            "growth": "decrease 1% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Sunday",
+            "month": "Mar",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 2195,
+            "growth": "zero percent change from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Tuesday",
+            "month": "Apr",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 2221,
+            "growth": "increase 1% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Friday",
+            "month": "May",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 2263,
+            "growth": "increase 2% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Sunday",
+            "month": "Jun",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 2270,
+            "growth": "zero percent change from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Wednesday",
+            "month": "Jul",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 2276,
+            "growth": "zero percent change from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Saturday",
+            "month": "Aug",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 2283,
+            "growth": "zero percent change from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Monday",
+            "month": "Sep",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 2297,
+            "growth": "increase 1% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Thursday",
+            "month": "Oct",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 2304,
+            "growth": "zero percent change from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Saturday",
+            "month": "Nov",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 2248,
+            "growth": "decrease 2% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Tuesday",
+            "month": "Dec",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 2270,
+            "growth": "increase 1% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Friday",
+            "month": "Jan",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 2291,
+            "growth": "increase 1% from last month",
+            "year": 2025
+        },
+        {
+            "day_of_week": "Friday",
+            "month": "Feb",
+            "day": "28",
+            "time": "16:00",
+            "employee_count": 2291,
+            "growth": "zero percent change from last month",
+            "year": 2025
+        }
+    ],
+    "function_distribution": {
+        "Engineering": "30%",
+        "Finance": "14%",
+        "Business Development": "8%",
+        "Operations": "8%"
+    },
+    "headcount_growth": [
+        {
+            "function": "Engineering",
+            "num_employees": "693",
+            "percentage": "30",
+            "growth_6m": "6% decrease",
+            "growth_1y": "7% decrease",
+            "added_6m": 39,
+            "added_1y": 45
+        },
+        {
+            "function": "Finance",
+            "num_employees": "326",
+            "percentage": "14",
+            "growth_6m": "2% decrease",
+            "growth_1y": "1% increase",
+            "added_6m": 6,
+            "added_1y": 3
+        },
+        {
+            "function": "Business Development",
+            "num_employees": "190",
+            "percentage": "8",
+            "growth_6m": "2% increase",
+            "growth_1y": "0%No change",
+            "added_6m": 4,
+            "added_1y": 0
+        },
+        {
+            "function": "Operations",
+            "num_employees": "185",
+            "percentage": "8",
+            "growth_6m": "43% increase",
+            "growth_1y": "137% increase",
+            "added_6m": 56,
+            "added_1y": 107
+        },
+        {
+            "function": "Information Technology",
+            "num_employees": "131",
+            "percentage": "6",
+            "growth_6m": "9% decrease",
+            "growth_1y": "10% decrease",
+            "added_6m": 11,
+            "added_1y": 12
+        },
+        {
+            "function": "Research",
+            "num_employees": "68",
+            "percentage": "3",
+            "growth_6m": "4% decrease",
+            "growth_1y": "11% decrease",
+            "added_6m": 3,
+            "added_1y": 7
+        },
+        {
+            "function": "Human Resources",
+            "num_employees": "67",
+            "percentage": "3",
+            "growth_6m": "9% decrease",
+            "growth_1y": "14% decrease",
+            "added_6m": 6,
+            "added_1y": 8
+        },
+        {
+            "function": "Administrative",
+            "num_employees": "38",
+            "percentage": "2",
+            "growth_6m": "7% decrease",
+            "growth_1y": "12% decrease",
+            "added_6m": 2,
+            "added_1y": 4
+        },
+        {
+            "function": "Legal",
+            "num_employees": "40",
+            "percentage": "2",
+            "growth_6m": "13% decrease",
+            "growth_1y": "17% decrease",
+            "added_6m": 5,
+            "added_1y": 6
+        }
+    ],
+    "new_hires": [
+        {
+            "date": "March 2023",
+            "senior_hires": "2",
+            "other_hires": "14"
+        },
+        {
+            "date": "April 2023",
+            "senior_hires": "0",
+            "other_hires": "14"
+        },
+        {
+            "date": "May 2023",
+            "senior_hires": "2",
+            "other_hires": "58"
+        },
+        {
+            "date": "June 2023",
+            "senior_hires": "0",
+            "other_hires": "65"
+        },
+        {
+            "date": "July 2023",
+            "senior_hires": "3",
+            "other_hires": "42"
+        },
+        {
+            "date": "August 2023",
+            "senior_hires": "1",
+            "other_hires": "34"
+        },
+        {
+            "date": "September 2023",
+            "senior_hires": "3",
+            "other_hires": "21"
+        },
+        {
+            "date": "October 2023",
+            "senior_hires": "1",
+            "other_hires": "13"
+        },
+        {
+            "date": "November 2023",
+            "senior_hires": "0",
+            "other_hires": "11"
+        },
+        {
+            "date": "December 2023",
+            "senior_hires": "0",
+            "other_hires": "7"
+        },
+        {
+            "date": "January 2024",
+            "senior_hires": "0",
+            "other_hires": "29"
+        },
+        {
+            "date": "February 2024",
+            "senior_hires": "0",
+            "other_hires": "21"
+        },
+        {
+            "date": "March 2024",
+            "senior_hires": "0",
+            "other_hires": "8"
+        },
+        {
+            "date": "April 2024",
+            "senior_hires": "0",
+            "other_hires": "21"
+        },
+        {
+            "date": "May 2024",
+            "senior_hires": "0",
+            "other_hires": "41"
+        },
+        {
+            "date": "June 2024",
+            "senior_hires": "1",
+            "other_hires": "55"
+        },
+        {
+            "date": "July 2024",
+            "senior_hires": "0",
+            "other_hires": "26"
+        },
+        {
+            "date": "August 2024",
+            "senior_hires": "1",
+            "other_hires": "47"
+        },
+        {
+            "date": "September 2024",
+            "senior_hires": "1",
+            "other_hires": "21"
+        },
+        {
+            "date": "October 2024",
+            "senior_hires": "0",
+            "other_hires": "20"
+        },
+        {
+            "date": "November 2024",
+            "senior_hires": "0",
+            "other_hires": "32"
+        },
+        {
+            "date": "December 2024",
+            "senior_hires": "0",
+            "other_hires": "23"
+        },
+        {
+            "date": "January 2025",
+            "senior_hires": "1",
+            "other_hires": "40"
+        },
+        {
+            "date": "February 2025",
+            "senior_hires": "1",
+            "other_hires": "41"
+        }
+    ],
+    "job_openings": {
+        "distribution": {
+            "Finance": "38%",
+            "Engineering": "34%",
+            "Information Technology": "13%",
+            "Business Development": "6%"
+        },
+        "openings_details": [
+            {
+                "function": "Finance",
+                "num_employees": "12",
+                "percentage": "38",
+                "growth_3m": "8% decrease",
+                "growth_6m": "25% decrease"
+            },
+            {
+                "function": "Engineering",
+                "num_employees": "11",
+                "percentage": "34",
+                "growth_3m": "57% increase",
+                "growth_6m": "120% increase"
+            },
+            {
+                "function": "Information Technology",
+                "num_employees": "4",
+                "percentage": "13",
+                "growth_3m": "33% increase",
+                "growth_6m": "100% increase"
+            },
+            {
+                "function": "Business Development",
+                "num_employees": "2",
+                "percentage": "6",
+                "growth_3m": "100% increase",
+                "growth_6m": "200% increase"
+            },
+            {
+                "function": "Accounting",
+                "num_employees": "1",
+                "percentage": "3",
+                "growth_3m": "100% increase",
+                "growth_6m": "100% increase"
+            },
+            {
+                "function": "Human Resources",
+                "num_employees": "1",
+                "percentage": "3",
+                "growth_3m": "100% increase",
+                "growth_6m": "100% increase"
+            }
+        ],
+        "job_openings_growth": [
+            {
+                "function": "Finance",
+                "growth_3m": "8% decrease",
+                "growth_6m": "25% decrease"
+            },
+            {
+                "function": "Engineering",
+                "growth_3m": "57% increase",
+                "growth_6m": "120% increase"
+            },
+            {
+                "function": "Information Technology",
+                "growth_3m": "33% increase",
+                "growth_6m": "100% increase"
+            },
+            {
+                "function": "Business Development",
+                "growth_3m": "100% increase",
+                "growth_6m": "200% increase"
+            },
+            {
+                "function": "Total",
+                "growth_3m": "0%No change",
+                "growth_6m": "0%No change"
+            }
+        ]
+    },
+    "job_openings_plain_text": [
+        {
+            "function": "Engineering",
+            "num_employees": "693",
+            "growth_3m": "6% decrease",
+            "growth_6m": "7% decrease"
+        },
+        {
+            "function": "Finance",
+            "num_employees": "326",
+            "growth_3m": "2% decrease",
+            "growth_6m": "1% increase"
+        },
+        {
+            "function": "Business Development",
+            "num_employees": "190",
+            "growth_3m": "2% increase",
+            "growth_6m": "0%No change"
+        },
+        {
+            "function": "Operations",
+            "num_employees": "185",
+            "growth_3m": "43% increase",
+            "growth_6m": "137% increase"
+        },
+        {
+            "function": "Information Technology",
+            "num_employees": "131",
+            "growth_3m": "9% decrease",
+            "growth_6m": "10% decrease"
+        },
+        {
+            "function": "Research",
+            "num_employees": "68",
+            "growth_3m": "4% decrease",
+            "growth_6m": "11% decrease"
+        },
+        {
+            "function": "Human Resources",
+            "num_employees": "67",
+            "growth_3m": "9% decrease",
+            "growth_6m": "14% decrease"
+        },
+        {
+            "function": "Administrative",
+            "num_employees": "38",
+            "growth_3m": "7% decrease",
+            "growth_6m": "12% decrease"
+        },
+        {
+            "function": "Legal",
+            "num_employees": "40",
+            "growth_3m": "13% decrease",
+            "growth_6m": "17% decrease"
+        }
+    ]
+}
+
+Employee Growth Data:
+   day_of_week month day   time  employee_count  \
+0      Tuesday   Feb  28  16:00            2159
+1       Friday   Mar  31  16:00            2160
+2       Sunday   Apr  30  16:00            2209
+3    Wednesday   May  31  16:00            2262
+4       Friday   Jun  30  16:00            2292
+5       Monday   Jul  31  16:00            2237
+6     Thursday   Aug  31  16:00            2246
+7     Saturday   Sep  30  16:00            2252
+8      Tuesday   Oct  31  16:00            2247
+9     Thursday   Nov  30  16:00            2230
+10      Sunday   Dec  31  16:00            2224
+11   Wednesday   Jan  31  16:00            2218
+12    Thursday   Feb  29  16:00            2202
+13      Sunday   Mar  31  16:00            2195
+14     Tuesday   Apr  30  16:00            2221
+15      Friday   May  31  16:00            2263
+16      Sunday   Jun  30  16:00            2270
+17   Wednesday   Jul  31  16:00            2276
+18    Saturday   Aug  31  16:00            2283
+19      Monday   Sep  30  16:00            2297
+20    Thursday   Oct  31  16:00            2304
+21    Saturday   Nov  30  16:00            2248
+22     Tuesday   Dec  31  16:00            2270
+23      Friday   Jan  31  16:00            2291
+24      Friday   Feb  28  16:00            2291
+
+                                 growth  year
+0                                        2023
+1   zero percent change from last month  2023
+2           increase 2% from last month  2023
+3           increase 2% from last month  2023
+4           increase 1% from last month  2023
+5           decrease 2% from last month  2023
+6   zero percent change from last month  2023
+7   zero percent change from last month  2023
+8   zero percent change from last month  2023
+9           decrease 1% from last month  2023
+10  zero percent change from last month  2023
+11  zero percent change from last month  2024
+12          decrease 1% from last month  2024
+13  zero percent change from last month  2024
+14          increase 1% from last month  2024
+15          increase 2% from last month  2024
+16  zero percent change from last month  2024
+17  zero percent change from last month  2024
+18  zero percent change from last month  2024
+19          increase 1% from last month  2024
+20  zero percent change from last month  2024
+21          decrease 2% from last month  2024
+22          increase 1% from last month  2024
+23          increase 1% from last month  2025
+24  zero percent change from last month  2025
+
+Function Distribution:
+               Function Percentage
+0           Engineering        30%
+1               Finance        14%
+2  Business Development         8%
+3            Operations         8%
+
+Headcount Growth with Added Employees:
+                 function num_employees percentage     growth_6m  \
+0             Engineering           693         30   6% decrease
+1                 Finance           326         14   2% decrease
+2    Business Development           190          8   2% increase
+3              Operations           185          8  43% increase
+4  Information Technology           131          6   9% decrease
+5                Research            68          3   4% decrease
+6         Human Resources            67          3   9% decrease
+7          Administrative            38          2   7% decrease
+8                   Legal            40          2  13% decrease
+
+       growth_1y  added_6m  added_1y
+0    7% decrease        39        45
+1    1% increase         6         3
+2    0%No change         4         0
+3  137% increase        56       107
+4   10% decrease        11        12
+5   11% decrease         3         7
+6   14% decrease         6         8
+7   12% decrease         2         4
+8   17% decrease         5         6
+
+New Hires:
+              date senior_hires other_hires
+0       March 2023            2          14
+1       April 2023            0          14
+2         May 2023            2          58
+3        June 2023            0          65
+4        July 2023            3          42
+5      August 2023            1          34
+6   September 2023            3          21
+7     October 2023            1          13
+8    November 2023            0          11
+9    December 2023            0           7
+10    January 2024            0          29
+11   February 2024            0          21
+12      March 2024            0           8
+13      April 2024            0          21
+14        May 2024            0          41
+15       June 2024            1          55
+16       July 2024            0          26
+17     August 2024            1          47
+18  September 2024            1          21
+19    October 2024            0          20
+20   November 2024            0          32
+21   December 2024            0          23
+22    January 2025            1          40
+23   February 2025            1          41
+
+Job Openings Distribution:
+                 Function Percentage
+0                 Finance        38%
+1             Engineering        34%
+2  Information Technology        13%
+3    Business Development         6%
+
+Job Openings Details:
+                 function num_employees percentage      growth_3m  \
+0                 Finance            12         38    8% decrease
+1             Engineering            11         34   57% increase
+2  Information Technology             4         13   33% increase
+3    Business Development             2          6  100% increase
+4              Accounting             1          3  100% increase
+5         Human Resources             1          3  100% increase
+
+       growth_6m
+0   25% decrease
+1  120% increase
+2  100% increase
+3  200% increase
+4  100% increase
+5  100% increase
+
+Job Openings Growth:
+                 function      growth_3m      growth_6m
+0                 Finance    8% decrease   25% decrease
+1             Engineering   57% increase  120% increase
+2  Information Technology   33% increase  100% increase
+3    Business Development  100% increase  200% increase
+4                   Total    0%No change    0%No change
+
+Job Openings Plain Text:
+                 function num_employees     growth_3m      growth_6m
+0             Engineering           693   6% decrease    7% decrease
+1                 Finance           326   2% decrease    1% increase
+2    Business Development           190   2% increase    0%No change
+3              Operations           185  43% increase  137% increase
+4  Information Technology           131   9% decrease   10% decrease
+5                Research            68   4% decrease   11% decrease
+6         Human Resources            67   9% decrease   14% decrease
+7          Administrative            38   7% decrease   12% decrease
+8                   Legal            40  13% decrease   17% decrease
+
+Processing file: /Users/rogerlin/Downloads/LinkedinPremium_InsightsScraper-master/citadel_html.html
+
+Extracted Data from /Users/rogerlin/Downloads/LinkedinPremium_InsightsScraper-master/citadel_html.html:
+{
+    "employee_growth": [
+        {
+            "day_of_week": "Tuesday",
+            "month": "Feb",
+            "day": "28",
+            "time": "16:00",
+            "employee_count": 1647,
+            "growth": "",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Friday",
+            "month": "Mar",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 1651,
+            "growth": "zero percent change from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Sunday",
+            "month": "Apr",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 1679,
+            "growth": "increase 2% from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Wednesday",
+            "month": "May",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 1785,
+            "growth": "increase 6% from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Friday",
+            "month": "Jun",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 1789,
+            "growth": "zero percent change from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Monday",
+            "month": "Jul",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 1675,
+            "growth": "decrease 6% from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Thursday",
+            "month": "Aug",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 1715,
+            "growth": "increase 2% from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Saturday",
+            "month": "Sep",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 1719,
+            "growth": "zero percent change from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Tuesday",
+            "month": "Oct",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 1717,
+            "growth": "zero percent change from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Thursday",
+            "month": "Nov",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 1713,
+            "growth": "zero percent change from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Sunday",
+            "month": "Dec",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 1728,
+            "growth": "increase 1% from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Wednesday",
+            "month": "Jan",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 1729,
+            "growth": "zero percent change from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Thursday",
+            "month": "Feb",
+            "day": "29",
+            "time": "16:00",
+            "employee_count": 1737,
+            "growth": "zero percent change from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Sunday",
+            "month": "Mar",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 1759,
+            "growth": "increase 1% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Tuesday",
+            "month": "Apr",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 1785,
+            "growth": "increase 1% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Friday",
+            "month": "May",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 1909,
+            "growth": "increase 7% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Sunday",
+            "month": "Jun",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 1937,
+            "growth": "increase 1% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Wednesday",
+            "month": "Jul",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 1867,
+            "growth": "decrease 4% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Saturday",
+            "month": "Aug",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 1880,
+            "growth": "increase 1% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Monday",
+            "month": "Sep",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 1908,
+            "growth": "increase 1% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Thursday",
+            "month": "Oct",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 1929,
+            "growth": "increase 1% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Saturday",
+            "month": "Nov",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 1930,
+            "growth": "zero percent change from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Tuesday",
+            "month": "Dec",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 1966,
+            "growth": "increase 2% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Friday",
+            "month": "Jan",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 1978,
+            "growth": "increase 1% from last month",
+            "year": 2025
+        },
+        {
+            "day_of_week": "Friday",
+            "month": "Feb",
+            "day": "28",
+            "time": "16:00",
+            "employee_count": 1979,
+            "growth": "zero percent change from last month",
+            "year": 2025
+        }
+    ],
+    "function_distribution": {
+        "Finance": "40%",
+        "Engineering": "25%",
+        "Business Development": "4%",
+        "Information Technology": "4%"
+    },
+    "headcount_growth": [
+        {
+            "function": "Finance",
+            "num_employees": "797",
+            "percentage": "40",
+            "growth_6m": "4% increase",
+            "growth_1y": "12% increase",
+            "added_6m": 31,
+            "added_1y": 85
+        },
+        {
+            "function": "Engineering",
+            "num_employees": "492",
+            "percentage": "25",
+            "growth_6m": "8% increase",
+            "growth_1y": "11% increase",
+            "added_6m": 36,
+            "added_1y": 49
+        },
+        {
+            "function": "Business Development",
+            "num_employees": "84",
+            "percentage": "4",
+            "growth_6m": "1% decrease",
+            "growth_1y": "6% increase",
+            "added_6m": 1,
+            "added_1y": 5
+        },
+        {
+            "function": "Information Technology",
+            "num_employees": "86",
+            "percentage": "4",
+            "growth_6m": "1% increase",
+            "growth_1y": "9% increase",
+            "added_6m": 1,
+            "added_1y": 7
+        },
+        {
+            "function": "Research",
+            "num_employees": "62",
+            "percentage": "3",
+            "growth_6m": "13% increase",
+            "growth_1y": "32% increase",
+            "added_6m": 7,
+            "added_1y": 15
+        },
+        {
+            "function": "Sales",
+            "num_employees": "41",
+            "percentage": "2",
+            "growth_6m": "17% increase",
+            "growth_1y": "41% increase",
+            "added_6m": 6,
+            "added_1y": 12
+        },
+        {
+            "function": "Operations",
+            "num_employees": "34",
+            "percentage": "2",
+            "growth_6m": "6% increase",
+            "growth_1y": "6% increase",
+            "added_6m": 2,
+            "added_1y": 2
+        },
+        {
+            "function": "Legal",
+            "num_employees": "35",
+            "percentage": "2",
+            "growth_6m": "9% increase",
+            "growth_1y": "21% increase",
+            "added_6m": 3,
+            "added_1y": 6
+        },
+        {
+            "function": "Human Resources",
+            "num_employees": "43",
+            "percentage": "2",
+            "growth_6m": "5% increase",
+            "growth_1y": "16% increase",
+            "added_6m": 2,
+            "added_1y": 6
+        }
+    ],
+    "new_hires": [
+        {
+            "date": "March 2023",
+            "senior_hires": "1",
+            "other_hires": "24"
+        },
+        {
+            "date": "April 2023",
+            "senior_hires": "1",
+            "other_hires": "24"
+        },
+        {
+            "date": "May 2023",
+            "senior_hires": "1",
+            "other_hires": "40"
+        },
+        {
+            "date": "June 2023",
+            "senior_hires": "1",
+            "other_hires": "150"
+        },
+        {
+            "date": "July 2023",
+            "senior_hires": "1",
+            "other_hires": "22"
+        },
+        {
+            "date": "August 2023",
+            "senior_hires": "1",
+            "other_hires": "40"
+        },
+        {
+            "date": "September 2023",
+            "senior_hires": "1",
+            "other_hires": "64"
+        },
+        {
+            "date": "October 2023",
+            "senior_hires": "4",
+            "other_hires": "22"
+        },
+        {
+            "date": "November 2023",
+            "senior_hires": "3",
+            "other_hires": "15"
+        },
+        {
+            "date": "December 2023",
+            "senior_hires": "1",
+            "other_hires": "20"
+        },
+        {
+            "date": "January 2024",
+            "senior_hires": "2",
+            "other_hires": "33"
+        },
+        {
+            "date": "February 2024",
+            "senior_hires": "1",
+            "other_hires": "34"
+        },
+        {
+            "date": "March 2024",
+            "senior_hires": "4",
+            "other_hires": "33"
+        },
+        {
+            "date": "April 2024",
+            "senior_hires": "2",
+            "other_hires": "55"
+        },
+        {
+            "date": "May 2024",
+            "senior_hires": "2",
+            "other_hires": "41"
+        },
+        {
+            "date": "June 2024",
+            "senior_hires": "1",
+            "other_hires": "146"
+        },
+        {
+            "date": "July 2024",
+            "senior_hires": "2",
+            "other_hires": "51"
+        },
+        {
+            "date": "August 2024",
+            "senior_hires": "3",
+            "other_hires": "58"
+        },
+        {
+            "date": "September 2024",
+            "senior_hires": "1",
+            "other_hires": "52"
+        },
+        {
+            "date": "October 2024",
+            "senior_hires": "1",
+            "other_hires": "41"
+        },
+        {
+            "date": "November 2024",
+            "senior_hires": "1",
+            "other_hires": "34"
+        },
+        {
+            "date": "December 2024",
+            "senior_hires": "1",
+            "other_hires": "10"
+        },
+        {
+            "date": "January 2025",
+            "senior_hires": "3",
+            "other_hires": "57"
+        },
+        {
+            "date": "February 2025",
+            "senior_hires": "0",
+            "other_hires": "31"
+        },
+        {
+            "date": "March 2025",
+            "senior_hires": "1",
+            "other_hires": "1"
+        }
+    ],
+    "job_openings": {
+        "distribution": {
+            "Finance": "67%"
+        },
+        "openings_details": [
+            {
+                "function": "Finance",
+                "num_employees": "2",
+                "percentage": "67",
+                "growth_3m": "100% increase",
+                "growth_6m": "200% increase"
+            }
+        ],
+        "job_openings_growth": [
+            {
+                "function": "Finance",
+                "growth_3m": "100% increase",
+                "growth_6m": "200% increase"
+            },
+            {
+                "function": "Total",
+                "growth_3m": "50% increase",
+                "growth_6m": "50% decrease"
+            }
+        ]
+    },
+    "job_openings_plain_text": [
+        {
+            "function": "Finance",
+            "num_employees": "797",
+            "growth_3m": "4% increase",
+            "growth_6m": "12% increase"
+        },
+        {
+            "function": "Engineering",
+            "num_employees": "492",
+            "growth_3m": "8% increase",
+            "growth_6m": "11% increase"
+        },
+        {
+            "function": "Business Development",
+            "num_employees": "84",
+            "growth_3m": "1% decrease",
+            "growth_6m": "6% increase"
+        },
+        {
+            "function": "Information Technology",
+            "num_employees": "86",
+            "growth_3m": "1% increase",
+            "growth_6m": "9% increase"
+        },
+        {
+            "function": "Research",
+            "num_employees": "62",
+            "growth_3m": "13% increase",
+            "growth_6m": "32% increase"
+        },
+        {
+            "function": "Sales",
+            "num_employees": "41",
+            "growth_3m": "17% increase",
+            "growth_6m": "41% increase"
+        },
+        {
+            "function": "Operations",
+            "num_employees": "34",
+            "growth_3m": "6% increase",
+            "growth_6m": "6% increase"
+        },
+        {
+            "function": "Legal",
+            "num_employees": "35",
+            "growth_3m": "9% increase",
+            "growth_6m": "21% increase"
+        },
+        {
+            "function": "Human Resources",
+            "num_employees": "43",
+            "growth_3m": "5% increase",
+            "growth_6m": "16% increase"
+        }
+    ]
+}
+
+Employee Growth Data:
+   day_of_week month day   time  employee_count  \
+0      Tuesday   Feb  28  16:00            1647
+1       Friday   Mar  31  16:00            1651
+2       Sunday   Apr  30  16:00            1679
+3    Wednesday   May  31  16:00            1785
+4       Friday   Jun  30  16:00            1789
+5       Monday   Jul  31  16:00            1675
+6     Thursday   Aug  31  16:00            1715
+7     Saturday   Sep  30  16:00            1719
+8      Tuesday   Oct  31  16:00            1717
+9     Thursday   Nov  30  16:00            1713
+10      Sunday   Dec  31  16:00            1728
+11   Wednesday   Jan  31  16:00            1729
+12    Thursday   Feb  29  16:00            1737
+13      Sunday   Mar  31  16:00            1759
+14     Tuesday   Apr  30  16:00            1785
+15      Friday   May  31  16:00            1909
+16      Sunday   Jun  30  16:00            1937
+17   Wednesday   Jul  31  16:00            1867
+18    Saturday   Aug  31  16:00            1880
+19      Monday   Sep  30  16:00            1908
+20    Thursday   Oct  31  16:00            1929
+21    Saturday   Nov  30  16:00            1930
+22     Tuesday   Dec  31  16:00            1966
+23      Friday   Jan  31  16:00            1978
+24      Friday   Feb  28  16:00            1979
+
+                                 growth  year
+0                                        2023
+1   zero percent change from last month  2023
+2           increase 2% from last month  2023
+3           increase 6% from last month  2023
+4   zero percent change from last month  2023
+5           decrease 6% from last month  2023
+6           increase 2% from last month  2023
+7   zero percent change from last month  2023
+8   zero percent change from last month  2023
+9   zero percent change from last month  2023
+10          increase 1% from last month  2023
+11  zero percent change from last month  2024
+12  zero percent change from last month  2024
+13          increase 1% from last month  2024
+14          increase 1% from last month  2024
+15          increase 7% from last month  2024
+16          increase 1% from last month  2024
+17          decrease 4% from last month  2024
+18          increase 1% from last month  2024
+19          increase 1% from last month  2024
+20          increase 1% from last month  2024
+21  zero percent change from last month  2024
+22          increase 2% from last month  2024
+23          increase 1% from last month  2025
+24  zero percent change from last month  2025
+
+Function Distribution:
+                 Function Percentage
+0                 Finance        40%
+1             Engineering        25%
+2    Business Development         4%
+3  Information Technology         4%
+
+Headcount Growth with Added Employees:
+                 function num_employees percentage     growth_6m  \
+0                 Finance           797         40   4% increase
+1             Engineering           492         25   8% increase
+2    Business Development            84          4   1% decrease
+3  Information Technology            86          4   1% increase
+4                Research            62          3  13% increase
+5                   Sales            41          2  17% increase
+6              Operations            34          2   6% increase
+7                   Legal            35          2   9% increase
+8         Human Resources            43          2   5% increase
+
+      growth_1y  added_6m  added_1y
+0  12% increase        31        85
+1  11% increase        36        49
+2   6% increase         1         5
+3   9% increase         1         7
+4  32% increase         7        15
+5  41% increase         6        12
+6   6% increase         2         2
+7  21% increase         3         6
+8  16% increase         2         6
+
+New Hires:
+              date senior_hires other_hires
+0       March 2023            1          24
+1       April 2023            1          24
+2         May 2023            1          40
+3        June 2023            1         150
+4        July 2023            1          22
+5      August 2023            1          40
+6   September 2023            1          64
+7     October 2023            4          22
+8    November 2023            3          15
+9    December 2023            1          20
+10    January 2024            2          33
+11   February 2024            1          34
+12      March 2024            4          33
+13      April 2024            2          55
+14        May 2024            2          41
+15       June 2024            1         146
+16       July 2024            2          51
+17     August 2024            3          58
+18  September 2024            1          52
+19    October 2024            1          41
+20   November 2024            1          34
+21   December 2024            1          10
+22    January 2025            3          57
+23   February 2025            0          31
+24      March 2025            1           1
+
+Job Openings Distribution:
+  Function Percentage
+0  Finance        67%
+
+Job Openings Details:
+  function num_employees percentage      growth_3m      growth_6m
+0  Finance             2         67  100% increase  200% increase
+
+Job Openings Growth:
+  function      growth_3m      growth_6m
+0  Finance  100% increase  200% increase
+1    Total   50% increase   50% decrease
+
+Job Openings Plain Text:
+                 function num_employees     growth_3m     growth_6m
+0                 Finance           797   4% increase  12% increase
+1             Engineering           492   8% increase  11% increase
+2    Business Development            84   1% decrease   6% increase
+3  Information Technology            86   1% increase   9% increase
+4                Research            62  13% increase  32% increase
+5                   Sales            41  17% increase  41% increase
+6              Operations            34   6% increase   6% increase
+7                   Legal            35   9% increase  21% increase
+8         Human Resources            43   5% increase  16% increase
+
+Processing file: /Users/rogerlin/Downloads/LinkedinPremium_InsightsScraper-master/linkedin_insights_citadel.html
+
+Extracted Data from /Users/rogerlin/Downloads/LinkedinPremium_InsightsScraper-master/linkedin_insights_citadel.html:
+{
+    "employee_growth": [
+        {
+            "day_of_week": "Tuesday",
+            "month": "Feb",
+            "day": "28",
+            "time": "16:00",
+            "employee_count": 1647,
+            "growth": "",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Friday",
+            "month": "Mar",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 1651,
+            "growth": "zero percent change from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Sunday",
+            "month": "Apr",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 1679,
+            "growth": "increase 2% from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Wednesday",
+            "month": "May",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 1785,
+            "growth": "increase 6% from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Friday",
+            "month": "Jun",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 1789,
+            "growth": "zero percent change from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Monday",
+            "month": "Jul",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 1675,
+            "growth": "decrease 6% from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Thursday",
+            "month": "Aug",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 1715,
+            "growth": "increase 2% from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Saturday",
+            "month": "Sep",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 1719,
+            "growth": "zero percent change from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Tuesday",
+            "month": "Oct",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 1717,
+            "growth": "zero percent change from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Thursday",
+            "month": "Nov",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 1713,
+            "growth": "zero percent change from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Sunday",
+            "month": "Dec",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 1728,
+            "growth": "increase 1% from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Wednesday",
+            "month": "Jan",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 1729,
+            "growth": "zero percent change from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Thursday",
+            "month": "Feb",
+            "day": "29",
+            "time": "16:00",
+            "employee_count": 1737,
+            "growth": "zero percent change from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Sunday",
+            "month": "Mar",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 1759,
+            "growth": "increase 1% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Tuesday",
+            "month": "Apr",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 1785,
+            "growth": "increase 1% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Friday",
+            "month": "May",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 1909,
+            "growth": "increase 7% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Sunday",
+            "month": "Jun",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 1937,
+            "growth": "increase 1% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Wednesday",
+            "month": "Jul",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 1867,
+            "growth": "decrease 4% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Saturday",
+            "month": "Aug",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 1880,
+            "growth": "increase 1% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Monday",
+            "month": "Sep",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 1908,
+            "growth": "increase 1% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Thursday",
+            "month": "Oct",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 1929,
+            "growth": "increase 1% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Saturday",
+            "month": "Nov",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 1930,
+            "growth": "zero percent change from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Tuesday",
+            "month": "Dec",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 1966,
+            "growth": "increase 2% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Friday",
+            "month": "Jan",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 1978,
+            "growth": "increase 1% from last month",
+            "year": 2025
+        },
+        {
+            "day_of_week": "Friday",
+            "month": "Feb",
+            "day": "28",
+            "time": "16:00",
+            "employee_count": 1979,
+            "growth": "zero percent change from last month",
+            "year": 2025
+        }
+    ],
+    "function_distribution": {
+        "Finance": "40%",
+        "Engineering": "25%",
+        "Business Development": "4%",
+        "Information Technology": "4%"
+    },
+    "headcount_growth": [
+        {
+            "function": "Finance",
+            "num_employees": "797",
+            "percentage": "40",
+            "growth_6m": "4% increase",
+            "growth_1y": "12% increase",
+            "added_6m": 31,
+            "added_1y": 85
+        },
+        {
+            "function": "Engineering",
+            "num_employees": "492",
+            "percentage": "25",
+            "growth_6m": "8% increase",
+            "growth_1y": "11% increase",
+            "added_6m": 36,
+            "added_1y": 49
+        },
+        {
+            "function": "Business Development",
+            "num_employees": "84",
+            "percentage": "4",
+            "growth_6m": "1% decrease",
+            "growth_1y": "6% increase",
+            "added_6m": 1,
+            "added_1y": 5
+        },
+        {
+            "function": "Information Technology",
+            "num_employees": "86",
+            "percentage": "4",
+            "growth_6m": "1% increase",
+            "growth_1y": "9% increase",
+            "added_6m": 1,
+            "added_1y": 7
+        },
+        {
+            "function": "Research",
+            "num_employees": "62",
+            "percentage": "3",
+            "growth_6m": "13% increase",
+            "growth_1y": "32% increase",
+            "added_6m": 7,
+            "added_1y": 15
+        },
+        {
+            "function": "Sales",
+            "num_employees": "41",
+            "percentage": "2",
+            "growth_6m": "17% increase",
+            "growth_1y": "41% increase",
+            "added_6m": 6,
+            "added_1y": 12
+        },
+        {
+            "function": "Operations",
+            "num_employees": "34",
+            "percentage": "2",
+            "growth_6m": "6% increase",
+            "growth_1y": "6% increase",
+            "added_6m": 2,
+            "added_1y": 2
+        },
+        {
+            "function": "Legal",
+            "num_employees": "35",
+            "percentage": "2",
+            "growth_6m": "9% increase",
+            "growth_1y": "21% increase",
+            "added_6m": 3,
+            "added_1y": 6
+        },
+        {
+            "function": "Human Resources",
+            "num_employees": "43",
+            "percentage": "2",
+            "growth_6m": "5% increase",
+            "growth_1y": "16% increase",
+            "added_6m": 2,
+            "added_1y": 6
+        }
+    ],
+    "new_hires": [
+        {
+            "date": "March 2023",
+            "senior_hires": "1",
+            "other_hires": "24"
+        },
+        {
+            "date": "April 2023",
+            "senior_hires": "1",
+            "other_hires": "24"
+        },
+        {
+            "date": "May 2023",
+            "senior_hires": "1",
+            "other_hires": "40"
+        },
+        {
+            "date": "June 2023",
+            "senior_hires": "1",
+            "other_hires": "150"
+        },
+        {
+            "date": "July 2023",
+            "senior_hires": "1",
+            "other_hires": "22"
+        },
+        {
+            "date": "August 2023",
+            "senior_hires": "1",
+            "other_hires": "40"
+        },
+        {
+            "date": "September 2023",
+            "senior_hires": "1",
+            "other_hires": "64"
+        },
+        {
+            "date": "October 2023",
+            "senior_hires": "4",
+            "other_hires": "22"
+        },
+        {
+            "date": "November 2023",
+            "senior_hires": "3",
+            "other_hires": "15"
+        },
+        {
+            "date": "December 2023",
+            "senior_hires": "1",
+            "other_hires": "20"
+        },
+        {
+            "date": "January 2024",
+            "senior_hires": "2",
+            "other_hires": "33"
+        },
+        {
+            "date": "February 2024",
+            "senior_hires": "1",
+            "other_hires": "34"
+        },
+        {
+            "date": "March 2024",
+            "senior_hires": "4",
+            "other_hires": "33"
+        },
+        {
+            "date": "April 2024",
+            "senior_hires": "2",
+            "other_hires": "55"
+        },
+        {
+            "date": "May 2024",
+            "senior_hires": "2",
+            "other_hires": "41"
+        },
+        {
+            "date": "June 2024",
+            "senior_hires": "1",
+            "other_hires": "146"
+        },
+        {
+            "date": "July 2024",
+            "senior_hires": "2",
+            "other_hires": "51"
+        },
+        {
+            "date": "August 2024",
+            "senior_hires": "3",
+            "other_hires": "58"
+        },
+        {
+            "date": "September 2024",
+            "senior_hires": "1",
+            "other_hires": "52"
+        },
+        {
+            "date": "October 2024",
+            "senior_hires": "1",
+            "other_hires": "41"
+        },
+        {
+            "date": "November 2024",
+            "senior_hires": "1",
+            "other_hires": "34"
+        },
+        {
+            "date": "December 2024",
+            "senior_hires": "1",
+            "other_hires": "10"
+        },
+        {
+            "date": "January 2025",
+            "senior_hires": "3",
+            "other_hires": "57"
+        },
+        {
+            "date": "February 2025",
+            "senior_hires": "0",
+            "other_hires": "31"
+        },
+        {
+            "date": "March 2025",
+            "senior_hires": "1",
+            "other_hires": "1"
+        }
+    ],
+    "job_openings": {
+        "distribution": {
+            "Finance": "67%"
+        },
+        "openings_details": [
+            {
+                "function": "Finance",
+                "num_employees": "2",
+                "percentage": "67",
+                "growth_3m": "100% increase",
+                "growth_6m": "200% increase"
+            }
+        ],
+        "job_openings_growth": [
+            {
+                "function": "Finance",
+                "growth_3m": "100% increase",
+                "growth_6m": "200% increase"
+            },
+            {
+                "function": "Total",
+                "growth_3m": "50% increase",
+                "growth_6m": "50% decrease"
+            }
+        ]
+    },
+    "job_openings_plain_text": [
+        {
+            "function": "Finance",
+            "num_employees": "797",
+            "growth_3m": "4% increase",
+            "growth_6m": "12% increase"
+        },
+        {
+            "function": "Engineering",
+            "num_employees": "492",
+            "growth_3m": "8% increase",
+            "growth_6m": "11% increase"
+        },
+        {
+            "function": "Business Development",
+            "num_employees": "84",
+            "growth_3m": "1% decrease",
+            "growth_6m": "6% increase"
+        },
+        {
+            "function": "Information Technology",
+            "num_employees": "86",
+            "growth_3m": "1% increase",
+            "growth_6m": "9% increase"
+        },
+        {
+            "function": "Research",
+            "num_employees": "62",
+            "growth_3m": "13% increase",
+            "growth_6m": "32% increase"
+        },
+        {
+            "function": "Sales",
+            "num_employees": "41",
+            "growth_3m": "17% increase",
+            "growth_6m": "41% increase"
+        },
+        {
+            "function": "Operations",
+            "num_employees": "34",
+            "growth_3m": "6% increase",
+            "growth_6m": "6% increase"
+        },
+        {
+            "function": "Legal",
+            "num_employees": "35",
+            "growth_3m": "9% increase",
+            "growth_6m": "21% increase"
+        },
+        {
+            "function": "Human Resources",
+            "num_employees": "43",
+            "growth_3m": "5% increase",
+            "growth_6m": "16% increase"
+        }
+    ]
+}
+
+Employee Growth Data:
+   day_of_week month day   time  employee_count  \
+0      Tuesday   Feb  28  16:00            1647
+1       Friday   Mar  31  16:00            1651
+2       Sunday   Apr  30  16:00            1679
+3    Wednesday   May  31  16:00            1785
+4       Friday   Jun  30  16:00            1789
+5       Monday   Jul  31  16:00            1675
+6     Thursday   Aug  31  16:00            1715
+7     Saturday   Sep  30  16:00            1719
+8      Tuesday   Oct  31  16:00            1717
+9     Thursday   Nov  30  16:00            1713
+10      Sunday   Dec  31  16:00            1728
+11   Wednesday   Jan  31  16:00            1729
+12    Thursday   Feb  29  16:00            1737
+13      Sunday   Mar  31  16:00            1759
+14     Tuesday   Apr  30  16:00            1785
+15      Friday   May  31  16:00            1909
+16      Sunday   Jun  30  16:00            1937
+17   Wednesday   Jul  31  16:00            1867
+18    Saturday   Aug  31  16:00            1880
+19      Monday   Sep  30  16:00            1908
+20    Thursday   Oct  31  16:00            1929
+21    Saturday   Nov  30  16:00            1930
+22     Tuesday   Dec  31  16:00            1966
+23      Friday   Jan  31  16:00            1978
+24      Friday   Feb  28  16:00            1979
+
+                                 growth  year
+0                                        2023
+1   zero percent change from last month  2023
+2           increase 2% from last month  2023
+3           increase 6% from last month  2023
+4   zero percent change from last month  2023
+5           decrease 6% from last month  2023
+6           increase 2% from last month  2023
+7   zero percent change from last month  2023
+8   zero percent change from last month  2023
+9   zero percent change from last month  2023
+10          increase 1% from last month  2023
+11  zero percent change from last month  2024
+12  zero percent change from last month  2024
+13          increase 1% from last month  2024
+14          increase 1% from last month  2024
+15          increase 7% from last month  2024
+16          increase 1% from last month  2024
+17          decrease 4% from last month  2024
+18          increase 1% from last month  2024
+19          increase 1% from last month  2024
+20          increase 1% from last month  2024
+21  zero percent change from last month  2024
+22          increase 2% from last month  2024
+23          increase 1% from last month  2025
+24  zero percent change from last month  2025
+
+Function Distribution:
+                 Function Percentage
+0                 Finance        40%
+1             Engineering        25%
+2    Business Development         4%
+3  Information Technology         4%
+
+Headcount Growth with Added Employees:
+                 function num_employees percentage     growth_6m  \
+0                 Finance           797         40   4% increase
+1             Engineering           492         25   8% increase
+2    Business Development            84          4   1% decrease
+3  Information Technology            86          4   1% increase
+4                Research            62          3  13% increase
+5                   Sales            41          2  17% increase
+6              Operations            34          2   6% increase
+7                   Legal            35          2   9% increase
+8         Human Resources            43          2   5% increase
+
+      growth_1y  added_6m  added_1y
+0  12% increase        31        85
+1  11% increase        36        49
+2   6% increase         1         5
+3   9% increase         1         7
+4  32% increase         7        15
+5  41% increase         6        12
+6   6% increase         2         2
+7  21% increase         3         6
+8  16% increase         2         6
+
+New Hires:
+              date senior_hires other_hires
+0       March 2023            1          24
+1       April 2023            1          24
+2         May 2023            1          40
+3        June 2023            1         150
+4        July 2023            1          22
+5      August 2023            1          40
+6   September 2023            1          64
+7     October 2023            4          22
+8    November 2023            3          15
+9    December 2023            1          20
+10    January 2024            2          33
+11   February 2024            1          34
+12      March 2024            4          33
+13      April 2024            2          55
+14        May 2024            2          41
+15       June 2024            1         146
+16       July 2024            2          51
+17     August 2024            3          58
+18  September 2024            1          52
+19    October 2024            1          41
+20   November 2024            1          34
+21   December 2024            1          10
+22    January 2025            3          57
+23   February 2025            0          31
+24      March 2025            1           1
+
+Job Openings Distribution:
+  Function Percentage
+0  Finance        67%
+
+Job Openings Details:
+  function num_employees percentage      growth_3m      growth_6m
+0  Finance             2         67  100% increase  200% increase
+
+Job Openings Growth:
+  function      growth_3m      growth_6m
+0  Finance  100% increase  200% increase
+1    Total   50% increase   50% decrease
+
+Job Openings Plain Text:
+                 function num_employees     growth_3m     growth_6m
+0                 Finance           797   4% increase  12% increase
+1             Engineering           492   8% increase  11% increase
+2    Business Development            84   1% decrease   6% increase
+3  Information Technology            86   1% increase   9% increase
+4                Research            62  13% increase  32% increase
+5                   Sales            41  17% increase  41% increase
+6              Operations            34   6% increase   6% increase
+7                   Legal            35   9% increase  21% increase
+8         Human Resources            43   5% increase  16% increase
+
+Processing file: /Users/rogerlin/Downloads/LinkedinPremium_InsightsScraper-master/linkedin_insights_peak6.html
+
+Extracted Data from /Users/rogerlin/Downloads/LinkedinPremium_InsightsScraper-master/linkedin_insights_peak6.html:
+{
+    "employee_growth": [
+        {
+            "day_of_week": "Tuesday",
+            "month": "Feb",
+            "day": "28",
+            "time": "16:00",
+            "employee_count": 1063,
+            "growth": "",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Friday",
+            "month": "Mar",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 1063,
+            "growth": "zero percent change from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Sunday",
+            "month": "Apr",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 1064,
+            "growth": "zero percent change from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Wednesday",
+            "month": "May",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 1131,
+            "growth": "increase 6% from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Friday",
+            "month": "Jun",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 1129,
+            "growth": "zero percent change from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Monday",
+            "month": "Jul",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 1109,
+            "growth": "decrease 2% from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Thursday",
+            "month": "Aug",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 1119,
+            "growth": "increase 1% from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Saturday",
+            "month": "Sep",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 1115,
+            "growth": "zero percent change from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Tuesday",
+            "month": "Oct",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 1114,
+            "growth": "zero percent change from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Thursday",
+            "month": "Nov",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 1108,
+            "growth": "decrease 1% from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Sunday",
+            "month": "Dec",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 1110,
+            "growth": "zero percent change from last month",
+            "year": 2023
+        },
+        {
+            "day_of_week": "Wednesday",
+            "month": "Jan",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 1103,
+            "growth": "decrease 1% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Thursday",
+            "month": "Feb",
+            "day": "29",
+            "time": "16:00",
+            "employee_count": 1108,
+            "growth": "zero percent change from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Sunday",
+            "month": "Mar",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 1113,
+            "growth": "zero percent change from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Tuesday",
+            "month": "Apr",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 1124,
+            "growth": "increase 1% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Friday",
+            "month": "May",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 1153,
+            "growth": "increase 3% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Sunday",
+            "month": "Jun",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 1166,
+            "growth": "increase 1% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Wednesday",
+            "month": "Jul",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 1159,
+            "growth": "decrease 1% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Saturday",
+            "month": "Aug",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 1180,
+            "growth": "increase 2% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Monday",
+            "month": "Sep",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 1194,
+            "growth": "increase 1% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Thursday",
+            "month": "Oct",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 1213,
+            "growth": "increase 2% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Saturday",
+            "month": "Nov",
+            "day": "30",
+            "time": "16:00",
+            "employee_count": 1217,
+            "growth": "zero percent change from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Tuesday",
+            "month": "Dec",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 1231,
+            "growth": "increase 1% from last month",
+            "year": 2024
+        },
+        {
+            "day_of_week": "Friday",
+            "month": "Jan",
+            "day": "31",
+            "time": "16:00",
+            "employee_count": 1236,
+            "growth": "zero percent change from last month",
+            "year": 2025
+        },
+        {
+            "day_of_week": "Friday",
+            "month": "Feb",
+            "day": "28",
+            "time": "16:00",
+            "employee_count": 1236,
+            "growth": "zero percent change from last month",
+            "year": 2025
+        }
+    ],
+    "function_distribution": {
+        "Engineering": "25%",
+        "Finance": "15%",
+        "Information Technology": "13%",
+        "Operations": "7%"
+    },
+    "headcount_growth": [
+        {
+            "function": "Engineering",
+            "num_employees": "304",
+            "percentage": "25",
+            "growth_6m": "5% increase",
+            "growth_1y": "11% increase",
+            "added_6m": 14,
+            "added_1y": 30
+        },
+        {
+            "function": "Finance",
+            "num_employees": "185",
+            "percentage": "15",
+            "growth_6m": "6% increase",
+            "growth_1y": "9% increase",
+            "added_6m": 10,
+            "added_1y": 15
+        },
+        {
+            "function": "Information Technology",
+            "num_employees": "165",
+            "percentage": "13",
+            "growth_6m": "13% increase",
+            "growth_1y": "20% increase",
+            "added_6m": 19,
+            "added_1y": 28
+        },
+        {
+            "function": "Operations",
+            "num_employees": "84",
+            "percentage": "7",
+            "growth_6m": "5% increase",
+            "growth_1y": "15% increase",
+            "added_6m": 4,
+            "added_1y": 11
+        },
+        {
+            "function": "Business Development",
+            "num_employees": "59",
+            "percentage": "5",
+            "growth_6m": "4% increase",
+            "growth_1y": "16% increase",
+            "added_6m": 2,
+            "added_1y": 8
+        },
+        {
+            "function": "Product Management",
+            "num_employees": "65",
+            "percentage": "5",
+            "growth_6m": "14% increase",
+            "growth_1y": "33% increase",
+            "added_6m": 8,
+            "added_1y": 16
+        },
+        {
+            "function": "Human Resources",
+            "num_employees": "57",
+            "percentage": "5",
+            "growth_6m": "10% increase",
+            "growth_1y": "10% increase",
+            "added_6m": 5,
+            "added_1y": 5
+        },
+        {
+            "function": "Sales",
+            "num_employees": "43",
+            "percentage": "3",
+            "growth_6m": "4% decrease",
+            "growth_1y": "19% increase",
+            "added_6m": 2,
+            "added_1y": 7
+        },
+        {
+            "function": "Research",
+            "num_employees": "35",
+            "percentage": "3",
+            "growth_6m": "15% decrease",
+            "growth_1y": "15% decrease",
+            "added_6m": 5,
+            "added_1y": 5
+        },
+        {
+            "function": "Accounting",
+            "num_employees": "33",
+            "percentage": "3",
+            "growth_6m": "0%No change",
+            "growth_1y": "6% increase",
+            "added_6m": 0,
+            "added_1y": 2
+        },
+        {
+            "function": "Legal",
+            "num_employees": "43",
+            "percentage": "3",
+            "growth_6m": "10% increase",
+            "growth_1y": "10% increase",
+            "added_6m": 4,
+            "added_1y": 4
+        },
+        {
+            "function": "Program and Project Management",
+            "num_employees": "29",
+            "percentage": "2",
+            "growth_6m": "12% increase",
+            "growth_1y": "3% decrease",
+            "added_6m": 3,
+            "added_1y": 1
+        },
+        {
+            "function": "Administrative",
+            "num_employees": "27",
+            "percentage": "2",
+            "growth_6m": "13% increase",
+            "growth_1y": "29% increase",
+            "added_6m": 3,
+            "added_1y": 6
+        }
+    ],
+    "new_hires": [
+        {
+            "date": "March 2023",
+            "senior_hires": "0",
+            "other_hires": "3"
+        },
+        {
+            "date": "April 2023",
+            "senior_hires": "0",
+            "other_hires": "6"
+        },
+        {
+            "date": "May 2023",
+            "senior_hires": "0",
+            "other_hires": "18"
+        },
+        {
+            "date": "June 2023",
+            "senior_hires": "2",
+            "other_hires": "32"
+        },
+        {
+            "date": "July 2023",
+            "senior_hires": "1",
+            "other_hires": "7"
+        },
+        {
+            "date": "August 2023",
+            "senior_hires": "0",
+            "other_hires": "16"
+        },
+        {
+            "date": "September 2023",
+            "senior_hires": "0",
+            "other_hires": "3"
+        },
+        {
+            "date": "October 2023",
+            "senior_hires": "0",
+            "other_hires": "4"
+        },
+        {
+            "date": "November 2023",
+            "senior_hires": "0",
+            "other_hires": "5"
+        },
+        {
+            "date": "December 2023",
+            "senior_hires": "0",
+            "other_hires": "1"
+        },
+        {
+            "date": "January 2024",
+            "senior_hires": "0",
+            "other_hires": "6"
+        },
+        {
+            "date": "February 2024",
+            "senior_hires": "0",
+            "other_hires": "1"
+        },
+        {
+            "date": "March 2024",
+            "senior_hires": "0",
+            "other_hires": "4"
+        },
+        {
+            "date": "April 2024",
+            "senior_hires": "0",
+            "other_hires": "3"
+        },
+        {
+            "date": "May 2024",
+            "senior_hires": "1",
+            "other_hires": "18"
+        },
+        {
+            "date": "June 2024",
+            "senior_hires": "0",
+            "other_hires": "9"
+        },
+        {
+            "date": "July 2024",
+            "senior_hires": "0",
+            "other_hires": "3"
+        },
+        {
+            "date": "August 2024",
+            "senior_hires": "1",
+            "other_hires": "16"
+        },
+        {
+            "date": "September 2024",
+            "senior_hires": "0",
+            "other_hires": "11"
+        },
+        {
+            "date": "October 2024",
+            "senior_hires": "0",
+            "other_hires": "5"
+        },
+        {
+            "date": "November 2024",
+            "senior_hires": "0",
+            "other_hires": "5"
+        },
+        {
+            "date": "December 2024",
+            "senior_hires": "0",
+            "other_hires": "2"
+        },
+        {
+            "date": "January 2025",
+            "senior_hires": "0",
+            "other_hires": "3"
+        },
+        {
+            "date": "February 2025",
+            "senior_hires": "0",
+            "other_hires": "4"
+        }
+    ],
+    "job_openings": {
+        "distribution": {
+            "Finance": "23%",
+            "Accounting": "15%",
+            "Education": "15%",
+            "Administrative": "8%"
+        },
+        "openings_details": [
+            {
+                "function": "Finance",
+                "num_employees": "3",
+                "percentage": "23",
+                "growth_3m": "50% increase",
+                "growth_6m": "200% increase"
+            },
+            {
+                "function": "Accounting",
+                "num_employees": "2",
+                "percentage": "15",
+                "growth_3m": "33% decrease",
+                "growth_6m": "100% increase"
+            },
+            {
+                "function": "Education",
+                "num_employees": "2",
+                "percentage": "15",
+                "growth_3m": "100% increase",
+                "growth_6m": "100% increase"
+            },
+            {
+                "function": "Administrative",
+                "num_employees": "1",
+                "percentage": "8",
+                "growth_3m": "100% increase",
+                "growth_6m": "50% decrease"
+            },
+            {
+                "function": "Engineering",
+                "num_employees": "1",
+                "percentage": "8",
+                "growth_3m": "0%No change",
+                "growth_6m": "0%No change"
+            },
+            {
+                "function": "Human Resources",
+                "num_employees": "1",
+                "percentage": "8",
+                "growth_3m": "100% increase",
+                "growth_6m": "100% increase"
+            },
+            {
+                "function": "Information Technology",
+                "num_employees": "1",
+                "percentage": "8",
+                "growth_3m": "0%No change",
+                "growth_6m": "75% decrease"
+            },
+            {
+                "function": "Legal",
+                "num_employees": "1",
+                "percentage": "8",
+                "growth_3m": "50% decrease",
+                "growth_6m": "100% increase"
+            }
+        ],
+        "job_openings_growth": [
+            {
+                "function": "Finance",
+                "growth_3m": "50% increase",
+                "growth_6m": "200% increase"
+            },
+            {
+                "function": "Accounting",
+                "growth_3m": "33% decrease",
+                "growth_6m": "100% increase"
+            },
+            {
+                "function": "Education",
+                "growth_3m": "100% increase",
+                "growth_6m": "100% increase"
+            },
+            {
+                "function": "Administrative",
+                "growth_3m": "100% increase",
+                "growth_6m": "50% decrease"
+            },
+            {
+                "function": "Total",
+                "growth_3m": "30% increase",
+                "growth_6m": "30% increase"
+            }
+        ]
+    },
+    "job_openings_plain_text": [
+        {
+            "function": "Engineering",
+            "num_employees": "304",
+            "growth_3m": "5% increase",
+            "growth_6m": "11% increase"
+        },
+        {
+            "function": "Finance",
+            "num_employees": "185",
+            "growth_3m": "6% increase",
+            "growth_6m": "9% increase"
+        },
+        {
+            "function": "Information Technology",
+            "num_employees": "165",
+            "growth_3m": "13% increase",
+            "growth_6m": "20% increase"
+        },
+        {
+            "function": "Operations",
+            "num_employees": "84",
+            "growth_3m": "5% increase",
+            "growth_6m": "15% increase"
+        },
+        {
+            "function": "Business Development",
+            "num_employees": "59",
+            "growth_3m": "4% increase",
+            "growth_6m": "16% increase"
+        },
+        {
+            "function": "Product Management",
+            "num_employees": "65",
+            "growth_3m": "14% increase",
+            "growth_6m": "33% increase"
+        },
+        {
+            "function": "Human Resources",
+            "num_employees": "57",
+            "growth_3m": "10% increase",
+            "growth_6m": "10% increase"
+        },
+        {
+            "function": "Sales",
+            "num_employees": "43",
+            "growth_3m": "4% decrease",
+            "growth_6m": "19% increase"
+        },
+        {
+            "function": "Research",
+            "num_employees": "35",
+            "growth_3m": "15% decrease",
+            "growth_6m": "15% decrease"
+        },
+        {
+            "function": "Accounting",
+            "num_employees": "33",
+            "growth_3m": "0%No change",
+            "growth_6m": "6% increase"
+        },
+        {
+            "function": "Legal",
+            "num_employees": "43",
+            "growth_3m": "10% increase",
+            "growth_6m": "10% increase"
+        },
+        {
+            "function": "Program and Project Management",
+            "num_employees": "29",
+            "growth_3m": "12% increase",
+            "growth_6m": "3% decrease"
+        },
+        {
+            "function": "Administrative",
+            "num_employees": "27",
+            "growth_3m": "13% increase",
+            "growth_6m": "29% increase"
+        }
+    ]
+}
+
+Employee Growth Data:
+   day_of_week month day   time  employee_count  \
+0      Tuesday   Feb  28  16:00            1063
+1       Friday   Mar  31  16:00            1063
+2       Sunday   Apr  30  16:00            1064
+3    Wednesday   May  31  16:00            1131
+4       Friday   Jun  30  16:00            1129
+5       Monday   Jul  31  16:00            1109
+6     Thursday   Aug  31  16:00            1119
+7     Saturday   Sep  30  16:00            1115
+8      Tuesday   Oct  31  16:00            1114
+9     Thursday   Nov  30  16:00            1108
+10      Sunday   Dec  31  16:00            1110
+11   Wednesday   Jan  31  16:00            1103
+12    Thursday   Feb  29  16:00            1108
+13      Sunday   Mar  31  16:00            1113
+14     Tuesday   Apr  30  16:00            1124
+15      Friday   May  31  16:00            1153
+16      Sunday   Jun  30  16:00            1166
+17   Wednesday   Jul  31  16:00            1159
+18    Saturday   Aug  31  16:00            1180
+19      Monday   Sep  30  16:00            1194
+20    Thursday   Oct  31  16:00            1213
+21    Saturday   Nov  30  16:00            1217
+22     Tuesday   Dec  31  16:00            1231
+23      Friday   Jan  31  16:00            1236
+24      Friday   Feb  28  16:00            1236
+
+                                 growth  year
+0                                        2023
+1   zero percent change from last month  2023
+2   zero percent change from last month  2023
+3           increase 6% from last month  2023
+4   zero percent change from last month  2023
+5           decrease 2% from last month  2023
+6           increase 1% from last month  2023
+7   zero percent change from last month  2023
+8   zero percent change from last month  2023
+9           decrease 1% from last month  2023
+10  zero percent change from last month  2023
+11          decrease 1% from last month  2024
+12  zero percent change from last month  2024
+13  zero percent change from last month  2024
+14          increase 1% from last month  2024
+15          increase 3% from last month  2024
+16          increase 1% from last month  2024
+17          decrease 1% from last month  2024
+18          increase 2% from last month  2024
+19          increase 1% from last month  2024
+20          increase 2% from last month  2024
+21  zero percent change from last month  2024
+22          increase 1% from last month  2024
+23  zero percent change from last month  2025
+24  zero percent change from last month  2025
+
+Function Distribution:
+                 Function Percentage
+0             Engineering        25%
+1                 Finance        15%
+2  Information Technology        13%
+3              Operations         7%
+
+Headcount Growth with Added Employees:
+                          function num_employees percentage     growth_6m  \
+0                      Engineering           304         25   5% increase
+1                          Finance           185         15   6% increase
+2           Information Technology           165         13  13% increase
+3                       Operations            84          7   5% increase
+4             Business Development            59          5   4% increase
+5               Product Management            65          5  14% increase
+6                  Human Resources            57          5  10% increase
+7                            Sales            43          3   4% decrease
+8                         Research            35          3  15% decrease
+9                       Accounting            33          3   0%No change
+10                           Legal            43          3  10% increase
+11  Program and Project Management            29          2  12% increase
+12                  Administrative            27          2  13% increase
+
+       growth_1y  added_6m  added_1y
+0   11% increase        14        30
+1    9% increase        10        15
+2   20% increase        19        28
+3   15% increase         4        11
+4   16% increase         2         8
+5   33% increase         8        16
+6   10% increase         5         5
+7   19% increase         2         7
+8   15% decrease         5         5
+9    6% increase         0         2
+10  10% increase         4         4
+11   3% decrease         3         1
+12  29% increase         3         6
+
+New Hires:
+              date senior_hires other_hires
+0       March 2023            0           3
+1       April 2023            0           6
+2         May 2023            0          18
+3        June 2023            2          32
+4        July 2023            1           7
+5      August 2023            0          16
+6   September 2023            0           3
+7     October 2023            0           4
+8    November 2023            0           5
+9    December 2023            0           1
+10    January 2024            0           6
+11   February 2024            0           1
+12      March 2024            0           4
+13      April 2024            0           3
+14        May 2024            1          18
+15       June 2024            0           9
+16       July 2024            0           3
+17     August 2024            1          16
+18  September 2024            0          11
+19    October 2024            0           5
+20   November 2024            0           5
+21   December 2024            0           2
+22    January 2025            0           3
+23   February 2025            0           4
+
+Job Openings Distribution:
+         Function Percentage
+0         Finance        23%
+1      Accounting        15%
+2       Education        15%
+3  Administrative         8%
+
+Job Openings Details:
+                 function num_employees percentage      growth_3m  \
+0                 Finance             3         23   50% increase
+1              Accounting             2         15   33% decrease
+2               Education             2         15  100% increase
+3          Administrative             1          8  100% increase
+4             Engineering             1          8    0%No change
+5         Human Resources             1          8  100% increase
+6  Information Technology             1          8    0%No change
+7                   Legal             1          8   50% decrease
+
+       growth_6m
+0  200% increase
+1  100% increase
+2  100% increase
+3   50% decrease
+4    0%No change
+5  100% increase
+6   75% decrease
+7  100% increase
+
+Job Openings Growth:
+         function      growth_3m      growth_6m
+0         Finance   50% increase  200% increase
+1      Accounting   33% decrease  100% increase
+2       Education  100% increase  100% increase
+3  Administrative  100% increase   50% decrease
+4           Total   30% increase   30% increase
+
+Job Openings Plain Text:
+                          function num_employees     growth_3m     growth_6m
+0                      Engineering           304   5% increase  11% increase
+1                          Finance           185   6% increase   9% increase
+2           Information Technology           165  13% increase  20% increase
+3                       Operations            84   5% increase  15% increase
+4             Business Development            59   4% increase  16% increase
+5               Product Management            65  14% increase  33% increase
+6                  Human Resources            57  10% increase  10% increase
+7                            Sales            43   4% decrease  19% increase
+8                         Research            35  15% decrease  15% decrease
+9                       Accounting            33   0%No change   6% increase
+10                           Legal            43  10% increase  10% increase
+11  Program and Project Management            29  12% increase   3% decrease
+12                  Administrative            27  13% increase  29% increase
