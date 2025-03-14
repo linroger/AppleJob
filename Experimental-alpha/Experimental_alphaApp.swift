@@ -1373,6 +1373,10 @@ fileprivate var CityCoordinateDictionary: [String: CLLocationCoordinate2D] = [
 // MARK: - LinkedIn Automation
 // --------------------------------------------------
 
+// --------------------------------------------------
+// MARK: - LinkedIn Automation
+// --------------------------------------------------
+
 class LinkedInAutomationManager: NSObject, WKNavigationDelegate, WKUIDelegate {
     private var webView: WKWebView!
     private var url: URL
@@ -1424,7 +1428,7 @@ class LinkedInAutomationManager: NSObject, WKNavigationDelegate, WKUIDelegate {
             }
         }
         else if let currentURL = webView.url?.absoluteString, currentURL.contains(url.absoluteString) {
-            // Once on the target insights page, we can parse or wait a moment
+            // Once on the target insights page, wait a moment before extracting HTML
             if !isDownloading {
                 isDownloading = true
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { [weak self] in
@@ -1461,9 +1465,8 @@ class LinkedInAutomationManager: NSObject, WKNavigationDelegate, WKUIDelegate {
     private func navigateToInsightsPage() {
         // Once logged in, load the actual insights page
         self.navigationCompletedHandler = { [weak self] in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-                self?.isDownloading = false
-            }
+            // Remove the unrelated data processing code
+            self?.isDownloading = false
         }
         webView.load(URLRequest(url: url))
     }
@@ -3190,7 +3193,7 @@ struct ParsedJobDescriptionResult {
 class JobViewModel: ObservableObject {
     @Published var companyName: String = ""
     @Published var jobTitle: String = ""
-    @Published var status: JobStatus = .interested
+    @Published var status: JobStatus = .applied
     @Published var dateOfApplication: Date = Date()
     @Published var location: String = ""
     @Published var linkToJob: String = ""
@@ -3202,7 +3205,7 @@ class JobViewModel: ObservableObject {
     @Published var salaryString: String = ""
     @Published var salaryMin: Double? = nil
     @Published var salaryMax: Double? = nil
-    @Published var jobType: JobType = .none
+    @Published var jobType: JobType = .fullTime
     @Published var desiredSkillText: String = ""
     @Published var selectedDesiredSkills: [String] = []
     @Published var availableSkillSuggestions: [String] = []
@@ -3508,7 +3511,7 @@ class JobViewModel: ObservableObject {
     func reset() {
         companyName = ""
         jobTitle = ""
-        status = .interested
+        status = .applied
         dateOfApplication = Date()
         location = ""
         linkToJob = ""
@@ -3518,7 +3521,7 @@ class JobViewModel: ObservableObject {
         salaryString = ""
         salaryMin = nil
         salaryMax = nil
-        jobType = .none
+        jobType = .fullTime
         selectedDesiredSkills = []
         jobDeadline = nil
         validateInputs()
@@ -7151,7 +7154,7 @@ struct LinkedInInsightsTestView: View {
 
 // MARK: - LinkedIn Insights Visualization
 // --------------------------------------------------
-// filename.swift
+
 //
 // MARK: - LinkedInInsights Visualization
 // --------------------------------------------------

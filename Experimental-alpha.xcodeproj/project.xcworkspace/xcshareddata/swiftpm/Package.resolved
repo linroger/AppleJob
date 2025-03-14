@@ -1,5 +1,5 @@
 {
-  "originHash" : "0cb84ce4b17935b4ccf910dd5c0498046f91971715511f50a55013147930bd87",
+  "originHash" : "cd176f6f764437729776e5cf9e1a363ba453bc5093ea0ef6d6290632e512a68c",
   "pins" : [
     {
       "identity" : "collectionconcurrencykit",
@@ -17,6 +17,15 @@
       "state" : {
         "revision" : "729e01bc9b9dab466ac85f21fb9ee2bc1c61b258",
         "version" : "1.8.4"
+      }
+    },
+    {
+      "identity" : "extensionkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/johnbean393/ExtensionKit.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "b7dc5839ec39dd1deef59b54798a7da1bed31557"
       }
     },
     {

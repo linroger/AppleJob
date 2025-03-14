@@ -35,6 +35,7 @@
 		A798DCE22D71B66200A13C2A /* Experimental-alpha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Experimental-alpha.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A798DCF52D71B66300A13C2A /* Experimental-alphaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Experimental-alphaTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A798DCFF2D71B66300A13C2A /* Experimental-alphaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Experimental-alphaUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7B348CA2D8470F400300E58 /* SwiftChartsExample.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = SwiftChartsExample.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -53,11 +54,42 @@
 			);
 			target = A798DCFE2D71B66300A13C2A /* Experimental-alphaUITests */;
 		};
+		A7B348AD2D844E1100300E58 /* Exceptions for "Experimental-alpha" folder in "Experimental-alpha" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Experimental_alphaApp.swift,
+				VisualizingYourAppsData/.gitignore,
+				VisualizingYourAppsData/Configuration/SampleCode.xcconfig,
+				VisualizingYourAppsData/LICENSE/LICENSE.txt,
+				VisualizingYourAppsData/README.md,
+				"VisualizingYourAppsData/SwiftChartsExample Watch App/Assets.xcassets",
+				"VisualizingYourAppsData/SwiftChartsExample Watch App/ContentView.swift",
+				"VisualizingYourAppsData/SwiftChartsExample Watch App/Preview Content/Preview Assets.xcassets",
+				VisualizingYourAppsData/SwiftChartsExample/Assets.xcassets,
+				VisualizingYourAppsData/SwiftChartsExample/Charts/Data.swift,
+				VisualizingYourAppsData/SwiftChartsExample/Charts/LocationsDetails.swift,
+				VisualizingYourAppsData/SwiftChartsExample/Charts/LocationsOverview.swift,
+				VisualizingYourAppsData/SwiftChartsExample/Charts/PlotAreaStyling.swift,
+				VisualizingYourAppsData/SwiftChartsExample/Charts/SalesDetails.swift,
+				VisualizingYourAppsData/SwiftChartsExample/Charts/SalesMinMaxAverage.swift,
+				VisualizingYourAppsData/SwiftChartsExample/Charts/SalesOverview.swift,
+				VisualizingYourAppsData/SwiftChartsExample/Charts/StylesDetails.swift,
+				VisualizingYourAppsData/SwiftChartsExample/Charts/StylesOverview.swift,
+				VisualizingYourAppsData/SwiftChartsExample/ContentView.swift,
+				"VisualizingYourAppsData/SwiftChartsExample/Preview Content/Preview Assets.xcassets",
+				VisualizingYourAppsData/SwiftChartsExample/SwiftChartsExampleApp.swift,
+				VisualizingYourAppsData/SwiftChartsExample/Utils.swift,
+			);
+			target = A798DCE12D71B66200A13C2A /* Experimental-alpha */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		A798DCE42D71B66200A13C2A /* Experimental-alpha */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				A7B348AD2D844E1100300E58 /* Exceptions for "Experimental-alpha" folder in "Experimental-alpha" target */,
+			);
 			path = "Experimental-alpha";
 			sourceTree = "<group>";
 		};
@@ -125,6 +157,13 @@
 				A798DCE22D71B66200A13C2A /* Experimental-alpha.app */,
 				A798DCF52D71B66300A13C2A /* Experimental-alphaTests.xctest */,
 				A798DCFF2D71B66300A13C2A /* Experimental-alphaUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A7B348CC2D8470F400300E58 /* Products */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -243,10 +282,17 @@
 				A798DD1A2D71B6CA00A13C2A /* XCRemoteSwiftPackageReference "swift-markdown-ui" */,
 				A798DD1D2D71B6D800A13C2A /* XCRemoteSwiftPackageReference "SwiftUI-ContributionChart" */,
 				A798DD202D71B6EC00A13C2A /* XCRemoteSwiftPackageReference "SwiftUIKit" */,
+				A72972052D83FD9D004A688D /* XCRemoteSwiftPackageReference "ExtensionKit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = A798DCE32D71B66200A13C2A /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = A7B348CC2D8470F400300E58 /* Products */;
+					ProjectRef = A7B348CA2D8470F400300E58 /* SwiftChartsExample.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				A798DCE12D71B66200A13C2A /* Experimental-alpha */,
@@ -644,6 +690,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		A72972052D83FD9D004A688D /* XCRemoteSwiftPackageReference "ExtensionKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/johnbean393/ExtensionKit.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		A798DD122D71B6AB00A13C2A /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/SwiftLint.git";

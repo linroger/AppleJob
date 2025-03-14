@@ -33,13 +33,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>8408</string>
+					<string>8411</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>8408</string>
+					<string>8411</string>
 					<key>Timestamp</key>
-					<string>763492503.0714</string>
+					<string>763639714.326689</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -76,13 +76,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>8408</string>
+					<string>8411</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>8408</string>
+					<string>8411</string>
 					<key>Timestamp</key>
-					<string>763492503.071421</string>
+					<string>763639714.3266619</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -120,13 +120,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>8408</string>
+					<string>8411</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>8408</string>
+					<string>8411</string>
 					<key>Timestamp</key>
-					<string>763492503.07139</string>
+					<string>763639714.326676</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -164,13 +164,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>8408</string>
+					<string>8411</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>8408</string>
+					<string>8411</string>
 					<key>Timestamp</key>
-					<string>763492503.071408</string>
+					<string>763639714.3266931</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -208,13 +208,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>8408</string>
+					<string>8411</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>8408</string>
+					<string>8411</string>
 					<key>Timestamp</key>
-					<string>763492503.071395</string>
+					<string>763639714.3266799</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -251,13 +251,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>8408</string>
+					<string>8411</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>8408</string>
+					<string>8411</string>
 					<key>Timestamp</key>
-					<string>763492503.071413</string>
+					<string>763639714.326672</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -295,13 +295,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>8408</string>
+					<string>8411</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>8408</string>
+					<string>8411</string>
 					<key>Timestamp</key>
-					<string>763492503.071385</string>
+					<string>763639714.326685</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -339,13 +339,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>8408</string>
+					<string>8411</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>8408</string>
+					<string>8411</string>
 					<key>Timestamp</key>
-					<string>763492503.071417</string>
+					<string>763639714.326668</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -382,13 +382,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>8408</string>
+					<string>8411</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>8408</string>
+					<string>8411</string>
 					<key>Timestamp</key>
-					<string>763492503.071404</string>
+					<string>763639714.326697</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -426,13 +426,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>8387</string>
+					<string>8390</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>8386</string>
+					<string>8389</string>
 					<key>Timestamp</key>
-					<string>763492503.0713561</string>
+					<string>763639714.3267061</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -462,6 +462,54 @@ struct ContentView_Previews: PreviewProvider {
 			</dict>
 			<key>title</key>
 			<string>// MARK: - Preview
+</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>6757</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>6756</string>
+					<key>Timestamp</key>
+					<string>763639714.326702</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>Experimental-alpha/Experimental_alphaApp.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>
+</string>
+				<key>leading</key>
+				<string>
+
+</string>
+				<key>trailing</key>
+				<string>// MARK: - LinkedInInsightsView
+
+
+</string>
+			</dict>
+			<key>title</key>
+			<string>// MARK: - LinkedIn Insights View
 </string>
 			<key>type</key>
 			<string>bookmark</string>
