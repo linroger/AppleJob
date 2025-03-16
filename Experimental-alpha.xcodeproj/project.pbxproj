@@ -32,6 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A75266712D8708EE00E4ED7C /* SwiftChartsExample.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = SwiftChartsExample.xcodeproj; sourceTree = "<group>"; };
 		A798DCE22D71B66200A13C2A /* Experimental-alpha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Experimental-alpha.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A798DCF52D71B66300A13C2A /* Experimental-alphaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Experimental-alphaTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A798DCFF2D71B66300A13C2A /* Experimental-alphaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Experimental-alphaUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,7 +58,6 @@
 		A7B348AD2D844E1100300E58 /* Exceptions for "Experimental-alpha" folder in "Experimental-alpha" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Experimental_alphaApp.swift,
 				VisualizingYourAppsData/.gitignore,
 				VisualizingYourAppsData/Configuration/SampleCode.xcconfig,
 				VisualizingYourAppsData/LICENSE/LICENSE.txt,
@@ -141,6 +141,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A75266772D8708EE00E4ED7C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		A798DCD92D71B66200A13C2A = {
 			isa = PBXGroup;
 			children = (
@@ -291,6 +298,10 @@
 				{
 					ProductGroup = A7B348CC2D8470F400300E58 /* Products */;
 					ProjectRef = A7B348CA2D8470F400300E58 /* SwiftChartsExample.xcodeproj */;
+				},
+				{
+					ProductGroup = A75266772D8708EE00E4ED7C /* Products */;
+					ProjectRef = A75266712D8708EE00E4ED7C /* SwiftChartsExample.xcodeproj */;
 				},
 			);
 			projectRoot = "";

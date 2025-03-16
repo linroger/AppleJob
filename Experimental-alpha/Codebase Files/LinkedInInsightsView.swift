@@ -41,7 +41,8 @@ struct LinkedInInsightsView: View {
         VStack(alignment: .leading, spacing: 15) {
             HStack {
                 Text("LinkedIn Insights: \(insightsData.companyName ?? "")")
-                    .font(.headline)
+                    .font(.title3)
+                    .fontWeight(.semibold)
                 Spacer()
                 if let importDate = insightsData.importDate {
                     Text("Imported: \(formatDate(importDate))")
@@ -49,6 +50,7 @@ struct LinkedInInsightsView: View {
                         .foregroundColor(.secondary)
                 }
             }
+            .padding(.horizontal, 4)
 
             TabView(selection: $selectedTab) {
                 // Growth
@@ -78,10 +80,15 @@ struct LinkedInInsightsView: View {
             }
             .frame(height: 350)
             .padding(.vertical)
+            .cornerRadius(10)
         }
-        .padding()
+        .padding(16)
         .background(Color(nsColor: .controlBackgroundColor))
         .cornerRadius(10)
+        .overlay(
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(Color.gray.opacity(0.2), lineWidth: 1)
+        )
     }
 
     private var employeeGrowthView: some View {
@@ -107,9 +114,28 @@ struct LinkedInInsightsView: View {
                     }
                     .chartYScale(domain: .automatic(includesZero: false))
                     .chartYAxis {
-                        AxisMarks(position: .leading)
+                        AxisMarks(position: .leading) {
+                            AxisValueLabel()
+                            AxisGridLine()
+                            AxisTick()
+                        }
+                    }
+                    .chartXAxis {
+                        AxisMarks(values: .stride(by: .month)) {
+                            AxisValueLabel(format: .dateTime.month().year())
+                            AxisGridLine()
+                            AxisTick()
+                        }
                     }
                     .frame(height: chartHeight)
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 8)
+                    .background(Color(nsColor: .windowBackgroundColor).opacity(0.5))
+                    .cornerRadius(10)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.gray.opacity(0.2), lineWidth: 1)
+                    )
                 }
             } else {
                 Text("No employee growth data available").foregroundColor(.secondary)
@@ -127,10 +153,18 @@ struct LinkedInInsightsView: View {
                         .foregroundColor(.secondary)
                 }
             }
+            .padding(.horizontal, 16)
+            .padding(.vertical, 12)
+            .background(Color(nsColor: .windowBackgroundColor).opacity(0.5))
+            .cornerRadius(8)
+            .overlay(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(Color.gray.opacity(0.2), lineWidth: 1)
+            )
             .padding(.top, 8)
         }
         .padding()
-        .background(Color.secondary.opacity(0.05))
+        .background(Color(nsColor: .windowBackgroundColor).opacity(0.2))
         .cornerRadius(10)
     }
 
@@ -143,30 +177,39 @@ struct LinkedInInsightsView: View {
                     FunctionDistributionChart(distribution: insightsData.functionDistribution)
                 } else {
                     // Fallback grid layout for earlier macOS versions
-                    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())]) {
-                        ForEach(insightsData.functionDistribution.sorted { $0.value > $1.value }, id: \.key) { (funcName, pct) in
-                            HStack {
-                                Text(funcName)
-                                    .lineLimit(1)
-                                    .fontWeight(.medium)
-                                Spacer()
-                                Text(pct)
-                                    .bold()
-                                    .foregroundColor(.blue)
+                    ScrollView {
+                        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())]) {
+                            ForEach(insightsData.functionDistribution.sorted { $0.value > $1.value }, id: \.key) { (funcName, pct) in
+                                HStack {
+                                    Text(funcName)
+                                        .lineLimit(1)
+                                        .fontWeight(.medium)
+                                    Spacer()
+                                    Text(pct)
+                                        .bold()
+                                        .foregroundColor(.blue)
+                                }
+                                .padding(.vertical, 8)
+                                .padding(.horizontal, 12)
+                                .background(Color(nsColor: .windowBackgroundColor).opacity(0.5))
+                                .cornerRadius(8)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .stroke(Color.gray.opacity(0.2), lineWidth: 1)
+                                )
                             }
-                            .padding(.vertical, 6)
-                            .padding(.horizontal, 8)
-                            .background(Color.secondary.opacity(0.05))
-                            .cornerRadius(6)
                         }
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 8)
                     }
+                    .frame(height: 280)
                 }
             } else {
                 Text("No composition data available").foregroundColor(.secondary)
             }
         }
         .padding()
-        .background(Color.secondary.opacity(0.05))
+        .background(Color(nsColor: .windowBackgroundColor).opacity(0.2))
         .cornerRadius(10)
     }
 
@@ -183,27 +226,58 @@ struct LinkedInInsightsView: View {
                         VStack(alignment: .leading, spacing: 10) {
                             ForEach(insightsData.newHires.sorted { $0.date > $1.date }) { hire in
                                 HStack {
-                                    Text(hire.date).frame(width: 100, alignment: .leading)
+                                    Text(hire.date)
+                                        .frame(width: 100, alignment: .leading)
+                                        .fontWeight(.medium)
                                     Divider()
                                     VStack(alignment: .leading) {
                                         if hire.seniorHires != "0" {
-                                            Text("Senior: \(hire.seniorHires)").foregroundColor(.blue)
+                                            HStack {
+                                                Circle()
+                                                    .fill(Color.orange)
+                                                    .frame(width: 8, height: 8)
+                                                Text("Senior: \(hire.seniorHires)")
+                                                    .foregroundColor(.orange)
+                                            }
                                         }
-                                        Text("Other: \(hire.otherHires)").foregroundColor(.green)
+                                        HStack {
+                                            Circle()
+                                                .fill(Color.green)
+                                                .frame(width: 8, height: 8)
+                                            Text("Other: \(hire.otherHires)")
+                                                .foregroundColor(.green)
+                                        }
+                                        
+                                        if let senior = Int(hire.seniorHires), let other = Int(hire.otherHires) {
+                                            Text("Total: \(senior + other)")
+                                                .font(.caption)
+                                                .foregroundColor(.secondary)
+                                                .padding(.top, 2)
+                                        }
                                     }
                                 }
-                                .padding(.vertical, 5)
-                                Divider()
+                                .padding(.vertical, 8)
+                                .padding(.horizontal, 12)
+                                .background(Color(nsColor: .windowBackgroundColor).opacity(0.5))
+                                .cornerRadius(8)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .stroke(Color.gray.opacity(0.2), lineWidth: 1)
+                                )
+                                .padding(.bottom, 4)
                             }
                         }
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 8)
                     }
+                    .frame(height: 280)
                 }
             } else {
                 Text("No hiring data available").foregroundColor(.secondary)
             }
         }
         .padding()
-        .background(Color.secondary.opacity(0.05))
+        .background(Color(nsColor: .windowBackgroundColor).opacity(0.2))
         .cornerRadius(10)
     }
 
@@ -227,22 +301,37 @@ struct LinkedInInsightsView: View {
                                         Text("Count: \(detail.numEmployees)")
                                             .font(.subheadline)
                                         Spacer()
-                                        Text("3m: \(detail.growth3m)")
-                                            .foregroundColor(detail.growth3m.contains("increase") ? .green : detail.growth3m.contains("decrease") ? .red : .primary)
+                                        HStack(spacing: 4) {
+                                            Image(systemName: detail.growth3m.contains("increase") ? "arrow.up" : detail.growth3m.contains("decrease") ? "arrow.down" : "minus")
+                                                .font(.caption2)
+                                            Text("3m: \(cleanDuplicatedText(detail.growth3m))")
+                                        }
+                                        .foregroundColor(detail.growth3m.contains("increase") ? .green : detail.growth3m.contains("decrease") ? .red : .primary)
                                         Spacer()
-                                        Text("6m: \(detail.growth6m)")
-                                            .foregroundColor(detail.growth6m.contains("increase") ? .green : detail.growth6m.contains("decrease") ? .red : .primary)
+                                        HStack(spacing: 4) {
+                                            Image(systemName: detail.growth6m.contains("increase") ? "arrow.up" : detail.growth6m.contains("decrease") ? "arrow.down" : "minus")
+                                                .font(.caption2)
+                                            Text("6m: \(cleanDuplicatedText(detail.growth6m))")
+                                        }
+                                        .foregroundColor(detail.growth6m.contains("increase") ? .green : detail.growth6m.contains("decrease") ? .red : .primary)
                                     }
                                     .font(.caption)
                                 }
-                                .padding(.vertical, 5)
-                                .padding(.horizontal, 8)
-                                .background(Color.secondary.opacity(0.05))
+                                .padding(.vertical, 8)
+                                .padding(.horizontal, 12)
+                                .background(Color(nsColor: .windowBackgroundColor).opacity(0.5))
                                 .cornerRadius(8)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .stroke(Color.gray.opacity(0.2), lineWidth: 1)
+                                )
                                 .padding(.bottom, 4)
                             }
                         }
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 8)
                     }
+                    .frame(height: 280)
                 }
             } else if !insightsData.jobOpeningsPlainText.isEmpty {
                 if #available(macOS 13.0, *) {
@@ -261,29 +350,44 @@ struct LinkedInInsightsView: View {
                                         Text("Count: \(detail.numEmployees)")
                                             .font(.subheadline)
                                         Spacer()
-                                        Text("3m: \(detail.growth3m)")
-                                            .foregroundColor(detail.growth3m.contains("increase") ? .green : detail.growth3m.contains("decrease") ? .red : .primary)
+                                        HStack(spacing: 4) {
+                                            Image(systemName: detail.growth3m.contains("increase") ? "arrow.up" : detail.growth3m.contains("decrease") ? "arrow.down" : "minus")
+                                                .font(.caption2)
+                                            Text("3m: \(cleanDuplicatedText(detail.growth3m))")
+                                        }
+                                        .foregroundColor(detail.growth3m.contains("increase") ? .green : detail.growth3m.contains("decrease") ? .red : .primary)
                                         Spacer()
-                                        Text("6m: \(detail.growth6m)")
-                                            .foregroundColor(detail.growth6m.contains("increase") ? .green : detail.growth6m.contains("decrease") ? .red : .primary)
+                                        HStack(spacing: 4) {
+                                            Image(systemName: detail.growth6m.contains("increase") ? "arrow.up" : detail.growth6m.contains("decrease") ? "arrow.down" : "minus")
+                                                .font(.caption2)
+                                            Text("6m: \(cleanDuplicatedText(detail.growth6m))")
+                                        }
+                                        .foregroundColor(detail.growth6m.contains("increase") ? .green : detail.growth6m.contains("decrease") ? .red : .primary)
                                     }
                                     .font(.caption)
                                 }
-                                .padding(.vertical, 5)
-                                .padding(.horizontal, 8)
-                                .background(Color.secondary.opacity(0.05))
+                                .padding(.vertical, 8)
+                                .padding(.horizontal, 12)
+                                .background(Color(nsColor: .windowBackgroundColor).opacity(0.5))
                                 .cornerRadius(8)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .stroke(Color.gray.opacity(0.2), lineWidth: 1)
+                                )
                                 .padding(.bottom, 4)
                             }
                         }
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 8)
                     }
+                    .frame(height: 280)
                 }
             } else {
                 Text("No job openings data available").foregroundColor(.secondary)
             }
         }
         .padding()
-        .background(Color.secondary.opacity(0.05))
+        .background(Color(nsColor: .windowBackgroundColor).opacity(0.2))
         .cornerRadius(10)
     }
 
@@ -678,21 +782,29 @@ struct EmployeeGrowthChart: View {
             .chartXAxis {
                 AxisMarks(values: .stride(by: .month)) {
                     AxisValueLabel(format: .dateTime.month().year())
+                    AxisGridLine()
+                    AxisTick()
                 }
             }
             .chartYAxis {
                 AxisMarks(position: .leading) {
                     AxisValueLabel()
                     AxisGridLine()
+                    AxisTick()
                 }
             }
             .chartYScale(domain: yDomainRange)
             .chartXScale(domain: visibleDomain)
             .chartXSelection(value: $selectedDate)
             .frame(height: 300)
-            .padding(.horizontal)
+            .padding(.horizontal, 16) // Standardized horizontal padding
+            .padding(.vertical, 8)    // Standardized vertical padding
             .background(Color(nsColor: .windowBackgroundColor).opacity(0.5))
             .cornerRadius(10)
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.gray.opacity(0.2), lineWidth: 1)
+            )
             .chartGesture { proxy in
                 DragGesture(minimumDistance: 0)
                     .onChanged { proxy.selectXValue(at: $0.location.x) }
@@ -793,16 +905,27 @@ struct FunctionDistributionChart: View {
                 AxisMarks {
                     AxisValueLabel()
                         .font(.system(size: 10))
+                    AxisGridLine()
+                    AxisTick()
                 }
             }
             .chartYAxis {
                 AxisMarks {
                     AxisValueLabel()
                     AxisGridLine()
+                    AxisTick()
                 }
             }
             .chartYScale(domain: 0...100)
             .frame(height: 300)
+            .padding(.horizontal, 16)
+            .padding(.vertical, 8)
+            .background(Color(nsColor: .windowBackgroundColor).opacity(0.5))
+            .cornerRadius(10)
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.gray.opacity(0.2), lineWidth: 1)
+            )
             .chartGesture { proxy in
                 DragGesture(minimumDistance: 0)
                     .onChanged { proxy.selectXValue(at: $0.location.x) }
@@ -872,6 +995,8 @@ struct FunctionDistributionChart: View {
             .chartAngleSelection(value: $hoveredSector)
             .chartLegend(position: .bottom)
             .frame(height: 320)
+            .padding(.horizontal, 16)
+            .padding(.vertical, 8)
             .chartBackground { chartProxy in
                 GeometryReader { geometry in
                     if let plotFrame = chartProxy.plotFrame {
@@ -901,6 +1026,12 @@ struct FunctionDistributionChart: View {
                     }
                 }
             }
+            .background(Color(nsColor: .windowBackgroundColor).opacity(0.5))
+            .cornerRadius(10)
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.gray.opacity(0.2), lineWidth: 1)
+            )
         }
         .padding(.horizontal)
     }
@@ -930,6 +1061,14 @@ struct FunctionDistributionChart: View {
             .chartXAxis(.hidden)
             .chartLegend(position: .bottom)
             .frame(height: 300)
+            .padding(.horizontal, 16) 
+            .padding(.vertical, 8)
+            .background(Color(nsColor: .windowBackgroundColor).opacity(0.5))
+            .cornerRadius(10)
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.gray.opacity(0.2), lineWidth: 1)
+            )
         }
         .padding(.horizontal)
     }
@@ -1048,18 +1187,29 @@ struct NewHiresChart: View {
                 "Senior Hires": Color.orange,
                 "Other Hires": Color.green
             ])
-            .chartLegend(position: .top)
+            .chartLegend(position: .bottom)
             .chartXAxis {
                 AxisMarks(values: .stride(by: .month)) {
                     AxisValueLabel(format: .dateTime.month().year())
+                    AxisGridLine()
+                    AxisTick()
                 }
             }
             .chartYAxis {
                 AxisMarks {
                     AxisValueLabel()
                     AxisGridLine()
+                    AxisTick()
                 }
             }
+            .padding(.horizontal, 16)
+            .padding(.vertical, 8)
+            .background(Color(nsColor: .windowBackgroundColor).opacity(0.5))
+            .cornerRadius(10)
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.gray.opacity(0.2), lineWidth: 1)
+            )
         }
         .frame(height: 350)
     }
@@ -1168,7 +1318,7 @@ struct NewHiresChart: View {
             }
             // Configure chart styling and behavior
             .chartForegroundStyleScale(["Senior": Color.orange, "Other": Color.green])
-            .chartLegend(position: .top) {
+            .chartLegend(position: .bottom) {
                 HStack(spacing: 20) {
                     HStack {
                         RoundedRectangle(cornerRadius: 4)
@@ -1189,15 +1339,26 @@ struct NewHiresChart: View {
             .chartXAxis {
                 AxisMarks(values: .stride(by: .month)) {
                     AxisValueLabel(format: .dateTime.month().year())
+                    AxisGridLine()
+                    AxisTick()
                 }
             }
             .chartYAxis {
                 AxisMarks {
                     AxisValueLabel()
                     AxisGridLine()
+                    AxisTick()
                 }
             }
             .frame(height: 300)
+            .padding(.horizontal, 16)
+            .padding(.vertical, 8)
+            .background(Color(nsColor: .windowBackgroundColor).opacity(0.5))
+            .cornerRadius(10)
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.gray.opacity(0.2), lineWidth: 1)
+            )
         }
         .frame(height: 350)
     }
@@ -1213,6 +1374,10 @@ struct NewHiresChart: View {
             .padding(.horizontal)
             .background(Color(nsColor: .windowBackgroundColor).opacity(0.5))
             .cornerRadius(10)
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.gray.opacity(0.2), lineWidth: 1)
+            )
 
             if let selectedDate = selectedDate,
                let hire = validHires.first(where: {
@@ -1250,7 +1415,14 @@ struct NewHiresChart: View {
                     Spacer()
                 }
                 .padding()
-                .background(RoundedRectangle(cornerRadius: 8).fill(Color(nsColor: .windowBackgroundColor).opacity(0.5)))
+                .background(
+                    RoundedRectangle(cornerRadius: 8)
+                        .fill(Color(nsColor: .windowBackgroundColor).opacity(0.5))
+                )
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(Color.gray.opacity(0.2), lineWidth: 1)
+                )
                 .padding([.horizontal, .bottom])
             }
         }
@@ -1422,7 +1594,7 @@ struct JobOpeningsDistributionChart: View {
                         innerRadius: .ratio(0.65),
                         angularInset: 4
                     )
-                    .cornerRadius(5)
+                    .cornerRadius(8)  // Standardized corner radius
                     .foregroundStyle(by: .value("Function", item.key))
                     .opacity(hoveredSector == nil || hoveredSector == item.key ? 1 : 0.7)
                 }
@@ -1468,14 +1640,17 @@ struct JobOpeningsDistributionChart: View {
             .chartLegend(position: .bottom, alignment: .center, spacing: 8)
             .chartAngleSelection(value: $hoveredSector)
             .frame(height: 250)
+            .padding(.horizontal, 16)
+            .padding(.vertical, 8)
         }
         .padding()
-        .background(
+        .background(Color(nsColor: .windowBackgroundColor).opacity(0.5))
+        .cornerRadius(10)
+        .overlay(
             RoundedRectangle(cornerRadius: 10)
-                .fill(.background)
-                .shadow(radius: 3)
+                .stroke(Color.gray.opacity(0.2), lineWidth: 1)
         )
-                .padding(.bottom)
+        .padding(.bottom)
     }
 }
 
@@ -1487,7 +1662,7 @@ struct JobOpeningsDetailsTableView: View {
         return details.sorted(using: sortOrder)
     }
 
-            // Proper Table implementation with sortable columns and alternating rows
+    // Proper Table implementation with sortable columns and alternating rows
     var body: some View {
         Table(sortedDetails, sortOrder: $sortOrder) {
             TableColumn("Function", value: \.function) { item in
@@ -1495,6 +1670,7 @@ struct JobOpeningsDetailsTableView: View {
                     .lineLimit(2)
                     .padding(.vertical, 8)
                     .padding(.horizontal, 4)
+                    .font(.system(size: 12))
             }
             .width(min: 150)
 
@@ -1503,6 +1679,7 @@ struct JobOpeningsDetailsTableView: View {
                     .frame(maxWidth: .infinity, alignment: .trailing)
                     .padding(.vertical, 8)
                     .padding(.horizontal, 4)
+                    .font(.system(size: 12))
             }
             .width(min: 80)
 
@@ -1511,11 +1688,160 @@ struct JobOpeningsDetailsTableView: View {
                     .frame(maxWidth: .infinity, alignment: .trailing)
                     .padding(.vertical, 8)
                     .padding(.horizontal, 4)
+                    .font(.system(size: 12))
             }
             .width(min: 100)
 
             TableColumn("3m Growth") { item in
-                Text(cleanDuplicatedText(item.growth3m))
+                HStack(spacing: 4) {
+                    Image(systemName: item.growth3m.contains("increase") ? "arrow.up" : item.growth3m.contains("decrease") ? "arrow.down" : "minus")
+                        .font(.caption2)
+                    Text(cleanDuplicatedText(item.growth3m))
+                        .font(.system(size: 12))
+                }
+                .foregroundColor(
+                    item.growth3m.contains("increase")
+                        ? .green
+                        : item.growth3m.contains("decrease")
+                        ? .red
+                        : .primary
+                )
+                .frame(maxWidth: .infinity, alignment: .center)
+                .padding(.vertical, 8)
+                .padding(.horizontal, 4)
+            }
+            .width(min: 120)
+
+            TableColumn("6m Growth") { item in
+                HStack(spacing: 4) {
+                    Image(systemName: item.growth6m.contains("increase") ? "arrow.up" : item.growth6m.contains("decrease") ? "arrow.down" : "minus")
+                        .font(.caption2)
+                    Text(cleanDuplicatedText(item.growth6m))
+                        .font(.system(size: 12))
+                }
+                .foregroundColor(
+                    item.growth6m.contains("increase")
+                        ? .green
+                        : item.growth6m.contains("decrease")
+                        ? .red
+                        : .primary
+                )
+                .frame(maxWidth: .infinity, alignment: .center)
+                .padding(.vertical, 8)
+                .padding(.horizontal, 4)
+            }
+            .width(min: 120)
+        }
+        .alternatingRowBackgrounds(.enabled)
+        .font(.subheadline)
+        .foregroundStyle(.primary)
+        .frame(minHeight: min(CGFloat(details.count * 44 + 44), 400))
+        .background(Color(nsColor: .windowBackgroundColor).opacity(0.5))
+        .cornerRadius(10)
+        .overlay(
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(Color.gray.opacity(0.2), lineWidth: 1)
+        )
+        .padding(.horizontal, 16)
+        .padding(.vertical, 8)
+    }
+}
+
+struct JobOpeningsGrowthTable: View {
+    let growth: [JobOpeningGrowth]
+    @State private var sortOrder: [KeyPathComparator<JobOpeningGrowth>] = [.init(\.function, order: .forward)]
+
+    var body: some View {
+        Table(growth, sortOrder: $sortOrder) {
+            TableColumn("Function", value: \.function) { item in
+                Text(item.function)
+                    .lineLimit(2)
+                    .padding(.vertical, 8)
+                    .padding(.horizontal, 4)
+                    .font(.system(size: 12))
+            }.width(min: 150)
+            TableColumn("3m Growth") { item in
+                HStack(spacing: 4) {
+                    Image(systemName: item.growth3m.contains("increase") ? "arrow.up" : item.growth3m.contains("decrease") ? "arrow.down" : "minus")
+                        .font(.caption2)
+                    Text(cleanDuplicatedText(item.growth3m))
+                        .font(.system(size: 12))
+                }
+                .foregroundColor(
+                    item.growth3m.contains("increase")
+                        ? .green
+                        : item.growth3m.contains("decrease")
+                        ? .red
+                        : .primary
+                )
+                .frame(maxWidth: .infinity, alignment: .center)
+                .padding(.vertical, 8)
+                .padding(.horizontal, 4)
+            }.width(min: 120)
+            TableColumn("6m Growth") { item in
+                HStack(spacing: 4) {
+                    Image(systemName: item.growth6m.contains("increase") ? "arrow.up" : item.growth6m.contains("decrease") ? "arrow.down" : "minus")
+                        .font(.caption2)
+                    Text(cleanDuplicatedText(item.growth6m))
+                        .font(.system(size: 12))
+                }
+                .foregroundColor(
+                    item.growth6m.contains("increase")
+                        ? .green
+                        : item.growth6m.contains("decrease")
+                        ? .red
+                        : .primary
+                )
+                .frame(maxWidth: .infinity, alignment: .center)
+                .padding(.vertical, 8)
+                .padding(.horizontal, 4)
+            }.width(min: 120)
+        }
+        .alternatingRowBackgrounds(.enabled)
+        .frame(height: CGFloat(min(growth.count * 45 + 40, 350)))
+        .background(Color(nsColor: .windowBackgroundColor).opacity(0.5))
+        .cornerRadius(10)
+        .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.gray.opacity(0.2), lineWidth: 1))
+        .font(.subheadline)
+        .foregroundStyle(.primary)
+        .headerProminence(.increased)
+        .padding(.horizontal, 16)
+        .padding(.vertical, 8)
+    }
+}
+
+struct JobOpeningsBottomTable: View {
+    let plainText: [JobOpeningPlainText]
+    @State private var sortOrder: [KeyPathComparator<JobOpeningPlainText>] = [.init(\.function, order: .forward)]
+
+    var body: some View {
+        VStack(spacing: 20) {
+            Table(plainText, sortOrder: $sortOrder) {
+                TableColumn("Function", value: \.function) { item in
+                    Text(item.function)
+                        .lineLimit(2)
+                        .padding(.vertical, 8)
+                        .padding(.horizontal, 4)
+                        .font(.system(size: 12))
+                }
+                .width(min: 150)
+
+                TableColumn("Employees", value: \.numEmployees) { item in
+                    Text(item.numEmployees)
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                        .padding(.vertical, 8)
+                        .padding(.horizontal, 4)
+                        .font(.system(size: 12))
+                }
+                .width(min: 100)
+
+                TableColumn("3m Growth") { item in
+                    HStack(spacing: 4) {
+                        Image(systemName: item.growth3m.contains("increase") ? "arrow.up" : item.growth3m.contains("decrease") ? "arrow.down" : "minus")
+                            .font(.caption2)
+                        Text(cleanDuplicatedText(item.growth3m))
+                            .font(.system(size: 12))
+                    }
                     .foregroundColor(
                         item.growth3m.contains("increase")
                             ? .green
@@ -1526,11 +1852,16 @@ struct JobOpeningsDetailsTableView: View {
                     .frame(maxWidth: .infinity, alignment: .center)
                     .padding(.vertical, 8)
                     .padding(.horizontal, 4)
-            }
-            .width(min: 120)
+                }
+                .width(min: 120)
 
-            TableColumn("6m Growth") { item in
-                Text(cleanDuplicatedText(item.growth6m))
+                TableColumn("6m Growth") { item in
+                    HStack(spacing: 4) {
+                        Image(systemName: item.growth6m.contains("increase") ? "arrow.up" : item.growth6m.contains("decrease") ? "arrow.down" : "minus")
+                            .font(.caption2)
+                        Text(cleanDuplicatedText(item.growth6m))
+                            .font(.system(size: 12))
+                    }
                     .foregroundColor(
                         item.growth6m.contains("increase")
                             ? .green
@@ -1541,127 +1872,6 @@ struct JobOpeningsDetailsTableView: View {
                     .frame(maxWidth: .infinity, alignment: .center)
                     .padding(.vertical, 8)
                     .padding(.horizontal, 4)
-            }
-            .width(min: 120)
-        }
-        .alternatingRowBackgrounds(.enabled)
-        .font(.subheadline)
-        .foregroundStyle(.primary)
-        .frame(minHeight: min(CGFloat(details.count * 44 + 44), 400))
-        .background(
-            RoundedRectangle(cornerRadius: 10)
-                .fill(.background)
-                .shadow(radius: 3)
-        )
-        .overlay(
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(Color.gray.opacity(0.3), lineWidth: 1)
-        )
-        .padding()
-    }
-}
-
-struct JobOpeningsGrowthTable: View {
-    let growth: [JobOpeningGrowth]
-    @State private var sortOrder: [KeyPathComparator<JobOpeningGrowth>] = [.init(\.function, order: .forward)]
-
-    private func growthTrend(_ growth: String) -> String {
-        if growth.lowercased().contains("increase") { return "↑" }
-        else if growth.lowercased().contains("decrease") { return "↓" }
-        else { return "−" }
-    }
-
-    var body: some View {
-        Table(growth, sortOrder: $sortOrder) {
-            TableColumn("Function", value: \.function) { item in
-                Text(item.function).lineLimit(2)
-            }.width(min: 150)
-            TableColumn("3m Growth") { item in
-                HStack(spacing: 4) {
-                    Text(growthTrend(item.growth3m))
-                        .font(.caption)
-                        .foregroundColor(item.growth3m.lowercased().contains("increase") ? .green : item.growth3m.lowercased().contains("decrease") ? .red : .gray)
-                    Text(cleanDuplicatedText(item.growth3m))
-                        .foregroundColor(item.growth3m.lowercased().contains("increase") ? .green : item.growth3m.lowercased().contains("decrease") ? .red : .primary)
-                }
-                .frame(maxWidth: .infinity, alignment: .center)
-            }.width(min: 120)
-            TableColumn("6m Growth") { item in
-                HStack(spacing: 4) {
-                    Text(growthTrend(item.growth6m))
-                        .font(.caption)
-                        .foregroundColor(item.growth6m.lowercased().contains("increase") ? .green : item.growth6m.lowercased().contains("decrease") ? .red : .gray)
-                    Text(cleanDuplicatedText(item.growth6m))
-                        .foregroundColor(item.growth6m.lowercased().contains("increase") ? .green : item.growth6m.lowercased().contains("decrease") ? .red : .primary)
-                }
-                .frame(maxWidth: .infinity, alignment: .center)
-            }.width(min: 120)
-        }
-        .tableStyle(.inset(alternatesRowBackgrounds: true))
-        .frame(height: CGFloat(min(growth.count * 45 + 40, 350)))
-        .background(Color(nsColor: .windowBackgroundColor).opacity(0.5))
-        .cornerRadius(10)
-        .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.gray.opacity(0.3), lineWidth: 1))
-        .font(.subheadline)
-        .foregroundStyle(.primary)
-        .headerProminence(.increased)
-    }
-}
-
-struct JobOpeningsBottomTable: View {
-    let plainText: [JobOpeningPlainText]
-    @State private var sortOrder: [KeyPathComparator<JobOpeningPlainText>] = [.init(\.function, order: .forward)]
-
-    private func growthTrend(_ growth: String) -> String {
-        if growth.lowercased().contains("increase") { return "↑" }
-        else if growth.lowercased().contains("decrease") { return "↓" }
-        else { return "−" }
-    }
-
-    var body: some View {
-        VStack(spacing: 20) {
-            Table(plainText, sortOrder: $sortOrder) {
-                TableColumn("Function", value: \.function) { item in
-                    Text(item.function)
-                        .lineLimit(2)
-                        .padding(.vertical, 8)
-                        .padding(.horizontal, 4)
-                }
-                .width(min: 150)
-
-                TableColumn("Employees", value: \.numEmployees) { item in
-                    Text(item.numEmployees)
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                        .padding(.vertical, 8)
-                        .padding(.horizontal, 4)
-                }
-                .width(min: 100)
-
-                TableColumn("3m Growth") { item in
-                    HStack(spacing: 4) {
-                        Text(growthTrend(item.growth3m))
-                            .font(.caption)
-                            .foregroundColor(item.growth3m.lowercased().contains("increase") ? .green : item.growth3m.lowercased().contains("decrease") ? .red : .gray)
-                        Text(cleanDuplicatedText(item.growth3m))
-                            .foregroundColor(item.growth3m.lowercased().contains("increase") ? .green : item.growth3m.lowercased().contains("decrease") ? .red : .primary)
-                    }
-                    .frame(maxWidth: .infinity, alignment: .center)
-                    .padding(.vertical, 8)
-                    .padding(.horizontal, 4)
-                }
-                .width(min: 120)
-
-                TableColumn("6m Growth") { item in
-                    HStack(spacing: 4) {
-                        Text(growthTrend(item.growth6m))
-                            .font(.caption)
-                            .foregroundColor(item.growth6m.lowercased().contains("increase") ? .green : item.growth6m.lowercased().contains("decrease") ? .red : .gray)
-                        Text(cleanDuplicatedText(item.growth6m))
-                            .foregroundColor(item.growth6m.lowercased().contains("increase") ? .green : item.growth6m.lowercased().contains("decrease") ? .red : .primary)
-                    }
-                    .frame(maxWidth: .infinity, alignment: .center)
-                    .padding(.vertical, 8)
-                    .padding(.horizontal, 4)
                 }
                 .width(min: 120)
             }
@@ -1669,18 +1879,15 @@ struct JobOpeningsBottomTable: View {
             .font(.subheadline)
             .foregroundStyle(.primary)
             .frame(minHeight: min(CGFloat(plainText.count * 44 + 44), 400))
-            .background(
+            .background(Color(nsColor: .windowBackgroundColor).opacity(0.5))
+            .cornerRadius(10)
+            .overlay(
                 RoundedRectangle(cornerRadius: 10)
-                    .fill(.background)
-                    .shadow(radius: 3)
+                    .stroke(Color.gray.opacity(0.2), lineWidth: 1)
             )
-            .padding(.bottom)
+            .padding(.horizontal, 16)
+            .padding(.vertical, 8)
         }
-        .padding()
-        .overlay(
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(Color.gray.opacity(0.3), lineWidth: 1)
-        )
     }
 }
 

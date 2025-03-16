@@ -38,6 +38,7 @@ import Foundation
 struct ContentView: View {
     @EnvironmentObject var jobStore: JobStore
     @EnvironmentObject var docStore: DocumentStore
+    @EnvironmentObject var noteStore: NoteStore
     @EnvironmentObject var importExportHelper: ImportExportHelper
     @Binding var showSettings: Bool
     @State private var selectedSection: ViewSection = .jobDetails
@@ -64,7 +65,7 @@ struct ContentView: View {
                     }
                 }
                 .pickerStyle(.segmented)
-                .frame(width: 300)
+                .frame(width: 400)
 
                 Spacer()
 
@@ -122,6 +123,21 @@ struct ContentView: View {
             JobSidebarView(searchText: $searchText)
         case .documents:
             DocumentsSidebarView()
+        case .notes:
+            // Notes don't need a sidebar, so we'll show an empty view with a title
+            VStack(alignment: .leading) {
+                Text("Notes")
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .padding()
+                
+                Text("Use the main panel to view, create and manage your notes.")
+                    .font(.body)
+                    .foregroundColor(.secondary)
+                    .padding(.horizontal)
+                
+                Spacer()
+            }
         }
     }
 
@@ -141,6 +157,8 @@ struct ContentView: View {
         case .documents:
             DocumentsMainView()
                 .id(docStore.selectedDocument?.id) // Force view refresh when selected document changes
+        case .notes:
+            NotesView()
         }
     }
 }
@@ -229,13 +247,14 @@ class ImportExportHelper: NSObject, ObservableObject {
 struct AppleJobApp: App {
     @StateObject private var jobStore: JobStore
     @StateObject private var docStore: DocumentStore
+    @StateObject private var noteStore: NoteStore
     @StateObject private var importExportHelper = ImportExportHelper()
     private let container: ModelContainer
 
     init() {
         do {
             container = try ModelContainer(
-                for: SwiftDataJobApplication.self, SwiftDataJobDocument.self,
+                for: SwiftDataJobApplication.self, SwiftDataJobDocument.self, SwiftDataNote.self,
                 configurations: ModelConfiguration()
             )
         } catch {
@@ -246,12 +265,14 @@ struct AppleJobApp: App {
         let stores = AppleJobApp.createStores(using: container)
         _docStore = StateObject(wrappedValue: stores.documentStore)
         _jobStore = StateObject(wrappedValue: stores.jobStore)
+        _noteStore = StateObject(wrappedValue: stores.noteStore)
     }
 
-    private static func createStores(using container: ModelContainer) -> (documentStore: DocumentStore, jobStore: JobStore) {
+    private static func createStores(using container: ModelContainer) -> (documentStore: DocumentStore, jobStore: JobStore, noteStore: NoteStore) {
         let documentStore = DocumentStore(modelContext: container.mainContext)
         let jobStore = JobStore(documentStore: documentStore)
-        return (documentStore, jobStore)
+        let noteStore = NoteStore(modelContext: container.mainContext)
+        return (documentStore, jobStore, noteStore)
     }
 
     // Settings sheet state
@@ -262,12 +283,14 @@ struct AppleJobApp: App {
             ContentView(showSettings: $showSettings)
                 .environmentObject(jobStore)
                 .environmentObject(docStore)
+                .environmentObject(noteStore)
                 .environmentObject(importExportHelper)
 
                 .sheet(isPresented: $showSettings) {
                     SettingsView(importExportHelper: importExportHelper)
                         .environmentObject(jobStore)
                         .environmentObject(docStore)
+                        .environmentObject(noteStore)
                 }
         }
         .modelContainer(container) // Attach ModelContainer to WindowGroup

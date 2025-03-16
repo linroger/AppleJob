@@ -294,6 +294,7 @@ enum ViewSection: String, CaseIterable, CaseNameDisplayable {
     case jobDetails = "Job Details"
     case stats = "Stats"
     case documents = "Documents"
+    case notes = "Notes"
 }
 
 // --------------------------------------------------
@@ -808,6 +809,105 @@ struct SalaryRangeItem: Identifiable {
     let minSalary: Double
     let maxSalary: Double
     let orderIndex: Int
+}
+
+// --------------------------------------------------
+// MARK: - Model: Note
+// --------------------------------------------------
+@Model
+class SwiftDataNote {
+    var id: UUID
+    var content: String
+    var creationDate: Date
+    var lastModifiedDate: Date
+    var order: Int
+    
+    init(
+        id: UUID = UUID(),
+        content: String,
+        creationDate: Date = Date(),
+        lastModifiedDate: Date = Date(),
+        order: Int
+    ) {
+        self.id = id
+        self.content = content
+        self.creationDate = creationDate
+        self.lastModifiedDate = lastModifiedDate
+        self.order = order
+    }
+    
+    func toNote() -> Note {
+        return Note(
+            id: id,
+            content: content,
+            creationDate: creationDate,
+            lastModifiedDate: lastModifiedDate,
+            order: order
+        )
+    }
+}
+
+struct Note: Identifiable, Codable, Equatable, Hashable {
+    var id: UUID
+    var content: String
+    var creationDate: Date
+    var lastModifiedDate: Date
+    var order: Int
+    
+    init(
+        id: UUID = UUID(),
+        content: String,
+        creationDate: Date = Date(),
+        lastModifiedDate: Date = Date(),
+        order: Int
+    ) {
+        self.id = id
+        self.content = content
+        self.creationDate = creationDate
+        self.lastModifiedDate = lastModifiedDate 
+        self.order = order
+    }
+    
+    // Dictionary representation for backup
+    func toDictionary() -> [String: Any] {
+        let isoFormatter = ISO8601DateFormatter()
+        return [
+            "id": id.uuidString,
+            "content": content,
+            "creationDate": isoFormatter.string(from: creationDate),
+            "lastModifiedDate": isoFormatter.string(from: lastModifiedDate),
+            "order": order
+        ]
+    }
+    
+    static func fromDictionary(_ dict: [String: Any]) -> Note? {
+        let isoFormatter = ISO8601DateFormatter()
+        guard let idStr = dict["id"] as? String,
+              let id = UUID(uuidString: idStr),
+              let content = dict["content"] as? String,
+              let creationDateStr = dict["creationDate"] as? String,
+              let creationDate = isoFormatter.date(from: creationDateStr),
+              let lastModifiedDateStr = dict["lastModifiedDate"] as? String,
+              let lastModifiedDate = isoFormatter.date(from: lastModifiedDateStr),
+              let order = dict["order"] as? Int
+        else { return nil }
+        
+        return Note(
+            id: id,
+            content: content,
+            creationDate: creationDate,
+            lastModifiedDate: lastModifiedDate,
+            order: order
+        )
+    }
+    
+    static func == (lhs: Note, rhs: Note) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
 }
 
 //-----------------------------------------------------------------------------------------------------//

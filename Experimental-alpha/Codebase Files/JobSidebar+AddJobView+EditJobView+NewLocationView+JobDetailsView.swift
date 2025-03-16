@@ -1,3 +1,6 @@
+// -----------------------------------------------------------------------------
+// MARK: - JobSidebar+AddJobView+EditJobView+NewLocationView+JobDetailsView
+// -----------------------------------------------------------------------------
 //
 //  JobSidebarView.swift
 //  Experimental-alpha
@@ -343,14 +346,28 @@ struct AddJobView: View {
                         switch result {
                         case .success(let urls):
                             if let url = urls.first {
-                                parseLinkedInInsights(from: url) { parseResult in
-                                    switch parseResult {
-                                    case .success(let data):
+                                do {
+                                    // 1. Security-scoped resource handling
+                                    guard url.startAccessingSecurityScopedResource() else { 
+                                        throw NSError(domain: "LinkedInInsightsParser", code: 1, 
+                                                    userInfo: [NSLocalizedDescriptionKey: "Failed to access the security scoped resource"])
+                                    }
+                                    
+                                    defer { url.stopAccessingSecurityScopedResource() }
+                                    
+                                    // 2. Read the HTML content
+                                    let html = try String(contentsOf: url, encoding: .utf8)
+                                    
+                                    // 3. Parse the data
+                                    let data = try extractData(from: html)
+                                    
+                                    // 4. Update the ViewModel
+                                    DispatchQueue.main.async {
                                         linkedInInsightsData = data
                                         viewModel.linkedInInsightsData = data
-                                    case .failure(let error):
-                                        print("Failed to parse LinkedIn Insights: \(error)")
                                     }
+                                } catch {
+                                    print("Failed to parse LinkedIn Insights: \(error)")
                                 }
                             }
                         case .failure(let error):
@@ -681,14 +698,28 @@ struct EditJobView: View {
                         switch result {
                         case .success(let urls):
                             if let url = urls.first {
-                                parseLinkedInInsights(from: url) { parseResult in
-                                    switch parseResult {
-                                    case .success(let data):
+                                do {
+                                    // 1. Security-scoped resource handling
+                                    guard url.startAccessingSecurityScopedResource() else { 
+                                        throw NSError(domain: "LinkedInInsightsParser", code: 1, 
+                                                    userInfo: [NSLocalizedDescriptionKey: "Failed to access the security scoped resource"])
+                                    }
+                                    
+                                    defer { url.stopAccessingSecurityScopedResource() }
+                                    
+                                    // 2. Read the HTML content
+                                    let html = try String(contentsOf: url, encoding: .utf8)
+                                    
+                                    // 3. Parse the data
+                                    let data = try extractData(from: html)
+                                    
+                                    // 4. Update the ViewModel
+                                    DispatchQueue.main.async {
                                         linkedInInsightsData = data
                                         viewModel.linkedInInsightsData = data
-                                    case .failure(let error):
-                                        print("Failed to parse LinkedIn Insights: \(error)")
                                     }
+                                } catch {
+                                    print("Failed to parse LinkedIn Insights: \(error)")
                                 }
                             }
                         case .failure(let error):
@@ -1172,12 +1203,24 @@ struct JobDetailView: View {
             case .success(let urls):
                 if let url = urls.first {
                     do {
-                        let html = try String(contentsOf: url, encoding: .utf8)
-                        self.linkedInInsightsData = try extractData(from: html)
+                        // 1. Security-scoped resource handling
+                        guard url.startAccessingSecurityScopedResource() else { 
+                            throw NSError(domain: "LinkedInInsightsParser", code: 1, 
+                                        userInfo: [NSLocalizedDescriptionKey: "Failed to access the security scoped resource"])
+                        }
                         
-                        // Save insights data to job notes
+                        defer { url.stopAccessingSecurityScopedResource() }
+                        
+                        // 2. Read the HTML content
+                        let html = try String(contentsOf: url, encoding: .utf8)
+                        
+                        // 3. Parse the data
+                        let parsedData = try extractData(from: html)
+                        self.linkedInInsightsData = parsedData
+                        
+                        // 4. Save insights data to job notes
                         let encoder = JSONEncoder()
-                        let jsonData = try encoder.encode(self.linkedInInsightsData)
+                        let jsonData = try encoder.encode(parsedData)
                         if let jsonString = String(data: jsonData, encoding: .utf8) {
                             var updatedNotes = job.notes ?? ""
                             
@@ -1506,4 +1549,3 @@ struct DescriptionSectionView: View {
 
     }
 }
-

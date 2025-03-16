@@ -771,42 +771,64 @@ struct EnhancedStatsView: View {
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                     
+                    // Using current year (2025) for special coloring
+                    
                     Chart(yearContributionData) { item in
                         let isToday = Calendar.current.isDateInToday(item.date)
                         let isPast = item.date < Date()
+                        let itemYear = Calendar.current.component(.year, from: item.date)
+                        
+                        // Special coloring for 2025 (current year) when showing all years
+                        let is2025Cell = itemYear == 2025
+                        let showSpecialColoring = selectedYear == -1 && is2025Cell
                         
                         RectangleMark(
                             x: .value("WeekOfYear", item.date, unit: .weekOfYear),
                             y: .value("DayOfWeek", weekday(for: item.date))
                         )
                         .foregroundStyle(
-                            isPast ?
-                            (isToday ? Color.green : Color.green.opacity(0.6)) :
-                                Color.blue.opacity(0.2)
+                            showSpecialColoring ?
+                                (isPast ?
+                                    (isToday ? Color.green : Color.green.opacity(0.6)) :
+                                    Color.green.opacity(0.1)) :
+                                (isPast ?
+                                    (isToday ? Color.green : Color.green.opacity(0.6)) :
+                                    Color.blue.opacity(0.2))
                         )
                         .cornerRadius(2)
                     }
                     .chartXSelection(value: $yearChartSelectedDate)
-                    .frame(height: 200)
+                    .frame(height: 240) // Increased height to prevent clipping
                     .chartXAxis {
                         AxisMarks(values: .stride(by: .month)) {
                             AxisValueLabel(format: .dateTime.month(.abbreviated))
+                            AxisGridLine()
+                            AxisTick()
                         }
                     }
                     .chartYAxis {
                         AxisMarks(values: .automatic) {
                             AxisValueLabel(format: .dateTime.weekday(.narrow))
+                            AxisGridLine()
+                            AxisTick()
                         }
                     }
                     .padding(.horizontal, 16)
+                    .padding(.vertical, 8)
                     .background(Color.secondary.opacity(0.05))
                     .cornerRadius(10)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.gray.opacity(0.2), lineWidth: 1)
+                    )
                     .overlay(alignment: .topTrailing) {
                         if let sel = yearChartSelectedDate {
                             let dayStr = sel.formatted(date: .abbreviated, time: .omitted)
-                            let yearProgress = Calendar.current.dateComponents([.day], from: Calendar.current.startOfDay(for: Calendar.current.dateComponents([.year], from: sel).date ?? sel), to: Date()).day ?? 0
+                            let selYear = Calendar.current.component(.year, from: sel)
+                            let yearStartDate = Calendar.current.date(from: DateComponents(year: selYear, month: 1, day: 1))!
+                            let dayOfYear = Calendar.current.dateComponents([.day], from: yearStartDate, to: sel).day ?? 0
                             let totalDays = isLeapYear(sel) ? 366.0 : 365.0
-                            let percentage = Double(yearProgress) / totalDays * 100
+                            let percentage = Double(dayOfYear) / totalDays * 100
                             
                             VStack(alignment: .trailing, spacing: 4) {
                                 Text(dayStr)
@@ -846,20 +868,29 @@ struct EnhancedStatsView: View {
                         .cornerRadius(2)
                     }
                     .chartXSelection(value: $appsChartSelectedDate)
-                    .frame(height: 200)
+                    .frame(height: 240) // Increased height to prevent clipping
                     .chartXAxis {
                         AxisMarks(values: .stride(by: .month)) {
                             AxisValueLabel(format: .dateTime.month(.abbreviated))
+                            AxisGridLine()
+                            AxisTick()
                         }
                     }
                     .chartYAxis {
                         AxisMarks(values: .automatic) {
                             AxisValueLabel(format: .dateTime.weekday(.narrow))
+                            AxisGridLine()
+                            AxisTick()
                         }
                     }
                     .padding(.horizontal, 16)
+                    .padding(.vertical, 8)
                     .background(Color.secondary.opacity(0.05))
                     .cornerRadius(10)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.gray.opacity(0.2), lineWidth: 1)
+                    )
                     .overlay(alignment: .topTrailing) {
                         if let sel = appsChartSelectedDate,
                            let count = appsContributionData.first(where: { $0.date == sel })?.count {
@@ -912,7 +943,7 @@ struct EnhancedStatsView: View {
                             endPoint: .bottom
                         )
                     )
-                    .cornerRadius(5)
+                    .cornerRadius(8) // Standardized rounded corners
                     
                     // Add selection rule mark if this date is selected
                     if let selectedDate = barLineSelectedDate,
@@ -943,7 +974,7 @@ struct EnhancedStatsView: View {
                 }
             }
             .chartXSelection(value: $barLineSelectedDate)
-            .chartLegend(position: .bottom)
+            .chartLegend(position: .bottom) // Standardized legend position
             .chartXAxis {
                 AxisMarks(values: .stride(by: .month)) { value in
                     AxisGridLine()
@@ -1011,7 +1042,7 @@ struct EnhancedStatsView: View {
                         y: .value("Count", item.count)
                     )
                     .foregroundStyle(by: .value("City", item.city))
-                    .cornerRadius(5)
+                    .cornerRadius(8) // Standardized rounded corners
                 }
                 .chartXAxis {
                     AxisMarks() { value in
@@ -1027,7 +1058,7 @@ struct EnhancedStatsView: View {
                         AxisValueLabel()
                     }
                 }
-                .chartLegend(position: .bottom)
+                .chartLegend(position: .bottom) // Standardized legend position
                 .frame(height: 300)
                 .padding(.horizontal, 16)
                 .padding(.vertical, 8)
@@ -1064,7 +1095,7 @@ struct EnhancedStatsView: View {
                             endPoint: .top
                         )
                     )
-                    .cornerRadius(5)
+                    .cornerRadius(8) // Standardized rounded corners
                 }
                 .chartXAxis {
                     AxisMarks() { value in
@@ -1082,6 +1113,7 @@ struct EnhancedStatsView: View {
                     }
                 }
                 .chartYScale(domain: 0...(maxValue + 1))
+                .chartLegend(position: .bottom) // Standardized legend position
                 .chartOverlay { proxy in
                     GeometryReader { geometry in
                         let lineY = proxy.position(forY: average) ?? 0
@@ -1203,21 +1235,35 @@ struct EnhancedStatsView: View {
     
     // Vertical salary range chart with improved styling and annotations
     private var salaryRangeChartSection: some View {
-        VStack(alignment: .leading) {
+        let sortedData: [SalaryRangeItem] = {
+            var tempData = salaryRangeData.sorted { $0.date > $1.date }
+            return tempData.enumerated().map { index, item in
+                SalaryRangeItem(
+                    jobID: item.jobID,
+                    company: item.company,
+                    jobTitle: item.jobTitle,
+                    date: item.date,
+                    minSalary: item.minSalary,
+                    maxSalary: item.maxSalary,
+                    orderIndex: index // Assign index without mutating array
+                )
+            }
+        }()
+
+        let midpoints = sortedData.map { ($0.minSalary + $0.maxSalary) / 2 }
+        let avgMidpoint = midpoints.reduce(0, +) / Double(max(1, midpoints.count))
+
+        return VStack(alignment: .leading) {
             Text("Salary Ranges for Job Applications")
                 .font(.headline)
                 .padding(.bottom, 5)
-            
-            let sortedData = salaryRangeData.sorted { $0.date > $1.date }
-            let midpoints = sortedData.map { ($0.minSalary + $0.maxSalary) / 2 }
-            let avgMidpoint = midpoints.reduce(0, +) / Double(max(1, midpoints.count))
             
             Chart(sortedData) { item in
                 RectangleMark(
                     xStart: .value("Min Salary", item.minSalary),
                     xEnd: .value("Max Salary", item.maxSalary),
                     y: .value("Job", item.orderIndex),
-                    height: .fixed(10)
+                    height: .fixed(16)
                 )
                 .foregroundStyle(
                     LinearGradient(
@@ -1226,7 +1272,7 @@ struct EnhancedStatsView: View {
                         endPoint: .trailing
                     )
                 )
-                .cornerRadius(5)
+                .cornerRadius(8)
             }
             .chartXAxis {
                 AxisMarks(position: .bottom) { value in
@@ -1237,9 +1283,22 @@ struct EnhancedStatsView: View {
             }
             .chartYAxis {
                 AxisMarks(position: .leading) { value in
+                    AxisValueLabel {
+                        if let idx = value.as(Int.self), idx >= 0 && idx < sortedData.count {
+                            let item = sortedData[idx]
+                            VStack(alignment: .leading) {
+                                Text(item.company)
+                                    .font(.system(size: 10))
+                                    .lineLimit(1)
+                                    .truncationMode(.tail)
+                            }
+                            .frame(width: 100, alignment: .leading)
+                        } else {
+                            Text("")
+                        }
+                    }
                     AxisGridLine()
                     AxisTick()
-                    AxisValueLabel()
                 }
             }
             .chartOverlay { proxy in
@@ -1261,11 +1320,15 @@ struct EnhancedStatsView: View {
                 }
             }
             .chartXSelection(value: $selectedSalaryValue)
-            .frame(height: max(CGFloat(sortedData.count) * 30, 400))
+            .frame(height: max(CGFloat(sortedData.count) * 35, 400))
             .padding(.horizontal, 16)
             .padding(.vertical, 8)
             .background(Color.secondary.opacity(0.05))
             .cornerRadius(10)
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.gray.opacity(0.2), lineWidth: 1)
+            )
             
             if let selected = selectedSalaryValue,
                let item = sortedData.first(where: { $0.minSalary...$0.maxSalary ~= selected }) {
@@ -1296,14 +1359,28 @@ struct HorizontalStackedBarChartIfAvailable: View {
                 )
                 .position(by: .value("City", item.city))
                 .foregroundStyle(by: .value("City", item.city))
+                .cornerRadius(8) // Standardized rounded corners
             }
             .chartXAxis {
-                AxisMarks()
+                AxisMarks() { value in
+                    AxisGridLine()
+                    AxisTick()
+                    AxisValueLabel()
+                }
             }
             .chartYAxis {
-                AxisMarks()
+                AxisMarks() { value in
+                    AxisGridLine()
+                    AxisTick()
+                    AxisValueLabel()
+                }
             }
+            .chartLegend(position: .bottom) // Standardized legend position
             .frame(height: 300)
+            .padding(.horizontal, 16)
+            .padding(.vertical, 8)
+            .background(Color.secondary.opacity(0.05))
+            .cornerRadius(10)
         }
     }
 }
@@ -1435,7 +1512,7 @@ struct PieChartView: View {
                     innerRadius: .ratio(0.618), // Golden ratio for aesthetics
                     angularInset: 1.5
                 )
-                .cornerRadius(5)
+                .cornerRadius(8) // Standardized rounded corners
                 .foregroundStyle(by: .value("Key", item.key))
                 .opacity(item.key == selectedItemLabel(selectedAngle)?.key ? 1 : 0.65)
             }
