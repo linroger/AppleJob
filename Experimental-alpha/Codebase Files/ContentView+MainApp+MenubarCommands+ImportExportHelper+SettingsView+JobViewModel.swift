@@ -48,11 +48,11 @@ struct ContentView: View {
     @State private var selectedNoteID: UUID? // Added for Notes view
 
     var body: some View {
-        NavigationView {
+        NavigationSplitView {
             sidebar
                 .frame(minWidth: 250)
                 .transition(.move(edge: .leading))
-
+        } detail: {
             mainContent
                 .transition(.opacity)
         }
@@ -125,11 +125,7 @@ struct ContentView: View {
             case .documents:
                 DocumentsSidebarView()
             case .notes:
-                if let noteStore = getNoteStore() {
-                    NotesSidebar(noteStore: noteStore, selectedNoteID: $selectedNoteID)
-                } else {
-                    EmptyView()
-                }
+                NotesSidebar(noteStore: noteStore, selectedNoteID: $selectedNoteID)
             }
         }
 
@@ -157,11 +153,7 @@ struct ContentView: View {
     
   
     
-    // Helper to get note store
-    private func getNoteStore() -> NoteStore? {
-        let noteStore = try? self.noteStore as NoteStore
-        return noteStore
-    }
+    // No longer needed since we're directly accessing noteStore
 
 
 }

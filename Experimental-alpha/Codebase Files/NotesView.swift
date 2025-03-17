@@ -36,10 +36,23 @@ struct NotesSidebar: View {
             }
             .listStyle(.sidebar)
             .contextMenu {
-                Button("New Note") { noteStore.currentNote = "" }
+                Button("New Note") { 
+                    noteStore.currentNote = "" 
+                    selectedNoteID = nil
+                }
             }
         }
         .searchable(text: $searchText, prompt: "Search notes")
+        .toolbar {
+            ToolbarItem(placement: .navigation) {
+                Button(action: {
+                    noteStore.currentNote = ""
+                    selectedNoteID = nil
+                }) {
+                    Label("New Note", systemImage: "square.and.pencil")
+                }
+            }
+        }
     }
     
     private func noteListItem(note: Note) -> some View {
@@ -193,6 +206,16 @@ struct NotesView: View {
             ToolbarItem(placement: .navigation) {
                 Button(action: { NSApp.sendAction(Selector(("showSettings:")), to: nil, from: nil) }) {
                     Label("Settings", systemImage: "gear")
+                }
+            }
+        }
+        .onAppear {
+            // When the view appears, ensure selected note is highlighted 
+            if let noteId = selectedNoteID {
+                // Check that the note still exists
+                if noteStore.notes.contains(where: { $0.id == noteId }) {
+                    // Reaffirm selection
+                    selectedNoteID = noteId
                 }
             }
         }
@@ -392,22 +415,3 @@ struct NoteCardView: View {
         return lines.count > lineCount ? lines.prefix(lineCount).joined(separator: "\n") : content
     }
 }
-
-#if DEBUG
-struct NotesView_Previews: PreviewProvider {
-    static var previews: some View {
-        NotesView(selectedNoteID: .constant(nil)).environmentObject(previewNoteStore())
-    }
-    
-    static func previewNoteStore() -> NoteStore {
-        let config = ModelConfiguration(isStoredInMemoryOnly: true)
-        let container = try! ModelContainer(for: SwiftDataNote.self, configurations: config)
-        let store = NoteStore(modelContext: container.mainContext)
-        store.notes = [
-            Note(id: UUID(), content: "# Important Note\nThis is a sample note with *markdown* support.", creationDate: Date(), lastModifiedDate: Date(), order: 0),
-            Note(id: UUID(), content: "## Meeting Notes\n1. First item\n2. Second item\n3. Third item", creationDate: Date().addingTimeInterval(-86400), lastModifiedDate: Date().addingTimeInterval(-86400), order: 1)
-        ]
-        return store
-    }
-}
-#endif
