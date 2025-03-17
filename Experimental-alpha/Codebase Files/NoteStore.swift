@@ -1,13 +1,11 @@
 import SwiftUI
 import SwiftData
 
-// This is a dedicated store to manage the notes feature
 class NoteStore: ObservableObject {
     @Published var notes: [Note] = []
     @Published var currentNote: String = ""
     @Published var isEditingNote: Bool = false
     @Published var editingNoteID: UUID?
-    @Published var contextMenuSelectedNoteID: UUID?
     
     private let modelContext: ModelContext
     
@@ -26,67 +24,47 @@ class NoteStore: ObservableObject {
         }
     }
     
-    func addNote(content: String) {
-        guard !content.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return }
+    @discardableResult
+    func addNote(content: String) -> Note {
+        guard !content.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
+            return Note(id: UUID(), content: "", creationDate: Date(), lastModifiedDate: Date(), order: 0)
+        }
         
-        // Generate order value - new notes go at the top by default with lowest order value
         let orderValue = notes.isEmpty ? 0 : notes.map { $0.order }.min()! - 1
-        
-        // Create the note
-        let newNote = SwiftDataNote(
-            content: content,
-            order: orderValue
-        )
-        
-        // Save to database
+        let newNote = SwiftDataNote(content: content, order: orderValue)
         modelContext.insert(newNote)
-        
-        // Update in-memory collection
-        notes.insert(newNote.toNote(), at: 0)
-        
-        // Clear the input field
+        let uiNote = newNote.toNote()
+        notes.insert(uiNote, at: 0)
         currentNote = ""
-        
         saveContext()
+        return uiNote
     }
     
     func updateNote(id: UUID, content: String) {
         guard !content.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return }
-        
-        // Find and update the note in SwiftData
         let descriptor = FetchDescriptor<SwiftDataNote>(predicate: #Predicate { $0.id == id })
         do {
-            let foundNotes = try modelContext.fetch(descriptor)
-            if let noteToUpdate = foundNotes.first {
+            if let noteToUpdate = try modelContext.fetch(descriptor).first {
                 noteToUpdate.content = content
                 noteToUpdate.lastModifiedDate = Date()
-                
-                // Update in-memory collection
                 if let index = notes.firstIndex(where: { $0.id == id }) {
                     notes[index] = noteToUpdate.toNote()
                 }
-                
                 saveContext()
             }
         } catch {
             print("Error updating note: \(error)")
         }
-        
         isEditingNote = false
         editingNoteID = nil
     }
     
     func deleteNote(id: UUID) {
-        // Find and delete the note from SwiftData
         let descriptor = FetchDescriptor<SwiftDataNote>(predicate: #Predicate { $0.id == id })
         do {
-            let foundNotes = try modelContext.fetch(descriptor)
-            if let noteToDelete = foundNotes.first {
+            if let noteToDelete = try modelContext.fetch(descriptor).first {
                 modelContext.delete(noteToDelete)
-                
-                // Remove from in-memory collection
                 notes.removeAll { $0.id == id }
-                
                 saveContext()
             }
         } catch {
@@ -96,15 +74,13 @@ class NoteStore: ObservableObject {
     
     func copyNoteToClipboard(id: UUID) {
         if let note = notes.first(where: { $0.id == id }) {
-            let pasteboard = NSPasteboard.general
-            pasteboard.clearContents()
-            pasteboard.setString(note.content, forType: .string)
+            NSPasteboard.general.clearContents()
+            NSPasteboard.general.setString(note.content, forType: .string)
         }
     }
     
     func pasteFromClipboard() {
-        let pasteboard = NSPasteboard.general
-        if let pastedString = pasteboard.string(forType: .string) {
+        if let pastedString = NSPasteboard.general.string(forType: .string) {
             currentNote = pastedString
         }
     }
@@ -118,32 +94,39 @@ class NoteStore: ObservableObject {
     }
     
     func reorderNotes(from sourceIndices: IndexSet, to destinationIndex: Int) {
-        // Reorder in-memory collection
         notes.move(fromOffsets: sourceIndices, toOffset: destinationIndex)
-        
-        // Update order values to match new positions
         for i in 0..<notes.count {
             notes[i].order = i
         }
-        
-        // Update in SwiftData
         updateNotesOrder()
     }
     
+    func importNotes(from url: URL) {
+        do {
+            let markdown = try String(contentsOf: url)
+            let notesText = markdown.components(separatedBy: "---\n\n")
+            for noteText in notesText {
+                let trimmed = noteText.trimmingCharacters(in: .whitespacesAndNewlines)
+                if !trimmed.isEmpty {
+                    addNote(content: trimmed)
+                }
+            }
+        } catch {
+            print("Error importing notes: \(error)")
+        }
+    }
+    
     private func updateNotesOrder() {
-        // Update order values in SwiftData to match in-memory collection
         for note in notes {
             let descriptor = FetchDescriptor<SwiftDataNote>(predicate: #Predicate { $0.id == note.id })
             do {
-                let foundNotes = try modelContext.fetch(descriptor)
-                if let noteToUpdate = foundNotes.first {
+                if let noteToUpdate = try modelContext.fetch(descriptor).first {
                     noteToUpdate.order = note.order
                 }
             } catch {
                 print("Error updating note order: \(error)")
             }
         }
-        
         saveContext()
     }
     

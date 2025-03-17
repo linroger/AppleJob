@@ -45,7 +45,7 @@ struct ContentView: View {
     @State private var searchText: String = ""
     @State private var isDarkMode: Bool = false
     @State private var showDocInfoPopover = false
-
+    @State private var selectedNoteID: UUID? // Added for Notes view
 
     var body: some View {
         NavigationView {
@@ -116,51 +116,54 @@ struct ContentView: View {
         }
     }
 
+    
     @ViewBuilder
-    private var sidebar: some View {
-        switch selectedSection {
-        case .jobDetails, .stats:
-            JobSidebarView(searchText: $searchText)
-        case .documents:
-            DocumentsSidebarView()
-        case .notes:
-            // Notes don't need a sidebar, so we'll show an empty view with a title
-            VStack(alignment: .leading) {
-                Text("Notes")
-                    .font(.title2)
-                    .fontWeight(.bold)
-                    .padding()
-                
-                Text("Use the main panel to view, create and manage your notes.")
-                    .font(.body)
-                    .foregroundColor(.secondary)
-                    .padding(.horizontal)
-                
-                Spacer()
+        private var sidebar: some View {
+            switch selectedSection {
+            case .jobDetails, .stats:
+                JobSidebarView(searchText: $searchText)
+            case .documents:
+                DocumentsSidebarView()
+            case .notes:
+                if let noteStore = getNoteStore() {
+                    NotesSidebar(noteStore: noteStore, selectedNoteID: $selectedNoteID)
+                } else {
+                    EmptyView()
+                }
             }
         }
+
+        @ViewBuilder
+        private var mainContent: some View {
+            switch selectedSection {
+            case .jobDetails:
+                if let job = jobStore.selectedJob {
+                    JobDetailView(job: job, showSettings: $showSettings)
+                        .id(job.id)
+                } else {
+                    Text("Select a job to view details")
+                        .foregroundColor(.secondary)
+                }
+            case .stats:
+                EnhancedStatsView()
+            case .documents:
+                DocumentsMainView()
+                    .id(docStore.selectedDocument?.id)
+            case .notes:
+                NotesView(selectedNoteID: $selectedNoteID)
+            }
+        }
+    
+    
+  
+    
+    // Helper to get note store
+    private func getNoteStore() -> NoteStore? {
+        let noteStore = try? self.noteStore as NoteStore
+        return noteStore
     }
 
-    @ViewBuilder
-    private var mainContent: some View {
-        switch selectedSection {
-        case .jobDetails:
-            if let job = jobStore.selectedJob {
-                JobDetailView(job: job, showSettings: $showSettings)  // ✅ Pass showSettings
-                    .id(job.id) // Force view refresh when job changes
-            } else {
-                Text("Select a job to view details")
-                    .foregroundColor(.secondary)
-            }
-        case .stats:
-            EnhancedStatsView()
-        case .documents:
-            DocumentsMainView()
-                .id(docStore.selectedDocument?.id) // Force view refresh when selected document changes
-        case .notes:
-            NotesView()
-        }
-    }
+
 }
 
 //-----------------------------------------------------------------------------------------------------//
@@ -224,6 +227,20 @@ class ImportExportHelper: NSObject, ObservableObject {
             }
         }
     }
+    
+    func importNotes(completion: @escaping (URL) -> Void) {
+        let op = NSOpenPanel()
+        op.allowedContentTypes = [UTType(filenameExtension: "md") ?? .plainText]
+        op.allowsMultipleSelection = false
+        op.canChooseDirectories = false
+        op.canChooseFiles = true
+        op.begin { resp in
+            if resp == .OK, let url = op.url {
+                completion(url)
+            }
+        }
+    }
+    
 }
 
 
@@ -308,6 +325,65 @@ struct AppleJobApp: App {
             .keyboardShortcut(",", modifiers: .command)
         }
     }
+    // Helper function to export notes as Markdown
+    private func exportNotesFromMenu() {
+        let savePanel = NSSavePanel()
+        savePanel.allowedContentTypes = [UTType(filenameExtension: "md") ?? .plainText];      savePanel.nameFieldStringValue = "notes.md"
+        savePanel.canCreateDirectories = true
+        
+        savePanel.begin { response in
+            if response == .OK, let url = savePanel.url {
+                // Combine all notes into a single markdown file
+                var markdown = "# Notes Export\n\n"
+                
+                for note in self.noteStore.notes {
+                    // Extract title from first line of note
+                    let title = self.extractTitleFromContent(note.content)
+                    let contentWithoutTitle = self.removeFirstLine(from: note.content)
+                    
+                    markdown += "## \(title)\n\n"
+                    markdown += "\(contentWithoutTitle)\n\n"
+                    markdown += "_Last modified: \(self.formatDate(note.lastModifiedDate))_\n\n"
+                    markdown += "---\n\n"
+                }
+                
+                do {
+                    try markdown.write(to: url, atomically: true, encoding: .utf8)
+                } catch {
+                    print("Error exporting notes: \(error)")
+                }
+            }
+        }
+    }
+    
+    // Helper to extract title from note content
+    private func extractTitleFromContent(_ content: String) -> String {
+        let lines = content.split(separator: "\n", omittingEmptySubsequences: false)
+        if let firstLine = lines.first {
+            return firstLine.trimmingCharacters(in: .whitespacesAndNewlines)
+                .replacingOccurrences(of: "^#+\\s*", with: "", options: .regularExpression)
+        }
+        return "Untitled Note"
+    }
+    
+    // Helper to remove the first line from content
+    private func removeFirstLine(from content: String) -> String {
+        let lines = content.split(separator: "\n", omittingEmptySubsequences: false)
+        if lines.count > 1 {
+            return lines[1...].joined(separator: "\n")
+                .trimmingCharacters(in: .whitespacesAndNewlines)
+        }
+        return ""
+    }
+    
+    // Helper to format date
+    private func formatDate(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        return formatter.string(from: date)
+    }
+    
     private var fileMenuCommands: some Commands {
         CommandMenu("File") {
             Button("Import Backup...") {
@@ -337,6 +413,16 @@ struct AppleJobApp: App {
                     exportAllDocumentsToZip(url: url)
                 }
             }
+            Button("Import Notes...") {
+                importExportHelper.importNotes { url in
+                    noteStore.importNotes(from: url)
+                }
+            }
+            .keyboardShortcut("N", modifiers: [.command, .shift])
+            Button("Export Notes...") {
+                exportNotesFromMenu()
+            }
+            .keyboardShortcut("N", modifiers: [.command, .option])
 
             Divider()
         }
@@ -502,8 +588,10 @@ import Foundation
 struct SettingsView: View {
     @EnvironmentObject var jobStore: JobStore
     @EnvironmentObject var docStore: DocumentStore
+    @EnvironmentObject var noteStore: NoteStore
     @ObservedObject var importExportHelper: ImportExportHelper
     @AppStorage("usesDarkMode") private var usesDarkMode = false
+    @AppStorage("showFullNoteCards") private var showFullNoteCards = false // Added for notes setting
     @Environment(\.dismiss) private var dismiss
     @State private var selectedTab = 0
 
@@ -554,31 +642,33 @@ struct SettingsView: View {
 
     // General Settings tab content
     private var generalSettings: some View {
-        Form {
-            Section("Appearance") {
-                Toggle("Dark Mode", isOn: $usesDarkMode)
-                    .onChange(of: usesDarkMode) { _, newValue in
-                        NSApp.appearance = newValue ? NSAppearance(named: .darkAqua) : NSAppearance(named: .aqua)
-                    }
-            }
-
-            Section("Job Application Settings") {
-                // Add any job application related settings here
-                Toggle("Autofill Job Details from URL", isOn: .constant(true))
-                    .disabled(true) // Placeholder for future functionality
-
-                Toggle("Save Documents to Global Store", isOn: .constant(true))
-                    .disabled(true) // Placeholder for future functionality
+            Form {
+                Section("Appearance") {
+                    Toggle("Dark Mode", isOn: $usesDarkMode)
+                        .onChange(of: usesDarkMode) { _, newValue in
+                            NSApp.appearance = newValue ? NSAppearance(named: .darkAqua) : NSAppearance(named: .aqua)
+                        }
+                }
+                
+                Section("Notes Settings") {
+                    Toggle("Show Full Note Cards by Default", isOn: $showFullNoteCards)
+                        .help("When enabled, notes will be displayed in full height by default")
+                }
+                Section("Job Application Settings") {
+                    Toggle("Autofill Job Details from URL", isOn: .constant(true))
+                        .disabled(true)
+                    Toggle("Save Documents to Global Store", isOn: .constant(true))
+                        .disabled(true)
+                }
             }
         }
-    }
 
     // Backup & Import tab content
     private var backupSettings: some View {
         Form {
             Section("Backup") {
                 VStack(alignment: .leading) {
-                    Text("Export your job applications and documents as a backup file")
+                    Text("Export your job applications, notes, and documents as a backup file")
                         .font(.caption)
                         .foregroundColor(.secondary)
 
@@ -589,6 +679,16 @@ struct SettingsView: View {
                         }
                     }
                     .buttonStyle(.borderedProminent)
+                    Button("Import Notes") {
+                        importExportHelper.importNotes { url in
+                            noteStore.importNotes(from: url)
+                        }
+                    }
+                    .buttonStyle(.bordered)
+                    Button("Export Notes") {
+                        exportNotesFromSettings()
+                    }
+                    .buttonStyle(.bordered)
 
                     Button("Export Documents") {
                         importExportHelper.exportDocuments { url in
@@ -1055,5 +1155,69 @@ class JobViewModel: ObservableObject {
         jobDeadline = nil
         validateInputs()
         linkedInInsightsData = nil
+    }
+}
+
+// MARK: - SettingsView Extensions for Notes
+extension SettingsView {
+    func exportNotesFromMenu() {
+        exportNotesFromSettings()
+    }
+    func exportNotesFromSettings() {
+        let savePanel = NSSavePanel()
+        savePanel.allowedContentTypes = [UTType(filenameExtension: "md") ?? .plainText];        savePanel.nameFieldStringValue = "notes.md"
+        savePanel.canCreateDirectories = true
+        
+        savePanel.begin { response in
+            if response == .OK, let url = savePanel.url {
+                // Combine all notes into a single markdown file
+                var markdown = "# Notes Export\n\n"
+                
+                for note in self.noteStore.notes {
+                    // Extract title from first line of note
+                    let title = self.extractTitleFromContent(note.content)
+                    let contentWithoutTitle = self.removeFirstLine(from: note.content)
+                    
+                    markdown += "## \(title)\n\n"
+                    markdown += "\(contentWithoutTitle)\n\n"
+                    markdown += "_Last modified: \(self.formatDate(note.lastModifiedDate))_\n\n"
+                    markdown += "---\n\n"
+                }
+                
+                do {
+                    try markdown.write(to: url, atomically: true, encoding: .utf8)
+                } catch {
+                    print("Error exporting notes: \(error)")
+                }
+            }
+        }
+    }
+    
+    // Helper to extract title from note content
+    private func extractTitleFromContent(_ content: String) -> String {
+        let lines = content.split(separator: "\n", omittingEmptySubsequences: false)
+        if let firstLine = lines.first {
+            return firstLine.trimmingCharacters(in: .whitespacesAndNewlines)
+                .replacingOccurrences(of: "^#+\\s*", with: "", options: .regularExpression)
+        }
+        return "Untitled Note"
+    }
+    
+    // Helper to remove the first line from content
+    private func removeFirstLine(from content: String) -> String {
+        let lines = content.split(separator: "\n", omittingEmptySubsequences: false)
+        if lines.count > 1 {
+            return lines[1...].joined(separator: "\n")
+                .trimmingCharacters(in: .whitespacesAndNewlines)
+        }
+        return ""
+    }
+    
+    // Helper to format date
+    private func formatDate(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        return formatter.string(from: date)
     }
 }

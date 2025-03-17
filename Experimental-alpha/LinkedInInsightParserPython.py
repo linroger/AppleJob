@@ -295,4 +295,3 @@ def main():
             print(f"Error processing {file_path}: {e}")
 
 if __name__ == '__main__':
-    main()

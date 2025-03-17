@@ -1600,17 +1600,3 @@ extension MonthlyCityData {
     }
 }
 
-// GradientForeground
-extension View {
-    func gradientForeground(colors: [Color]) -> some View {
-        self.overlay(
-            LinearGradient(
-                gradient: Gradient(colors: colors),
-                startPoint: .leading,
-                endPoint: .trailing
-            )
-        )
-        .mask(self)
-    }
-}
-
