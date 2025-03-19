@@ -32,9 +32,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A740CE742D88B304000FBE5F /* SwiftChartsExample.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = SwiftChartsExample.xcodeproj; sourceTree = "<group>"; };
 		A75266712D8708EE00E4ED7C /* SwiftChartsExample.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = SwiftChartsExample.xcodeproj; sourceTree = "<group>"; };
 		A76DBEA12D878962004F44D5 /* SwiftChartsExample.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = SwiftChartsExample.xcodeproj; sourceTree = "<group>"; };
 		A775D5392D876A5700E55B0C /* SwiftChartsExample.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = SwiftChartsExample.xcodeproj; sourceTree = "<group>"; };
+		A7880B712D8B16FD00C6C96D /* SwiftChartsExample.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = SwiftChartsExample.xcodeproj; sourceTree = "<group>"; };
 		A78A07242D8824A700DBEC52 /* SwiftChartsExample.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = SwiftChartsExample.xcodeproj; sourceTree = "<group>"; };
 		A798DCE22D71B66200A13C2A /* Experimental-alpha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Experimental-alpha.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A798DCF52D71B66300A13C2A /* Experimental-alphaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Experimental-alphaTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,6 +148,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A740CE7A2D88B304000FBE5F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		A75266772D8708EE00E4ED7C /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +170,13 @@
 			sourceTree = "<group>";
 		};
 		A775D53F2D876A5700E55B0C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A7880B772D8B16FD00C6C96D /* Products */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -326,6 +342,10 @@
 					ProjectRef = A78A07242D8824A700DBEC52 /* SwiftChartsExample.xcodeproj */;
 				},
 				{
+					ProductGroup = A740CE7A2D88B304000FBE5F /* Products */;
+					ProjectRef = A740CE742D88B304000FBE5F /* SwiftChartsExample.xcodeproj */;
+				},
+				{
 					ProductGroup = A7B348CC2D8470F400300E58 /* Products */;
 					ProjectRef = A7B348CA2D8470F400300E58 /* SwiftChartsExample.xcodeproj */;
 				},
@@ -336,6 +356,10 @@
 				{
 					ProductGroup = A76DBEA72D878962004F44D5 /* Products */;
 					ProjectRef = A76DBEA12D878962004F44D5 /* SwiftChartsExample.xcodeproj */;
+				},
+				{
+					ProductGroup = A7880B772D8B16FD00C6C96D /* Products */;
+					ProjectRef = A7880B712D8B16FD00C6C96D /* SwiftChartsExample.xcodeproj */;
 				},
 				{
 					ProductGroup = A75266772D8708EE00E4ED7C /* Products */;

@@ -290,11 +290,13 @@ enum Sort: String, CaseIterable, CaseNameDisplayable {
     case recentlyApplied = "Recently Applied"
 }
 
-enum ViewSection: String, CaseIterable, CaseNameDisplayable {
+enum ViewSection: String, CaseIterable, CaseNameDisplayable, Hashable, Identifiable {
     case jobDetails = "Job Details"
     case stats = "Stats"
     case documents = "Documents"
     case notes = "Notes"
+    
+    var id: String { self.rawValue }
 }
 
 // --------------------------------------------------

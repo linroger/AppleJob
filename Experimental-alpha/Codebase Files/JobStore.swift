@@ -300,7 +300,14 @@ class JobStore: ObservableObject {
     private func saveToSwiftData() {
         guard let ctx = documentStore?.modelContext else { return }
         do {
-            try ctx.delete(model: SwiftDataJobApplication.self)
+            // Instead of trying to delete the model type, fetch all existing records and delete them individually
+            let descriptor = FetchDescriptor<SwiftDataJobApplication>()
+            let existingJobs = try ctx.fetch(descriptor)
+            for job in existingJobs {
+                ctx.delete(job)
+            }
+            
+            // Now insert our new jobs
             for job in jobApplications {
                 var linkedInData: Data? = nil
                 if let insights = job.linkedInInsightsData {

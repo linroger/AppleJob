@@ -21,17 +21,23 @@ struct NotesSidebar: View {
     var body: some View {
         VStack(alignment: .leading) {
             List {
-                ForEach(filteredNotes) { note in
-                    noteListItem(note: note)
-                        .listRowBackground(getRowBackground(for: note))
-                        .onTapGesture { selectedNoteID = note.id }
-                        .onDrag {
-                            self.draggedNote = note
-                            return NSItemProvider(object: note.id.uuidString as NSString)
-                        }
-                        .onDrop(of: [.text], isTargeted: nil) { providers in
-                            handleDrop(for: note)
-                        }
+                if noteStore.notes.isEmpty {
+                    Text("No notes available")
+                        .foregroundColor(.secondary)
+                        .padding()
+                } else {
+                    ForEach(filteredNotes) { note in
+                        noteListItem(note: note)
+                            .listRowBackground(getRowBackground(for: note))
+                            .onTapGesture { selectedNoteID = note.id }
+                            .onDrag {
+                                self.draggedNote = note
+                                return NSItemProvider(object: note.id.uuidString as NSString)
+                            }
+                            .onDrop(of: [.text], isTargeted: nil) { providers in
+                                handleDrop(for: note)
+                            }
+                    }
                 }
             }
             .listStyle(.sidebar)
@@ -42,7 +48,6 @@ struct NotesSidebar: View {
                 }
             }
         }
-        .searchable(text: $searchText, prompt: "Search notes")
         .toolbar {
             ToolbarItem(placement: .navigation) {
                 Button(action: {
@@ -50,6 +55,15 @@ struct NotesSidebar: View {
                     selectedNoteID = nil
                 }) {
                     Label("New Note", systemImage: "square.and.pencil")
+                }
+            }
+        }
+        .onAppear {
+            // Create a sample note if needed
+            if noteStore.notes.isEmpty {
+                let sampleNote = noteStore.addNote(content: "# Welcome to Notes\nThis is your first note. You can use markdown formatting.")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.selectedNoteID = sampleNote.id
                 }
             }
         }
@@ -76,11 +90,18 @@ struct NotesSidebar: View {
     }
     
     private func handleDrop(for note: Note) -> Bool {
-        guard let draggedNote = self.draggedNote,
-              let sourceIndex = noteStore.notes.firstIndex(where: { $0.id == draggedNote.id }),
-              let destinationIndex = noteStore.notes.firstIndex(where: { $0.id == note.id }),
-              sourceIndex != destinationIndex else { return false }
+        // Safety checks
+        guard !noteStore.notes.isEmpty,
+              let draggedNote = self.draggedNote else { return false }
         
+        // Make sure both notes exist in our data store
+        guard let sourceIndex = noteStore.notes.firstIndex(where: { $0.id == draggedNote.id }),
+              let destinationIndex = noteStore.notes.firstIndex(where: { $0.id == note.id }) else { return false }
+              
+        // Don't reorder if dropping on self
+        guard sourceIndex != destinationIndex else { return false }
+        
+        // Calculate new position and reorder
         let reorderIndex = destinationIndex > sourceIndex ? destinationIndex + 1 : destinationIndex
         noteStore.reorderNotes(from: IndexSet(integer: sourceIndex), to: reorderIndex)
         return true
@@ -108,7 +129,18 @@ struct NotesSidebar: View {
     }
     
     private var filteredNotes: [Note] {
-        searchText.isEmpty ? noteStore.notes : noteStore.notes.filter { $0.content.lowercased().contains(searchText.lowercased()) }
+        if noteStore.notes.isEmpty {
+            return []
+        }
+        
+        if searchText.isEmpty {
+            return noteStore.notes
+        } else {
+            let searchTermLowercased = searchText.lowercased()
+            return noteStore.notes.filter { 
+                $0.content.lowercased().contains(searchTermLowercased)
+            }
+        }
     }
 }
 
@@ -119,6 +151,7 @@ struct NotesView: View {
     @State private var searchText = ""
     @State private var dividerPosition: CGFloat = 0.3
     @Binding var selectedNoteID: UUID?
+    @State private var isInitialized = false
     
     // Initialize with optional binding, defaulting to internal state if not provided
     init(selectedNoteID: Binding<UUID?> = .constant(nil)) {
@@ -127,27 +160,47 @@ struct NotesView: View {
     
     var body: some View {
         VStack {
-            ScrollView {
-                LazyVStack(spacing: 16) {
-                    ForEach(filteredNotes) { note in
-                        NoteCardView(note: note, isSelected: selectedNoteID == note.id)
-                            .onTapGesture { selectedNoteID = note.id }
-                            .onDrag {
-                                self.draggedNote = note
-                                return NSItemProvider(object: note.id.uuidString as NSString)
-                            }
-                            .onDrop(of: [.text], isTargeted: nil) { providers in
-                                handleDrop(for: note)
-                            }
-                            .contextMenu {
-                                Button("Edit Note") { noteStore.beginEditingNote(id: note.id) }
-                                Button("New Note") { noteStore.currentNote = ""; selectedNoteID = nil }
-                                Button("Copy Note") { noteStore.copyNoteToClipboard(id: note.id) }
-                                Button("Delete Note") { noteStore.deleteNote(id: note.id) }
-                            }
+            if noteStore.notes.isEmpty {
+                // Empty state view
+                VStack {
+                    Text("No notes yet")
+                        .font(.title)
+                        .foregroundColor(.secondary)
+                    
+                    Text("Create a new note to get started")
+                        .foregroundColor(.secondary)
+                        
+                    Button("Create New Note") {
+                        let newNote = noteStore.addNote(content: "# Welcome to Notes\nThis is your first note.")
+                        selectedNoteID = newNote.id
                     }
+                    .buttonStyle(.borderedProminent)
+                    .padding()
                 }
-                .padding()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            } else {
+                ScrollView {
+                    LazyVStack(spacing: 16) {
+                        ForEach(filteredNotes) { note in
+                            NoteCardView(note: note, isSelected: selectedNoteID == note.id)
+                                .onTapGesture { selectedNoteID = note.id }
+                                .onDrag {
+                                    self.draggedNote = note
+                                    return NSItemProvider(object: note.id.uuidString as NSString)
+                                }
+                                .onDrop(of: [.text], isTargeted: nil) { providers in
+                                    handleDrop(for: note)
+                                }
+                                .contextMenu {
+                                    Button("Edit Note") { noteStore.beginEditingNote(id: note.id) }
+                                    Button("New Note") { noteStore.currentNote = ""; selectedNoteID = nil }
+                                    Button("Copy Note") { noteStore.copyNoteToClipboard(id: note.id) }
+                                    Button("Delete Note") { noteStore.deleteNote(id: note.id) }
+                                }
+                        }
+                    }
+                    .padding()
+                }
             }
             
             GeometryReader { geometry in
@@ -176,7 +229,6 @@ struct NotesView: View {
                 .frame(height: max(100, 300 * (1.0 - dividerPosition)))
         }
         .padding()
-        .searchable(text: $searchText, prompt: "Search notes")
         .toolbar {
             ToolbarItem(placement: .navigation) {
                 Button(action: {
@@ -210,23 +262,50 @@ struct NotesView: View {
             }
         }
         .onAppear {
-            // When the view appears, ensure selected note is highlighted 
+            // Initialize if needed
+            if !isInitialized {
+                // Create initial note if the store is empty
+                if noteStore.notes.isEmpty {
+                    let newNote = noteStore.addNote(content: "# Welcome to Notes\nThis is your first note in the app. You can format notes with markdown.")
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        selectedNoteID = newNote.id
+                    }
+                } 
+                // Auto-select first note if none selected
+                else if selectedNoteID == nil && !noteStore.notes.isEmpty {
+                    selectedNoteID = noteStore.notes.first?.id
+                }
+                
+                isInitialized = true
+            }
+            
+            // When the view appears, ensure selected note is highlighted
             if let noteId = selectedNoteID {
                 // Check that the note still exists
                 if noteStore.notes.contains(where: { $0.id == noteId }) {
                     // Reaffirm selection
                     selectedNoteID = noteId
+                } else if !noteStore.notes.isEmpty {
+                    // Select first note if selected note no longer exists
+                    selectedNoteID = noteStore.notes.first?.id
                 }
             }
         }
     }
     
     private func handleDrop(for note: Note) -> Bool {
-        guard let draggedNote = self.draggedNote,
-              let sourceIndex = noteStore.notes.firstIndex(where: { $0.id == draggedNote.id }),
-              let destinationIndex = noteStore.notes.firstIndex(where: { $0.id == note.id }),
-              sourceIndex != destinationIndex else { return false }
+        // Safety checks
+        guard !noteStore.notes.isEmpty,
+              let draggedNote = self.draggedNote else { return false }
         
+        // Make sure both notes exist in our data store
+        guard let sourceIndex = noteStore.notes.firstIndex(where: { $0.id == draggedNote.id }),
+              let destinationIndex = noteStore.notes.firstIndex(where: { $0.id == note.id }) else { return false }
+              
+        // Don't reorder if dropping on self
+        guard sourceIndex != destinationIndex else { return false }
+        
+        // Calculate new position and reorder
         let reorderIndex = destinationIndex > sourceIndex ? destinationIndex + 1 : destinationIndex
         noteStore.reorderNotes(from: IndexSet(integer: sourceIndex), to: reorderIndex)
         return true
@@ -330,7 +409,18 @@ struct NotesView: View {
     }
     
     private var filteredNotes: [Note] {
-        searchText.isEmpty ? noteStore.notes : noteStore.notes.filter { $0.content.lowercased().contains(searchText.lowercased()) }
+        if noteStore.notes.isEmpty {
+            return []
+        }
+        
+        if searchText.isEmpty {
+            return noteStore.notes
+        } else {
+            let searchTermLowercased = searchText.lowercased()
+            return noteStore.notes.filter { 
+                $0.content.lowercased().contains(searchTermLowercased)
+            }
+        }
     }
 }
 
@@ -413,5 +503,31 @@ struct NoteCardView: View {
     private func truncateLines(from content: String, lineCount: Int) -> String {
         let lines = content.split(separator: "\n", omittingEmptySubsequences: false)
         return lines.count > lineCount ? lines.prefix(lineCount).joined(separator: "\n") : content
+    }
+}
+
+// Safe wrapper to ensure proper initialization of NotesView
+struct NotesViewWrapper: View {
+    @Binding var selectedNoteID: UUID?
+    var noteStore: NoteStore
+    @Environment(\.isSearching) private var isSearching
+    
+    // Get search text from environment
+    @AppStorage("notesSearchText") private var notesSearchText = ""
+    
+    var body: some View {
+        NotesView(selectedNoteID: $selectedNoteID)
+            .environmentObject(noteStore)
+            .id("NotesViewContent")
+            .onAppear {
+                // Safety check - ensure we have data
+                if noteStore.notes.isEmpty {
+                    print("Creating sample note because store was empty")
+                    let newNote = noteStore.addNote(content: "# Welcome to Notes\nThis is your first note.")
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        selectedNoteID = newNote.id
+                    }
+                }
+            }
     }
 }

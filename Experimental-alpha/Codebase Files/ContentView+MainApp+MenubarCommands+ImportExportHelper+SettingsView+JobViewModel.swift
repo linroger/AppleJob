@@ -49,14 +49,14 @@ struct ContentView: View {
 
     var body: some View {
         NavigationSplitView {
-            sidebar
-                .frame(minWidth: 250)
-                .transition(.move(edge: .leading))
-        } detail: {
-            mainContent
-                .transition(.opacity)
-        }
-        .preferredColorScheme(isDarkMode ? .dark : .light)
+                    sidebar
+                        .frame(minWidth: 250)
+                        .transition(.move(edge: .leading)) // Removed .id modifier
+                } detail: {
+                    mainContent
+                        .id(selectedSection) // Force recreation when section changes
+                }
+                .preferredColorScheme(isDarkMode ? .dark : .light)
         .toolbar {
             ToolbarItemGroup(placement: .principal) {
                 Picker("View Section", selection: $selectedSection) {
@@ -126,6 +126,7 @@ struct ContentView: View {
                 DocumentsSidebarView()
             case .notes:
                 NotesSidebar(noteStore: noteStore, selectedNoteID: $selectedNoteID)
+                    .id("NotesSidebarView") // Force rebuild
             }
         }
 
@@ -147,6 +148,8 @@ struct ContentView: View {
                     .id(docStore.selectedDocument?.id)
             case .notes:
                 NotesView(selectedNoteID: $selectedNoteID)
+                    .id("NotesView") // Force rebuild
+                    .environmentObject(noteStore) // Explicitly provide store
             }
         }
     

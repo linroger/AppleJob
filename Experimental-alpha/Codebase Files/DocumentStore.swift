@@ -225,7 +225,14 @@ class DocumentStore: ObservableObject {
     }
     private func saveToSwiftData() {
         do {
-            try modelContext.delete(model: SwiftDataJobDocument.self)
+            // Correctly delete existing documents: fetch them first, then delete them individually
+            let descriptor = FetchDescriptor<SwiftDataJobDocument>()
+            let existingDocs = try modelContext.fetch(descriptor)
+            for doc in existingDocs {
+                modelContext.delete(doc)
+            }
+            
+            // Now insert our documents
             for doc in documents {
                 let sdDoc = SwiftDataJobDocument(
                     id: doc.id,
